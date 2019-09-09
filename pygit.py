@@ -6,7 +6,7 @@ import subprocess, sys
 def git_autopush(message):  # 自动同步所有的pybash内容
     commands = [
         ['rm','-r','__pycache__'],
-        ['git','add','.'],
+        ['git','add','-f','.'],
 
         ['git','commit','-m',message],
         ['git','push']
@@ -15,4 +15,10 @@ def git_autopush(message):  # 自动同步所有的pybash内容
         print(line)
         subprocess.call(line)
 
-git_autopush(sys.argv[1])
+message = " "
+counter = 1;
+while(counter < len(sys.argv)):
+    message += " "+sys.argv[counter]
+    counter += 1;
+
+git_autopush(message)
