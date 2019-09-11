@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
+* [References](References.md)
 * [贪心法](c12_Greedy.md)
 * [1 - 100](leetCode-p1-100.md)
     * [1. Two Sum](leetCode-001-Two-Sum.md)
