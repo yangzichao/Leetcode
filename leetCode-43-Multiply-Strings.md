@@ -1,2 +1,0 @@
-# 43. Multiply Strings
-

@@ -1,2 +1,0 @@
-# 20. Valid Parentheses
-

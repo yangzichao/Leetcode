@@ -1,2 +1,0 @@
-# 49. Group Anagrams
-
