@@ -1,7 +1,9 @@
 ## Links
 
-[Read this in Gitbook](https://zichao-yang.gitbook.io/leetcode-zichao/)
-[Zichao Yang's Homepage](https://www.zichaoyang.com/)
+* [Read this in Gitbook](https://zichao-yang.gitbook.io/leetcode-zichao/)
+* [Zichao Yang's Homepage](https://www.zichaoyang.com/)
+
+
 ### Meaning of Table of Contents
 * 'J' means I've done it in Java.
 * 'P' means I've done it in Python3.
