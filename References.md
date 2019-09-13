@@ -2,6 +2,6 @@
 
 ## Java
 [1-134题解](https://leetcode.wang/)
-
+[SoulMachine Java题解](/References/algorithm-essentials-java.pdf)
 ## cpp
-[收集的一个大神的cpp题解](/References/leetcode-cpp.pdf)
+[SoulMachine cpp题解](/References/leetcode-cpp.pdf)
