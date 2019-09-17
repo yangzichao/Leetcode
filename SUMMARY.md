@@ -9,6 +9,7 @@
     * [007J. Reverse Integer](leetCode-007-Reverse-Integer.md)
     * [009J. Palindrome Number](leetCode-009-Palindrome-Number.md)
     * [011J. Container With Most Water](leetCode-011-Container-With-Most-Water.md)
+    * [019J. Remove Nth Node From End of List](leetCode-019-Remove-Nth-Node-From-End-of-List.md)
     * [021J?. Merge Two Sorted Lists](leetCode-021-Merge-Two-Sorted-Lists.md)
     * [026J. Remove Duplicates from Sorted Array](leetCode-026-Remove-Duplicates-from-Sorted-Array.md)
     * [027J. Remove Element](leetCode-027-Remove-Element.md)
