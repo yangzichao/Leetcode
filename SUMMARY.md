@@ -16,6 +16,7 @@
     * [027J. Remove Element](leetCode-027-Remove-Element.md)
     * [035J. Search Insert Position](leetCode-035-Search-Insert-Position.md)
     * [048J. Rotate Image](leetCode-048-Rotate-Image.md)
+    * [061J?. Rotate List](leetCode-061-Rotate-List.md)
 * [101 - 200](leetCode-p101-200.md)
 * [201 - 300](leetCode-p201-300.md)
     * [206J?. Reverse Linked List recusion](leetCode-206-Reverse-Linked-List.md)
