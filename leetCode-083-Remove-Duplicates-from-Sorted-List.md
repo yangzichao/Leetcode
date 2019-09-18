@@ -15,7 +15,6 @@ Output: 1->2->3
 ## Method 1: Iteration
 这个题的思想和 [026](leetCode-026-Remove-Duplicates-from-Sorted-Array.md)一样。
 
-
 ### Java Solution:
 ```Java
 class Solution {
