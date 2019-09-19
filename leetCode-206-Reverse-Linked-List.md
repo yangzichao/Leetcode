@@ -67,6 +67,49 @@ class Solution {
     }
 }
 ```
-## Method 3: Recursion
+代码二，原理相同，相对更优雅。
+* prev的效果相当于dummyhead, 因此规避了问题。
+```Java
+public ListNode reverseList(ListNode head) {
+    ListNode prev = null;
+    ListNode curr = head;
+    while (curr != null) {
+        ListNode nextTemp = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = nextTemp;
+    }
+    return prev;
+}
 
-This is able to be done in recursion for sure. But I don't know for now.
+```
+## Method 3: Recursion
+* Recursion 的方法实际上是将 指针从后往前翻转。
+  * 1 -> 2 -> 3 -> 4 -> 5
+  * 1 -> 2 -> 3 -> 4 <-> 5  即 5 指回 4
+  * 1 -> 2 -> 3 -> 4 <- 5   即 4 下一个指向 null
+  * 1 -> 2 -> 3 <-> 4 <- 5  即 4 指回 3
+  * 1 -> 2 -> 3 <- 4 <- 5   即 3 下一个指向 null
+  * 以此类推
+* 判断中有两个语句， head == null 是用来排除空ListNode的。
+head.next == null 是判断取到了最后一个Node的。
+*   ListNode p = reverseList(head.next); 相当于是直接将p指向了最后一位。
+*   第一个返回的 p 是 List的最后一节。此时head指向倒数第二节。head.next 其实就是 p.
+但是不能用 p.next 代替 head.next. 因为 p 的位置事实上是不变的，变的只是 head。
+* p 一直指着原List的末尾，而head不停的回退，并且每一步都先向下连next两步自指，
+然后将自己的下一步指向null. 这样就成功的翻转了一节。由于递归，回自动回到上一节。
+
+从后往前逆转List的指针，是只能用递归的。
+
+```Java
+public ListNode reverseList(ListNode head) {
+    if (head == null || head.next == null) {
+      return head;
+    }else{
+      ListNode p = reverseList(head.next);
+      head.next.next = head;
+      head.next = null;
+      return p;
+    }
+}
+```
