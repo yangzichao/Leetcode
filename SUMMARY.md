@@ -25,6 +25,7 @@
     * [061J?. Rotate List](leetCode-061-Rotate-List.md)
     * [082J?*. Remove Duplicates from Sorted List II](leetCode-082-Remove-Duplicates-from-Sorted-List-II.md)
     * [083J?. Remove Duplicates from Sorted List](leetCode-083-Remove-Duplicates-from-Sorted-List.md)
+    * [086J. Partition List](leetCode-086-Partition-List.md)
 * [101 - 200](leetCode-p101-200.md)
     * [141J. Linked List Cycle](leetCode-141-Linked-List-Cycle.md)
 * [201 - 300](leetCode-p201-300.md)
