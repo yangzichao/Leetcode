@@ -4,7 +4,7 @@
 * [References](References.md)
     * [贪心法](c12_Greedy.md)
 * [Other Problems](c12_Greedy.md)
-* [1 - 100](leetCode-p001-100.md)
+* [001 - 100](leetCode-p001-100.md)
     * [001J?. Two Sum](leetCode-001-Two-Sum.md)
     * [002J. Add Two Numbers](leetCode-002-Add-Two-Numbers.md)
     * [007J. Reverse Integer](leetCode-007-Reverse-Integer.md)
@@ -32,6 +32,7 @@
 * [201 - 300](leetCode-p201-300.md)
     * [206J*. Reverse Linked List recusion](leetCode-206-Reverse-Linked-List.md)
     * [237J. Delete Node in a Linked List](leetCode-237-Delete-Node-in-a-Linked-List.md)
+* [301 - 400](leetCode-p301-400.md)
 * [other leetCode problems](leetCode-p-others.md)
     * [733J. Flood Fill amazon](leetCode-733-Flood-Fill.md)
 
