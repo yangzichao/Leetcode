@@ -39,12 +39,12 @@ for (int i = 0; i < len; i++) {
 思路是这样的，双指针。如果数组长度小于 2，直接返回原数组length.
 size是慢指针，i是快指针。一开始就指向第三位。并且size始终指向已经确认无误位置的下一位。
 只要快指针所指的值，和size-2处不同，那么就取快指针的值给nums[size]。注意是size-2处。
-如果相同意味着已经有两个这种数了。
-[1(size - 2),1,1(i,size),2,2,3] 开始 由于 size - 2 和 i 相等，没有操作 i++
-[1(size - 2),1,1(size),2(i),2,3] size - 2 < i 的值，i 的值 赋给 size
-[1,1(size - 2),2,2(size),2(i),3] size - 2 < i 的值，i 的值 赋给 size
-[1,1,2(size - 2),2,2(size),3(i)] size - 2 < i 的值，i 的值 赋给 size
-[1,1,2,2(size - 2),3,3(size)] i超出，循环停止，此时size = 5 是正确的。
+如果相同意味着已经有两个这种数了。    
+* [1(size - 2),1,1(i,size),2,2,3] 开始 由于 size - 2 和 i 相等，没有操作 i++    
+* [1(size - 2),1,1(size),2(i),2,3] size - 2 < i 的值，i 的值 赋给 size           
+* [1,1(size - 2),2,2(size),2(i),3] size - 2 < i 的值，i 的值 赋给 size           
+* [1,1,2(size - 2),2,2(size),3(i)] size - 2 < i 的值，i 的值 赋给 size           
+* [1,1,2,2(size - 2),3,3(size)] i超出，循环停止，此时size = 5 是正确的。       
 ```java
 public int removeDuplicates(int[] nums) {
     if(nums.length < 2+1){
