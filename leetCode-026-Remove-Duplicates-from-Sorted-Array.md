@@ -65,3 +65,23 @@ class Solution {
     }
 }
 ```
+
+## Method 2:[参见080](leetCode-080-Remove-Duplicates-from-Sorted-Array-II.md)
+
+因此更好的写法是
+```Java
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        if (nums.length < 1){
+            return nums.length;
+        }
+        int length = 1;
+        for (int i = 1; i < nums.length; i += 1){
+            if (nums[length] != nums[i]){
+                nums[length++] = nums[i];
+            }
+        }
+        return length;
+    }
+}
+```
