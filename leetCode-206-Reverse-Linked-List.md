@@ -12,6 +12,8 @@ Follow up:
 
 A linked list can be reversed either iteratively or recursively. Could you implement both? No
 
+最好的方法是破坏性的iteration; T O(N) S O(1)
+recursive 比较优雅一点。
 ## Method 1: Iteration Non-destructive
 
 Class Learned:
@@ -38,6 +40,11 @@ class Solution {
 }
 ```
 ## Method 2 : Iteration destructive
+核心的思想还是从前到后转变指针方向，然后返回最后一个指针。
+即 1 -> 2 -> 3;    
+1 <- 2 <- 3;     
+从3 开始返回    
+
 用破坏的方法也可以
 原理是运用双指针。
 * 先排除空链表和只有一个元素的链表，直接返回。

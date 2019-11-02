@@ -11,7 +11,7 @@ Given nums = [2, 7, 11, 15], target = 9,
 Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 
-## Method Best: HashTable
+## Method Best: HashMap
 方法就是将数组都添加入 HashSet中，速度比暴力法快的多了。
 ```Java
 class Solution {
