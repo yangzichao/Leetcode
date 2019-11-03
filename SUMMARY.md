@@ -2,8 +2,8 @@
 
 * [Introduction](README.md)
 * [References](References.md)
-    * [贪心法](c12_Greedy.md)
-* [Other Problems](c12_Greedy.md)
+* [Java Visualizer CheckCode](Java_Visualizer.md)
+    * [LinkedList for Java Visualizer](Java_Visualizer_LinkedList.md)
 * [001 - 100](leetCode-p001-100.md)
     * [001J?. Two Sum](leetCode-001-Two-Sum.md)
     * [002J. Add Two Numbers](leetCode-002-Add-Two-Numbers.md)
@@ -30,6 +30,7 @@
 * [101 - 200](leetCode-p101-200.md)
     * [141J. Linked List Cycle](leetCode-141-Linked-List-Cycle.md)
 * [201 - 300](leetCode-p201-300.md)
+    * [203J. Remove Linked List Elements](leetCode-203-Remove-Linked-List-Elements.md)
     * [206J*. Reverse Linked List recusion](leetCode-206-Reverse-Linked-List.md)
     * [237J. Delete Node in a Linked List](leetCode-237-Delete-Node-in-a-Linked-List.md)
     * [277J. Find the Celebrity](leetCode-277-Find-the-Celebrity.md)
@@ -37,4 +38,6 @@
     * [328J. Odd Even Linked List](leetCode-328-Odd-Even-Linked-List.md)
 * [other leetCode problems](leetCode-p-others.md)
     * [733J. Flood Fill amazon](leetCode-733-Flood-Fill.md)
+* [Other Notes](c12_Greedy.md)
+    * [贪心法](c12_Greedy.md)
 

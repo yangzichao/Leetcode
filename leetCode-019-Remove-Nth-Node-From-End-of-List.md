@@ -49,3 +49,26 @@ class Solution {
     }
 }
 ```
+第二次做的 可读性更好啊似乎
+```Java
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode dummyhead = new ListNode(0);
+        dummyhead.next = head;
+        ListNode p = head;
+        int L = 0;
+        while(p!=null){
+            p = p.next;
+            L+=1;
+        }
+        p = dummyhead;
+        int count = L - n;
+        while(count > 0){
+            p = p.next;
+            count -= 1;
+        }
+        p.next = p.next.next;
+        return dummyhead.next;
+    }
+}
+```
