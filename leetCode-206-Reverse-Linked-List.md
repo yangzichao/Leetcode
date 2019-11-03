@@ -91,7 +91,8 @@ public ListNode reverseList(ListNode head) {
 
 ```
 ## Method 3: Recursion
-* Recursion 的方法实际上是将 指针从后往前翻转。
+<pre>
+* Recursive 方法实际上是将 指针从后往前翻转。
   * 1 -> 2 -> 3 -> 4 -> 5
   * 1 -> 2 -> 3 -> 4 <-> 5  即 5 指回 4
   * 1 -> 2 -> 3 -> 4 <- 5   即 4 下一个指向 null
@@ -107,7 +108,7 @@ head.next == null 是判断取到了最后一个Node的。
 然后将自己的下一步指向null. 这样就成功的翻转了一节。由于递归，回自动回到上一节。
 
 从后往前逆转List的指针，是只能用递归的。
-
+</pre>
 ```Java
 public ListNode reverseList(ListNode head) {
     if (head == null || head.next == null) {
@@ -119,4 +120,39 @@ public ListNode reverseList(ListNode head) {
       return p;
     }
 }
+```
+
+## Java Visualizer
+这个代码进入Java Visualizer 可以直观感受这个递归是怎么工作的。
+```Java
+public class ListNode{
+   public int val;
+   public ListNode next;
+   public ListNode(int n){
+      val = n;
+   }
+   public void add(int n){
+      ListNode p = this;
+      while(p.next!=null){
+         p = p.next;
+      }
+      p.next = new ListNode(n);
+   }
+   static ListNode reverse(ListNode head) {
+      if (head.next == null) return head;
+      ListNode last = reverse(head.next);
+      head.next.next = head;
+      head.next = null;
+      return last;
+   }
+   public static void main(String[] args) {
+      ListNode test = new ListNode(1);
+      test.add(2);
+      test.add(3);
+      test.add(4);
+      test.add(5);
+      ListNode k = reverse(test);
+   }
+}
+
 ```
