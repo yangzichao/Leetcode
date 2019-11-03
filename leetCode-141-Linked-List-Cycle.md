@@ -2,6 +2,7 @@
 
 https://leetcode.com/problems/linked-list-cycle/
 
+最好的办法是用哈希表。其实都需要懂。
 ## Method 1:龟兔赛跑
 
 首先上来判断是否是空ListNode和没有next.
@@ -10,6 +11,13 @@ https://leetcode.com/problems/linked-list-cycle/
 如果有循环的话，那么.next 和 .next.next永远不会为空。
 所以如果任意一个为null,就应当终止循环。
 如果两个指针指到同一个位置，那么就判断循环了。
+
+!!!!!! 注意 ！！！！！！！
+while 那里判断的时候 一定要先判断 p2!= null  再判断 p2.next != NULL
+否则的话，如果 p2 是null的话，p2.next 就会报错！
+！！！！！！！！！！！！！！
+另外dummyhead 这里是冗余的。
+
 ```java
 public class Solution {
     public boolean hasCycle(ListNode head) {

@@ -41,3 +41,37 @@ class Solution {
 }
 
 ```
+
+这是第二次做的，反倒不如第一次好。
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if(head == null || head.next == null){
+            return head;
+        }
+        ListNode dummyhead = new ListNode(0);
+        ListNode prev = dummyhead;
+
+        while( (head!= null) && ( (head.next!= null) ) ){
+            ListNode late = head.next;
+            prev.next = late;
+            head.next = late.next;
+            late.next = head;
+
+            head = head.next;
+            prev = prev.next.next;
+
+        }
+
+        return dummyhead.next;
+    }
+}
+```

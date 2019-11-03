@@ -34,6 +34,7 @@
     * [237J. Delete Node in a Linked List](leetCode-237-Delete-Node-in-a-Linked-List.md)
     * [277J. Find the Celebrity](leetCode-277-Find-the-Celebrity.md)
 * [301 - 400](leetCode-p301-400.md)
+    * [328J. Odd Even Linked List](leetCode-328-Odd-Even-Linked-List.md)
 * [other leetCode problems](leetCode-p-others.md)
     * [733J. Flood Fill amazon](leetCode-733-Flood-Fill.md)
 
