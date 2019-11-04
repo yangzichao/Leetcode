@@ -11,6 +11,7 @@ Input: 1->1->1->2->3
 Output: 2->3
 
 ## Iteration
+<pre>
 思路，核心是双指针，一前一后。后指针直接指到相同值的最后一位。
 如果前指针的下一位就是后指针，说明没有重复，前指针下移一位。
 如果前指针的下一位不是后指针，说明有重复，那么前指针的下一位是后指针的下一位。
@@ -18,7 +19,7 @@ Output: 2->3
 移动一位的操作。  
 为了确保后指针能够指到最后的null，大循环里应当用while(cur!= null)。cur.next!=null
 的条件应当包含在内部的while循环里。
-
+</pre>
 ```java
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {

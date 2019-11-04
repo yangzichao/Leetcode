@@ -14,14 +14,17 @@ public class ListNode{
       }
       p.next = new ListNode(n);
    }
-   public void add
+
+   public void add(int[] a){
+     for(int n: a){
+       this.add(n);
+     }
+   }
+   
    public static void main(String[] args) {
-      ListNode test = new ListNode(1);
-      test.add(2);
-      test.add(3);
-      test.add(4);
-      test.add(5);
-      ListNode k = reverse(test);
+     int[] a = new int[]{1,2,3,4,5};
+     ListNode test = new ListNode(1);
+     test.add(a);
    }
 }
 ```

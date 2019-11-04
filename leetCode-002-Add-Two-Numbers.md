@@ -70,7 +70,7 @@ int x1 = (p1!=null) ? p1.val : 0;
 * 最后循环结束了不要忘记，如果有需要进位的话，还要再新建一节。
 * 由于有dummyhead的存在，所以返回dummyhead.next. 这是容易忘记的。
 
-## Java solution: 
+## Java solution:
 ```Java
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
@@ -105,5 +105,37 @@ class Solution {
         return reList.next;
     }
 }
-
+```
+第二次写的代码,上次是抄答案的。
+```Java
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode reHead = new ListNode(0);
+        ListNode p = reHead;
+        int x1 = 0, x2 = 0;
+        int carry = 0;
+        while(l1!=null||l2!=null){
+            x1 = l1 == null? 0:l1.val;
+            x2 = l2 == null? 0:l2.val;
+            if(x1+x2+carry >9){
+                p.next = new ListNode(x1+x2+carry - 10);
+                carry = 1;
+            }else{
+                p.next = new ListNode(x1+x2+carry);
+                carry = 0;
+            }
+            p = p.next;
+            if(l1!=null){
+                l1 = l1.next;
+            }
+            if(l2!=null){
+                l2 = l2.next;
+            }
+        }
+        if(carry != 0){
+            p.next = new ListNode(1);
+        }
+        return reHead.next;
+    }
+}
 ```

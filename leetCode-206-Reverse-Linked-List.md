@@ -108,6 +108,9 @@ head.next == null 是判断取到了最后一个Node的。
 然后将自己的下一步指向null. 这样就成功的翻转了一节。由于递归，回自动回到上一节。
 
 从后往前逆转List的指针，是只能用递归的。
+
+注意： 代码中的 head == null 判断只是为了防止空head输入。真正重要的
+是 head.next == null 的判断。这使得 p 一直指在尾部node，而不是null.
 </pre>
 ```Java
 public ListNode reverseList(ListNode head) {
