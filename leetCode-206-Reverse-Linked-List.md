@@ -74,7 +74,7 @@ class Solution {
     }
 }
 ```
-代码二，原理相同，相对更优雅。
+代码二，原理相同，相对更优雅。是原答案。
 * prev的效果相当于dummyhead, 因此规避了问题。
 ```Java
 public ListNode reverseList(ListNode head) {

@@ -1,5 +1,5 @@
 # LinkedList for Java Visualizer
-
+https://cscircles.cemc.uwaterloo.ca/java_visualize/
 ```Java
 public class ListNode{
    public int val;
@@ -20,10 +20,10 @@ public class ListNode{
        this.add(n);
      }
    }
-   
+
    public static void main(String[] args) {
      int[] a = new int[]{1,2,3,4,5};
-     ListNode test = new ListNode(1);
+     ListNode test = new ListNode(0);
      test.add(a);
    }
 }

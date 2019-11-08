@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
+    * [. ](leetCode-.md)
 * [References](References.md)
 * [Java Visualizer CheckCode](Java_Visualizer.md)
     * [LinkedList for Java Visualizer](Java_Visualizer_LinkedList.md)
@@ -22,7 +23,7 @@
     * [035J. Search Insert Position](leetCode-035-Search-Insert-Position.md)
     * [048J. Rotate Image](leetCode-048-Rotate-Image.md)
     * [058J. Length of Last Word](leetCode-058-Length-of-Last-Word.md)
-    * [061J?. Rotate List](leetCode-061-Rotate-List.md)
+    * [061J(2/2). Rotate List](leetCode-061-Rotate-List.md)
     * [066J. Plus One](leetCode-066-Plus-One.md)
     * [080J. Remove Duplicates from Sorted Array II](leetCode-080-Remove-Duplicates-from-Sorted-Array-II.md)
     * [082J?(2/2). Remove Duplicates from Sorted List II](leetCode-082-Remove-Duplicates-from-Sorted-List-II.md)
@@ -31,10 +32,13 @@
     * [092J(1/1). Reverse Linked List II](leetCode-092-Reverse-Linked-List-II.md)
 * [101 - 200](leetCode-p101-200.md)
     * [141J. Linked List Cycle](leetCode-141-Linked-List-Cycle.md)
+    * [144J. Binary Tree Preorder Traversal](leetCode-144-Binary-Tree-Preorder-Traversal.md)
+    * [143J. Reorder List](leetCode-143-Reorder-List.md)
     * [160J. Intersection of Two Linked Lists](leetCode-160-Intersection-of-Two-Linked-Lists.md)
 * [201 - 300](leetCode-p201-300.md)
     * [203J. Remove Linked List Elements](leetCode-203-Remove-Linked-List-Elements.md)
     * [206J(2/2). Reverse Linked List](leetCode-206-Reverse-Linked-List.md)
+    * [234J. Palindrome Linked List](leetCode-234-Palindrome-Linked-List.md)
     * [237J. Delete Node in a Linked List](leetCode-237-Delete-Node-in-a-Linked-List.md)
     * [277J. Find the Celebrity](leetCode-277-Find-the-Celebrity.md)
 * [301 - 400](leetCode-p301-400.md)
@@ -42,6 +46,7 @@
     * [369J. Plus One Linked List](leetCode-369-Plus-One-Linked-List.md)
 * [other leetCode problems](leetCode-p-others.md)
     * [733J. Flood Fill amazon](leetCode-733-Flood-Fill.md)
+    * [876J. Middle of the Linked List](leetCode-876-Middle-of-the-Linked-List.md)
 * [Other Notes](c12_Greedy.md)
     * [贪心法](c12_Greedy.md)
 
