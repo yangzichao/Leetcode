@@ -25,3 +25,4 @@ class Solution {
 ```
 ## Method 2 Approach 6: Boyer-Moore Voting Algorithm TS O(N) O(1)
 这个是好方法 学习一下
+https://leetcode.com/problems/majority-element/solution/
