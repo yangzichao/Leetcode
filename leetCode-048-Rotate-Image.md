@@ -1,5 +1,7 @@
 # 048. Rotate Image
 
+
+## Method Best
 如何旋转一个矩阵90度？
 设想一个矩阵 n * n, 旋转90度相当于把他的
 左上角 -> 右上角 -> 右下角 -> 左下角 -> 左上角
@@ -24,3 +26,20 @@ n 为奇数的时候，矩阵可以分为中心的点和四个长比宽多1的�
 1 2 0 2 1
 6 6 2 5 5
 6 6 1 5 5
+
+
+```Java
+class Solution {
+    public void rotate(int[][] matrix) {
+        for( int i = 0; i < matrix.length/2.0; i ++ ){
+            for ( int j = 0; j < matrix.length /2; j++){
+                int c = matrix[i][j];
+                matrix[i][j] = matrix[matrix.length-1-j][i];
+                matrix[matrix.length-1-j][i] = matrix[matrix.length-1-i][matrix.length-1-j];
+                matrix[matrix.length-1-i][matrix.length-1-j] = matrix[j][matrix.length-1-i];
+                matrix[j][matrix.length-1-i] = c;
+            }
+        }
+    }
+}
+```

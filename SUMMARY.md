@@ -4,6 +4,7 @@
     * [. ](leetCode-.md)
 * [References](References.md)
     * [Java 集合](Java_Collections.md)
+    * [Java 类型转换](Java_Convert_Type.md)
 * [CC189](CC189.md)
     * [CC189 Part I](CC189-Record-Part-I.md)
 * [Java Visualizer CheckCode](Java_Visualizer.md)
