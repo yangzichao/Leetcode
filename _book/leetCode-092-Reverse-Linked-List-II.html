@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>092J(1/1). Reverse Linked List II · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-p101-200.html" />
     
+    
+    <link rel="prev" href="leetCode-086-Partition-List.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -625,7 +627,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.28" data-path="leetCode-092-Reverse-Linked-List-II.html">
+        <li class="chapter active" data-level="1.6.28" data-path="leetCode-092-Reverse-Linked-List-II.html">
             
                 <a href="leetCode-092-Reverse-Linked-List-II.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >092J(1/1). Reverse Linked List II</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,42 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
-<ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
-</ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
-</ul>
+                                <h1 id="092j11-reverse-linked-list-ii">092J(1/1). Reverse Linked List II</h1>
+<p><a href="https://leetcode.com/problems/reverse-linked-list-ii/" target="_blank">https://leetcode.com/problems/reverse-linked-list-ii/</a></p>
+<h2 id="&#x65B9;&#x6CD5;1-&#x4E0D;&#x4E00;&#x5B9A;&#x597D;&#xFF0C;&#x6BD4;&#x8F83;&#x597D;&#x89E3;&#x91CA;&#x3002;">&#x65B9;&#x6CD5;1 &#x4E0D;&#x4E00;&#x5B9A;&#x597D;&#xFF0C;&#x6BD4;&#x8F83;&#x597D;&#x89E3;&#x91CA;&#x3002;</h2>
+<p><pre>
+&#x9996;&#x5148;&#x5B9E;&#x73B0;&#x53CD;&#x8F6C;&#x524D;N&#x4E2A;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x80FD;&#x548C;&#x540E;&#x9762;&#x65AD;&#x6389;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;successor,
+&#x6307;&#x5411;&#x4E0D;&#x9700;&#x8981;&#x88AB;&#x7FFB;&#x8F6C;&#x7684;&#x5934;&#x90E8;&#x3002;
+&#x7136;&#x540E;&#x6211;&#x4EEC;&#x5C06;&#x6307;&#x9488;&#x632A;&#x5230;&#x9700;&#x8981;&#x88AB;&#x7FFB;&#x8F6C;&#x7684;node&#x7684;&#x524D;&#x4E00;&#x4F4D;&#xFF0C;&#x4F7F;&#x7528;
+      p.next = reverseFirstN(p.next,n);
+&#x8FD9;&#x6837;&#x505A;&#x7684;&#x9053;&#x7406;&#x662F;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x65E0;&#x6CD5;&#x628A;dummyhead&#x4F20;&#x5230;&#x8FED;&#x4EE3;method&#x91CC;&#x9762;&#x3002;</pre></p>
+<p>&lt;/pre&gt;</p>
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    ListNode successor = <span class="hljs-keyword">null</span>;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">reverseFirstN</span><span class="hljs-params">(ListNode l, <span class="hljs-keyword">int</span> n)</span></span>{
+        <span class="hljs-keyword">if</span>( n == <span class="hljs-number">1</span>) {
+            successor = l.next;
+            <span class="hljs-keyword">return</span> l;
+        }
+        ListNode p = reverseFirstN(l.next,n - <span class="hljs-number">1</span>);
+        l.next.next = l;
+        l.next = successor;
+        <span class="hljs-keyword">return</span> p;
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">reverseBetween</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n)</span> </span>{
+        ListNode dummyhead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
+        dummyhead.next = head;
+        ListNode p = dummyhead;
+        <span class="hljs-keyword">while</span>(m &gt; <span class="hljs-number">1</span>){
+            p = p.next;
+            m -=<span class="hljs-number">1</span>;
+            n -=<span class="hljs-number">1</span>;
+        }
+        p.next = reverseFirstN(p.next,n);
+        <span class="hljs-keyword">return</span> dummyhead.next;
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1576,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-086-Partition-List.html" class="navigation navigation-prev " aria-label="Previous page: 086J. Partition List">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-p101-200.html" class="navigation navigation-next " aria-label="Next page: 101 - 200">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1592,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"092J(1/1). Reverse Linked List II","level":"1.6.28","depth":2,"next":{"title":"101 - 200","level":"1.7","depth":1,"path":"leetCode-p101-200.md","ref":"leetCode-p101-200.md","articles":[{"title":"118J. Pascal's Triangle","level":"1.7.1","depth":2,"path":"leetCode-118-Pascal's-Triangle.md","ref":"leetCode-118-Pascal's-Triangle.md","articles":[]},{"title":"119J. Pascal's Triangle II","level":"1.7.2","depth":2,"path":"leetCode-119-Pascal's-Triangle-II.md","ref":"leetCode-119-Pascal's-Triangle-II.md","articles":[]},{"title":"121J. Best Time to Buy and Sell Stock","level":"1.7.3","depth":2,"path":"leetCode-121-Best-Time-to-Buy-and-Sell-Stock.md","ref":"leetCode-121-Best-Time-to-Buy-and-Sell-Stock.md","articles":[]},{"title":"122J. Best Time to Buy and Sell Stock II","level":"1.7.4","depth":2,"path":"leetCode-122-Best-Time-to-Buy-and-Sell-Stock-II.md","ref":"leetCode-122-Best-Time-to-Buy-and-Sell-Stock-II.md","articles":[]},{"title":"123J. Best Time to Buy and Sell Stock III","level":"1.7.5","depth":2,"path":"leetCode-123-Best-Time-to-Buy-and-Sell-Stock-III.md","ref":"leetCode-123-Best-Time-to-Buy-and-Sell-Stock-III.md","articles":[]},{"title":"134J. Gas Station","level":"1.7.6","depth":2,"path":"leetCode-134-Gas-Station.md","ref":"leetCode-134-Gas-Station.md","articles":[]},{"title":"136J. Single Number","level":"1.7.7","depth":2,"path":"leetCode-136-Single-Number.md","ref":"leetCode-136-Single-Number.md","articles":[]},{"title":"137J. Single Number II","level":"1.7.8","depth":2,"path":"leetCode-137-Single-Number-II.md","ref":"leetCode-137-Single-Number-II.md","articles":[]},{"title":"138J. Copy List with Random Pointer","level":"1.7.9","depth":2,"path":"leetCode-138-Copy-List-with-Random-Pointer.md","ref":"leetCode-138-Copy-List-with-Random-Pointer.md","articles":[]},{"title":"141J. Linked List Cycle","level":"1.7.10","depth":2,"path":"leetCode-141-Linked-List-Cycle.md","ref":"leetCode-141-Linked-List-Cycle.md","articles":[]},{"title":"143J. Reorder List","level":"1.7.11","depth":2,"path":"leetCode-143-Reorder-List.md","ref":"leetCode-143-Reorder-List.md","articles":[]},{"title":"144J. Binary Tree Preorder Traversal","level":"1.7.12","depth":2,"path":"leetCode-144-Binary-Tree-Preorder-Traversal.md","ref":"leetCode-144-Binary-Tree-Preorder-Traversal.md","articles":[]},{"title":"147J. Insertion Sort List","level":"1.7.13","depth":2,"path":"leetCode-147-Insertion-Sort-List.md","ref":"leetCode-147-Insertion-Sort-List.md","articles":[]},{"title":"150J. Evaluate Reverse Polish Notation","level":"1.7.14","depth":2,"path":"leetCode-150-Evaluate-Reverse-Polish-Notation.md","ref":"leetCode-150-Evaluate-Reverse-Polish-Notation.md","articles":[]},{"title":"155J. Min Stack","level":"1.7.15","depth":2,"path":"leetCode-155-Min-Stack.md","ref":"leetCode-155-Min-Stack.md","articles":[]},{"title":"160J. Intersection of Two Linked Lists","level":"1.7.16","depth":2,"path":"leetCode-160-Intersection-of-Two-Linked-Lists.md","ref":"leetCode-160-Intersection-of-Two-Linked-Lists.md","articles":[]},{"title":"169J?. Majority Element","level":"1.7.17","depth":2,"path":"leetCode-169-Majority-Element.md","ref":"leetCode-169-Majority-Element.md","articles":[]},{"title":"188J. Best Time to Buy and Sell Stock IV","level":"1.7.18","depth":2,"path":"leetCode-188-Best-Time-to-Buy-and-Sell-Stock-IV.md","ref":"leetCode-188-Best-Time-to-Buy-and-Sell-Stock-IV.md","articles":[]},{"title":"189J. Rotate Array","level":"1.7.19","depth":2,"path":"leetCode-189-Rotate-Array.md","ref":"leetCode-189-Rotate-Array.md","articles":[]}]},"previous":{"title":"086J. Partition List","level":"1.6.27","depth":2,"path":"leetCode-086-Partition-List.md","ref":"leetCode-086-Partition-List.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-092-Reverse-Linked-List-II.md","mtime":"2019-11-04T05:27:42.285Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>058J. Length of Last Word · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-061-Rotate-List.html" />
     
+    
+    <link rel="prev" href="leetCode-053-Maximum-Subarray.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -534,7 +536,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.21" data-path="leetCode-058-Length-of-Last-Word.html">
+        <li class="chapter active" data-level="1.6.21" data-path="leetCode-058-Length-of-Last-Word.html">
             
                 <a href="leetCode-058-Length-of-Last-Word.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >058J. Length of Last Word</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,67 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
-<ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
-</ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
-</ul>
+                                <h1 id="058j-length-of-last-word">058J. Length of Last Word</h1>
+<p>Given a string s consists of upper/lower-case alphabets and empty space characters &apos; &apos;, return the length of last word in the string.</p>
+<p>If the last word does not exist, return 0.</p>
+<p>Note: A word is defined as a character sequence consists of non-space characters only.</p>
+<p>Example:</p>
+<p>Input: &quot;Hello World&quot;
+Output: 5</p>
+<h2 id="method-1">Method 1:</h2>
+<p>Note: &#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x7684;&#x96BE;&#x70B9;&#x5728;&#x4E8E;&#x5904;&#x7406;&#x7ED3;&#x5C3E;&#x7684;&#x7A7A;&#x683C;&#x548C;&#x8FDE;&#x7EED;&#x7A7A;&#x683C;&#x3002;</p>
+<p>&#x4EE5;&#x4E0B;&#x4EE3;&#x7801;&#x7684;&#x903B;&#x8F91;&#x662F;&#xFF0C;&#x7528;space = T/F &#x6807;&#x8BB0;&#x662F;&#x5426;&#x51FA;&#x73B0;&#x4E86;&#x7A7A;&#x683C;&#xFF1B;
+&#x5982;&#x679C;&#x5F53;&#x4E0B;&#x4E0D;&#x662F;&#x975E;&#x7A7A;&#x683C;&#x5B57;&#x7B26;&#xFF0C;&#x67E5;&#x770B;space&#x6807;&#x8BB0;&#xFF0C;&#x8BF4;&#x660E;&#x524D;&#x9762;&#x6709;&#x6CA1;&#x6709;
+&#x7A7A;&#x683C;&#x7B26;&#x3002;&#x5982;&#x679C;&#x6709;&#xFF0C;&#x5219;&#x5355;&#x8BCD;&#x957F;&#x5EA6;&#x5F52;&#x4E00;&#xFF0C;&#x6807;&#x8BB0;&#x6807;false, &#x53CD;&#x4E4B;
+&#x5355;&#x8BCD;&#x957F;&#x5EA6;&#x52A0;&#x4E00;&#x3002;</p>
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLastWord</span><span class="hljs-params">(String s)</span> </span>{
+        <span class="hljs-keyword">int</span> lengthLast = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">boolean</span> space = <span class="hljs-keyword">false</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; s.length(); i+=<span class="hljs-number">1</span>){
+            <span class="hljs-keyword">if</span>(s.charAt(i) == <span class="hljs-string">&apos; &apos;</span>){
+                space = <span class="hljs-keyword">true</span>;
+            }
+            <span class="hljs-keyword">else</span>{
+                <span class="hljs-keyword">if</span>(space){
+                    lengthLast = <span class="hljs-number">1</span>;
+                    space = <span class="hljs-keyword">false</span>;
+                }<span class="hljs-keyword">else</span>{
+                    lengthLast += <span class="hljs-number">1</span>;
+                }
+            }
+        }
+        <span class="hljs-keyword">return</span> lengthLast;
+    }
+}
+</code></pre>
+<p>T: O(N)
+S: O(1)</p>
+<h2 id="method-2">Method 2:</h2>
+<p>&#x4E0A;&#x9762;&#x7684;&#x95EE;&#x9898;&#x662F;&#x4ECE;&#x5934;&#x5230;&#x5C3E;&#x626B;&#x63CF;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x5B57;&#x7B26;&#x7ED3;&#x5C3E;&#xFF0C;
+&#x4ECE;&#x5C3E;&#x626B;&#x63CF;&#x66F4;&#x5FEB;&#x3002;&#x800C;&#x4E14;&#x903B;&#x8F91;&#x66F4;&#x7B80;&#x5355;&#x3002;&#x5FFD;&#x7565;&#x6240;&#x6709;&#x7684;&#x7A7A;&#x683C;&#x7B26;&#x3002;
+&#x7528;&#x4E00;&#x4E2A;boolean&#x6807;&#x8BB0;&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x51FA;&#x73B0;&#x4E86;&#x672B;&#x5C3E;&#x5355;&#x8BCD;&#xFF0C;&#x5982;&#x679C;&#x5DF2;&#x7ECF;&#x51FA;&#x73B0;&#x4E86;&#x672B;&#x5C3E;&#x5355;&#x8BCD;
+&#x5E76;&#x4E14;&#x53C8;&#x9047;&#x5230;&#x4E86;&#x7A7A;&#x683C;&#xFF0C;&#x90A3;&#x4E48;&#x76F4;&#x63A5;&#x8DF3;&#x51FA;&#x5FAA;&#x73AF;&#x3002;
+&#x53CC;100%&#x3002;</p>
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthOfLastWord</span><span class="hljs-params">(String s)</span> </span>{
+        <span class="hljs-keyword">int</span> lengthLast = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">boolean</span> meetWord = <span class="hljs-keyword">false</span>;
+
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = s.length()-<span class="hljs-number">1</span>; i &gt; -<span class="hljs-number">1</span>; i-=<span class="hljs-number">1</span>){
+            <span class="hljs-keyword">if</span>(s.charAt(i)!=<span class="hljs-string">&apos; &apos;</span>){
+                meetWord = <span class="hljs-keyword">true</span>;
+                lengthLast += <span class="hljs-number">1</span>;
+            }<span class="hljs-keyword">else</span>{
+                <span class="hljs-keyword">if</span>(meetWord){
+                    <span class="hljs-keyword">break</span>;
+                }
+            }
+        }
+        <span class="hljs-keyword">return</span> lengthLast;
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1601,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-053-Maximum-Subarray.html" class="navigation navigation-prev " aria-label="Previous page: 053J. Maximum Subarray">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-061-Rotate-List.html" class="navigation navigation-next " aria-label="Next page: 061J(2/2). Rotate List">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1617,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"058J. Length of Last Word","level":"1.6.21","depth":2,"next":{"title":"061J(2/2). Rotate List","level":"1.6.22","depth":2,"path":"leetCode-061-Rotate-List.md","ref":"leetCode-061-Rotate-List.md","articles":[]},"previous":{"title":"053J. Maximum Subarray","level":"1.6.20","depth":2,"path":"leetCode-053-Maximum-Subarray.md","ref":"leetCode-053-Maximum-Subarray.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-058-Length-of-Last-Word.md","mtime":"2019-10-22T15:36:26.249Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

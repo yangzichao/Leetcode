@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>237J. Delete Node in a Linked List · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-243-Shortest-Word-Distance.html" />
     
+    
+    <link rel="prev" href="leetCode-234-Palindrome-Linked-List.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -1066,7 +1068,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.12" data-path="leetCode-237-Delete-Node-in-a-Linked-List.html">
+        <li class="chapter active" data-level="1.8.12" data-path="leetCode-237-Delete-Node-in-a-Linked-List.html">
             
                 <a href="leetCode-237-Delete-Node-in-a-Linked-List.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >237J. Delete Node in a Linked List</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,37 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
+                                <h1 id="237j-delete-node-in-a-linked-list">237J. Delete Node in a Linked List</h1>
+<p>Write a function to delete a node (except the tail) in a singly linked list, given only access to that node.</p>
+<p>Given linked list -- head = [4,5,1,9]</p>
+<p>Example 1:</p>
+<p>Input: head = [4,5,1,9], node = 5<br>Output: [4,1,9]  </p>
+<p>Explanation: You are given the second node with value 5,
+the linked list should become 4 -&gt; 1 -&gt; 9 after calling your function.</p>
+<p>Example 2:</p>
+<p>Input: head = [4,5,1,9], node = 1
+Output: [4,5,9]</p>
+<p>Explanation: You are given the third node with value 1,
+the linked list should become 4 -&gt; 5 -&gt; 9 after calling your function.</p>
+<h2 id="&#x89E3;&#x6790;&#xFF1A;">&#x89E3;&#x6790;&#xFF1A;</h2>
 <ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
+<li>&#x8FD9;&#x4E2A;&#x9898;&#x63CF;&#x8FF0;&#x4E0D;&#x6E05;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#x53EA;&#x662F;&#x8BA9;&#x4F60;&#x89E3;&#x51B3;&#x4E00;&#x4E2A;&#x5F88;&#x5C0F;&#x7684;&#x95EE;&#x9898;&#xFF1A;<ul>
+<li>&#x7ED9;&#x4F60;&#x4E00;&#x4E2A;&#x94FE;&#x8868;&#xFF0C;&#x7136;&#x540E;&#x73B0;&#x5728;&#x4F60;&#x7684;&#x6307;&#x9488;&#x6307;&#x7740;&#x4E00;&#x4E2A;Node.&#x8BA9;&#x4F60;&#x4ECE;&#x94FE;&#x8868;&#x4E2D;&#x5220;&#x6389;&#x8FD9;&#x4E2A;Node&#x3002;</li>
 </ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
+</li>
+<li>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#x5220;&#x6389;&#x4E00;&#x4E2A;Node, &#x6BD4;&#x8F83;&#x8F7B;&#x677E;&#x7684;&#x529E;&#x6CD5;&#x662F;&#x8BA9;&#x6307;&#x9488;&#x6307;&#x5728;&#x88AB;&#x5220;Node&#x4E4B;&#x524D;&#x3002;&#x8FD9;&#x4E2A;&#x9898;&#x7684;&#x610F;&#x4E49;&#x5C31;&#x5728;&#x8FD9;&#x91CC;&#x3002;</li>
+<li>&#x65B9;&#x6CD5;&#x662F;&#xFF0C;&#x5148;&#x53D6;&#x4E0B;&#x4E00;&#x4E2A;Node&#x7684;&#x503C;&#xFF0C;&#x518D;&#x628A;&#x4E0B;&#x4E00;&#x4E2A;Node&#x7ED9;&#x8DF3;&#x8FC7;&#x53BB;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</li>
+<li>&#x9898;&#x76EE;&#x5DF2;&#x7ECF;&#x6392;&#x9664;&#x4E86;&#x662F;&#x94FE;&#x8868;&#x5C3E;&#x90E8;&#x7684;&#x53EF;&#x80FD;&#x6027;&#x3002;&#x6240;&#x4EE5;&#x4E0D;&#x7528;&#x62C5;&#x5FC3;null&#x7684;&#x5904;&#x7406;&#x3002;</li>
 </ul>
+<p><strong>&#x8FD9;&#x79CD;&#x529E;&#x6CD5;&#x4E0D;&#x80FD;&#x5904;&#x7406;&#x94FE;&#x8868;&#x5C3E;&#x90E8;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x822C;&#x5220;&#x9664;&#x8282;&#x70B9;&#xFF0C;&#x6307;&#x9488;&#x8FD8;&#x662F;&#x5E94;&#x5F53;&#x6307;&#x5411;&#x88AB;&#x5220;&#x8282;&#x70B9;&#x7684;&#x4E0A;&#x4E00;&#x4E2A;Node&#x3002;</strong></p>
+<h3 id="java-solution">Java Solution</h3>
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">deleteNode</span><span class="hljs-params">(ListNode node)</span> </span>{
+        node.val = node.next.val;
+        node.next = node.next.next;
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1571,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-234-Palindrome-Linked-List.html" class="navigation navigation-prev " aria-label="Previous page: 234J. Palindrome Linked List">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-243-Shortest-Word-Distance.html" class="navigation navigation-next " aria-label="Next page: 243J. Shortest Word Distance">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1587,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"237J. Delete Node in a Linked List","level":"1.8.12","depth":2,"next":{"title":"243J. Shortest Word Distance","level":"1.8.13","depth":2,"path":"leetCode-243-Shortest-Word-Distance.md","ref":"leetCode-243-Shortest-Word-Distance.md","articles":[]},"previous":{"title":"234J. Palindrome Linked List","level":"1.8.11","depth":2,"path":"leetCode-234-Palindrome-Linked-List.md","ref":"leetCode-234-Palindrome-Linked-List.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-237-Delete-Node-in-a-Linked-List.md","mtime":"2019-09-18T03:31:48.017Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

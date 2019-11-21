@@ -5,6 +5,7 @@ import subprocess, sys
 
 def git_autopush(message):  # 自动同步所有的pybash内容
     commands = [
+        ['gitbook','init'],
         ['rm','-r','__pycache__'],
         ['git','add','-f','.'],
 

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>733J. Flood Fill amazon · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-844-Backspace-String-Compare.html" />
     
+    
+    <link rel="prev" href="leetCode-716-Max-Stack.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -1377,7 +1379,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.7" data-path="leetCode-733-Flood-Fill.html">
+        <li class="chapter active" data-level="1.10.7" data-path="leetCode-733-Flood-Fill.html">
             
                 <a href="leetCode-733-Flood-Fill.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >733J. Flood Fill amazon</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,64 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
+                                <h1 id="733-flood-fill">733. Flood Fill</h1>
 <ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
+<li>This is a amazon problem.</li>
 </ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
+<p>An image is represented by a 2-D array of integers, each integer representing the pixel value of the image (from 0 to 65535).</p>
+<p>Given a coordinate (sr, sc) representing the starting pixel (row and column) of the flood fill, and a pixel value newColor, &quot;flood fill&quot; the image.</p>
+<p>To perform a &quot;flood fill&quot;, consider the starting pixel, plus any pixels connected 4-directionally to the starting pixel of the same color as the starting pixel, plus any pixels connected 4-directionally to those pixels (also with the same color as the starting pixel), and so on. Replace the color of all of the aforementioned pixels with the newColor.</p>
+<p>At the end, return the modified image.</p>
+<p>Example 1:
+Input:
+image = [[1,1,1],[1,1,0],[1,0,1]]
+sr = 1, sc = 1, newColor = 2
+Output: [[2,2,2],[2,2,0],[2,0,1]]
+Explanation:
+From the center of the image (with position (sr, sc) = (1, 1)), all pixels connected
+by a path of the same color as the starting pixel are colored with the new color.
+Note the bottom corner is not colored 2, because it is not 4-directionally connected
+to the starting pixel.
+Note:</p>
+<p>The length of image and image[0] will be in the range [1, 50].
+The given starting pixel will satisfy 0 &lt;= sr &lt; image.length and 0 &lt;= sc &lt; image[0].length.
+The value of each color in image[i][j] and newColor will be an integer in [0, 65535].</p>
+<h2 id="&#x601D;&#x8DEF;&#xFF1A;">&#x601D;&#x8DEF;&#xFF1A;</h2>
+<p>&#x8FD9;&#x4E2A;&#x9898;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x597D;&#x7684;2D 4&#x65B9;&#x5411;&#x7684;&#x8FED;&#x4EE3;&#x95EE;&#x9898;
+&#x9898;&#x76EE;&#x7BA1;&#x8FD9;&#x4E2A;&#x89E3;&#x6CD5;&#x53EB;&#xFF1A;Depth-First Search &#xFF08;DFS&#xFF09;
+&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;:</p>
 <ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
+<li>&#x6267;&#x884C;&#x8FED;&#x4EE3;&#x524D;&#x8981;&#x6CE8;&#x610F;&#x4E0D;&#x8981;&#x4EE4;&#x4E0B;&#x4E00;&#x6B65;&#x8D85;&#x51FA;&#x6570;&#x7EC4;&#x8303;&#x56F4;&#x3002;&#x6240;&#x4EE5;&#x6709;&#x56DB;&#x4E2A;&#x5224;&#x65AD;&#x3002;</li>
+<li>floodFill&#x65B9;&#x6CD5;&#x91CC;&#x7684; if(outcolor != newColor) &#x662F;&#x5FC5;&#x987B;&#x7684;&#x3002;
+&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x9898;&#x5224;&#x65AD;&#x662F;&#x5426;&#x662F;&#x5DF2;&#x7ECF;&#x904D;&#x5386;&#x8FC7;&#x7684;&#x70B9;&#xFF0C;&#x5C31;&#x662F;&#x9760;&#x7684;&#x989C;&#x8272;&#x4E0D;&#x540C;&#x3002;&#x65B0;&#x65E7;&#x989C;&#x8272;&#x76F8;&#x540C;
+&#x4F1A;&#x9677;&#x5165;&#x65E0;&#x9650;&#x5FAA;&#x73AF;&#x3002;&#x5982;&#x679C;&#x65B0;&#x65E7;&#x989C;&#x8272;&#x76F8;&#x540C;&#x5176;&#x5B9E;&#x4E0D;&#x9700;&#x8981;&#x6267;&#x884C;&#x5C31;&#x53EF;&#x4EE5;return&#x4E86;&#x3002;</li>
 </ul>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[][] floodFill(<span class="hljs-keyword">int</span>[][] image, <span class="hljs-keyword">int</span> sr, <span class="hljs-keyword">int</span> sc, <span class="hljs-keyword">int</span> newColor) {
+        <span class="hljs-keyword">int</span> outcolor = image[sr][sc];   
+        <span class="hljs-keyword">if</span> (outcolor != newColor) {dfs(image,sr,sc,outcolor,newColor);}
+        <span class="hljs-keyword">return</span> image;
+    }
+
+     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span> <span class="hljs-params">( <span class="hljs-keyword">int</span>[][] image, <span class="hljs-keyword">int</span> r, <span class="hljs-keyword">int</span> c, <span class="hljs-keyword">int</span> color, <span class="hljs-keyword">int</span> newColor)</span></span>{
+         <span class="hljs-keyword">if</span> (image[r][c] == color) {
+             image[r][c] = newColor;
+             <span class="hljs-keyword">if</span>(r &gt; <span class="hljs-number">0</span>) {
+                 dfs(image, r-<span class="hljs-number">1</span>, c, color, newColor);
+             }
+             <span class="hljs-keyword">if</span> (c &gt; <span class="hljs-number">0</span>){
+                 dfs(image, r, c-<span class="hljs-number">1</span>, color, newColor);
+             }
+             <span class="hljs-keyword">if</span> (r &lt; image.length - <span class="hljs-number">1</span>){
+                 dfs(image, r + <span class="hljs-number">1</span>, c, color, newColor);
+             }
+             <span class="hljs-keyword">if</span> (c &lt; image[<span class="hljs-number">0</span>].length - <span class="hljs-number">1</span>) {
+                 dfs(image, r, c + <span class="hljs-number">1</span>, color, newColor);
+             }
+         }
+     }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1598,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-716-Max-Stack.html" class="navigation navigation-prev " aria-label="Previous page: 716J?. Max Stack">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-844-Backspace-String-Compare.html" class="navigation navigation-next " aria-label="Next page: 844J. Backspace String Compare">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1614,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"733J. Flood Fill amazon","level":"1.10.7","depth":2,"next":{"title":"844J. Backspace String Compare","level":"1.10.8","depth":2,"path":"leetCode-844-Backspace-String-Compare.md","ref":"leetCode-844-Backspace-String-Compare.md","articles":[]},"previous":{"title":"716J?. Max Stack","level":"1.10.6","depth":2,"path":"leetCode-716-Max-Stack.md","ref":"leetCode-716-Max-Stack.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-733-Flood-Fill.md","mtime":"2019-09-17T04:19:32.607Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

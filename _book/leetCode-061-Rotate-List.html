@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>061J(2/2). Rotate List · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-066-Plus-One.html" />
     
+    
+    <link rel="prev" href="leetCode-058-Length-of-Last-Word.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -547,7 +549,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.22" data-path="leetCode-061-Rotate-List.html">
+        <li class="chapter active" data-level="1.6.22" data-path="leetCode-061-Rotate-List.html">
             
                 <a href="leetCode-061-Rotate-List.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >061J(2/2). Rotate List</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,42 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
+                                <h1 id="061j-rotate-list">061J?. Rotate List</h1>
+<p><a href="https://leetcode.com/problems/rotate-list/" target="_blank">https://leetcode.com/problems/rotate-list/</a></p>
+<h2 id="method-1-iteration">Method 1: iteration.</h2>
 <ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
+<li>&#x5148;&#x5C06;List&#x8FDE;&#x4E00;&#x5708;&#xFF0C;&#x540C;&#x65F6;&#x4E5F;&#x80FD;&#x5F97;&#x5230;List&#x957F;&#x5EA6;&#x3002;</li>
+<li>&#x4E0D;&#x7528;dummyhead&#x7684;&#x5F0A;&#x7AEF;&#x662F;&#xFF0C;&#x9700;&#x8981;&#x4E0A;&#x6765;&#x5C31;&#x5224;&#x65AD;&#x662F;&#x5426;&#x662F;&#x7A7A;List.</li>
+<li>counter = counter - k%counter; &#x8FD9;&#x91CC;&#x662F;&#x8003;&#x8651;&#x4E86; k &gt; &#x94FE;&#x8868;&#x957F;&#x5EA6;&#x7684;&#x60C5;&#x51B5;&#x3002;</li>
+<li>&#x5269;&#x4E0B;&#x7684;&#x90FD;&#x662F;&#x57FA;&#x672C;&#x64CD;&#x4F5C;&#x3002;</li>
 </ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
-</ul>
+<h3 id="java-solution">java solution</h3>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">rotateRight</span><span class="hljs-params">(ListNode head, <span class="hljs-keyword">int</span> k)</span> </span>{
+        <span class="hljs-keyword">if</span> ( head == <span class="hljs-keyword">null</span> ){
+            <span class="hljs-keyword">return</span> head;
+        }
+
+        ListNode p = head;
+        <span class="hljs-keyword">int</span> counter = <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">while</span>(p.next != <span class="hljs-keyword">null</span>) {
+            p = p.next;
+            counter += <span class="hljs-number">1</span>;
+        }
+        counter = counter - k%counter;
+
+        p.next = head;
+        <span class="hljs-keyword">while</span> ( counter &gt; <span class="hljs-number">0</span>) {
+            counter -= <span class="hljs-number">1</span>;
+            p = p.next;
+        }
+        head = p.next;
+        p.next = <span class="hljs-keyword">null</span>;
+        <span class="hljs-keyword">return</span> head;
+
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1576,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-058-Length-of-Last-Word.html" class="navigation navigation-prev " aria-label="Previous page: 058J. Length of Last Word">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-066-Plus-One.html" class="navigation navigation-next " aria-label="Next page: 066J. Plus One">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1592,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"061J(2/2). Rotate List","level":"1.6.22","depth":2,"next":{"title":"066J. Plus One","level":"1.6.23","depth":2,"path":"leetCode-066-Plus-One.md","ref":"leetCode-066-Plus-One.md","articles":[]},"previous":{"title":"058J. Length of Last Word","level":"1.6.21","depth":2,"path":"leetCode-058-Length-of-Last-Word.md","ref":"leetCode-058-Length-of-Last-Word.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-061-Rotate-List.md","mtime":"2019-11-08T03:38:33.429Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

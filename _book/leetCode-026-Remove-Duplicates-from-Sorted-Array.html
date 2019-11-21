@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>026J. Remove Duplicates from Sorted Array · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-027-Remove-Element.html" />
     
+    
+    <link rel="prev" href="leetCode-024-Swap-Nodes-in-Pairs.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -443,7 +445,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.14" data-path="leetCode-026-Remove-Duplicates-from-Sorted-Array.html">
+        <li class="chapter active" data-level="1.6.14" data-path="leetCode-026-Remove-Duplicates-from-Sorted-Array.html">
             
                 <a href="leetCode-026-Remove-Duplicates-from-Sorted-Array.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >026J. Remove Duplicates from Sorted Array</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,71 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
+                                <h1 id="026-remove-duplicates-from-sorted-array">026. Remove Duplicates from Sorted Array</h1>
+<p>Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.</p>
+<p>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
+<p>Example 1:</p>
+<p>Given nums = [1,1,2],</p>
+<p>Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.</p>
+<p>It doesn&apos;t matter what you leave beyond the returned length.</p>
+<p>Example 2:</p>
+<p>Given nums = [0,0,1,1,1,2,2,3,3,4],</p>
+<p>Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.</p>
+<p>It doesn&apos;t matter what values are set beyond the returned length.
+Clarification:</p>
+<p>Confused why the returned value is an integer but your answer is an array?</p>
+<p>Note that the input array is passed in by reference, which means modification to the input array will be known to the caller as well.</p>
+<p>Internally you can think of this:</p>
+<p>// nums is passed in by reference. (i.e., without making a copy)
+int len = removeDuplicates(nums);</p>
+<p>// any modification to nums in your function would be known by the caller.
+// using the length returned by your function, it prints the first len elements.</p>
+<pre><code class="lang-Java"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) {
+    print(nums[i]);
+}
+</code></pre>
+<h2 id="method-1-two-pointers-iteration">Method 1: Two Pointers/ Iteration</h2>
+<p>&#x601D;&#x8DEF;&#xFF1A;</p>
 <ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
+<li>&#x7531;&#x4E8E;&#x662F;&#x5DF2;&#x7ECF;&#x6392;&#x5E8F;&#x597D;&#x7684;&#x6570;&#x7EC4;&#x3002;&#x6240;&#x4EE5;&#x4E0D;&#x4F1A;&#x9047;&#x5230;&#x5DF2;&#x7ECF;&#x9047;&#x5230;&#x8FC7;&#x7684;&#x6570;&#x3002;</li>
+<li>&#x65B9;&#x6CD5;&#x662F;&#x53CC;&#x6307;&#x9488;&#x3002;&#x4E00;&#x4E2A;&#x6307;&#x9488;A&#x4ECE;&#x5934;&#x5230;&#x5C3E;&#x5FAA;&#x73AF;&#x4E00;&#x8FB9;&#x3002;&#x4E00;&#x4E2A;&#x6307;&#x9488;B&#x5F85;&#x5728;&#x539F;&#x5730;&#x548C;A&#x7684;&#x503C;&#x6BD4;&#x8F83;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x540C;&#xFF0C;&#x90A3;&#x4E48;&#x6307;&#x9488;B
+&#x5148;&#x524D;&#x8FDB;&#x4E00;&#x6B65;&#xFF0C;&#x7136;&#x540E;&#x5C06;A&#x7684;&#x503C;&#x5B58;&#x4E0B;&#x6765;&#x3002;&#x5982;&#x679C;&#x503C;&#x76F8;&#x540C;&#x5C31;&#x653E;&#x8FC7;&#x8FD9;&#x6B21;&#x5FAA;&#x73AF;&#x3002;</li>
+<li>&#x6CE8;&#x610F;&#xFF0C;&#x53D1;&#x73B0;&#x4E0D;&#x540C;&#x503C;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E00;&#x5B9A;&#x662F;&#x5148;&#x79FB;&#x52A8;&#x6307;&#x9488;B&#xFF0C;&#x518D;&#x5C06;&#x503C;&#x5B58;&#x4E0B;&#x6765;&#x3002;</li>
 </ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
-</ul>
+<h3 id="java-solution">java Solution</h3>
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">removeDuplicates</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
+        <span class="hljs-keyword">int</span> length = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">if</span> (nums.length == <span class="hljs-number">0</span>){
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        }
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; nums.length; i += <span class="hljs-number">1</span>){
+            <span class="hljs-keyword">if</span> (nums[length] != nums[i]){
+                length += <span class="hljs-number">1</span>;
+                nums[length] = nums[i];
+            }
+        }
+        <span class="hljs-keyword">return</span> length + <span class="hljs-number">1</span>;
+    }
+}
+</code></pre>
+<h2 id="method-2&#x53C2;&#x89C1;080">Method 2:<a href="leetCode-080-Remove-Duplicates-from-Sorted-Array-II.html">&#x53C2;&#x89C1;080</a></h2>
+<p>&#x56E0;&#x6B64;&#x66F4;&#x597D;&#x7684;&#x5199;&#x6CD5;&#x662F;</p>
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">removeDuplicates</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>{
+        <span class="hljs-keyword">if</span> (nums.length &lt; <span class="hljs-number">1</span>){
+            <span class="hljs-keyword">return</span> nums.length;
+        }
+        <span class="hljs-keyword">int</span> length = <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; nums.length; i += <span class="hljs-number">1</span>){
+            <span class="hljs-keyword">if</span> (nums[length] != nums[i]){
+                nums[length++] = nums[i];
+            }
+        }
+        <span class="hljs-keyword">return</span> length;
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1605,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-024-Swap-Nodes-in-Pairs.html" class="navigation navigation-prev " aria-label="Previous page: 024J?. Swap Nodes in Pairs">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-027-Remove-Element.html" class="navigation navigation-next " aria-label="Next page: 027J. Remove Element">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1621,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"026J. Remove Duplicates from Sorted Array","level":"1.6.14","depth":2,"next":{"title":"027J. Remove Element","level":"1.6.15","depth":2,"path":"leetCode-027-Remove-Element.md","ref":"leetCode-027-Remove-Element.md","articles":[]},"previous":{"title":"024J?. Swap Nodes in Pairs","level":"1.6.13","depth":2,"path":"leetCode-024-Swap-Nodes-in-Pairs.md","ref":"leetCode-024-Swap-Nodes-in-Pairs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-026-Remove-Duplicates-from-Sorted-Array.md","mtime":"2019-10-31T06:52:55.789Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

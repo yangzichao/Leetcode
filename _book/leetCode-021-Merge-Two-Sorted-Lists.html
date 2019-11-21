@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>021J(2/2). Merge Two Sorted Lists · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-024-Swap-Nodes-in-Pairs.html" />
     
+    
+    <link rel="prev" href="leetCode-020-Valid-Parentheses.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -417,7 +419,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.12" data-path="leetCode-021-Merge-Two-Sorted-Lists.html">
+        <li class="chapter active" data-level="1.6.12" data-path="leetCode-021-Merge-Two-Sorted-Lists.html">
             
                 <a href="leetCode-021-Merge-Two-Sorted-Lists.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >021J(2/2). Merge Two Sorted Lists</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,106 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
+                                <h1 id="021j-merge-two-sorted-lists">021J. Merge Two Sorted Lists</h1>
+<p>What to do?</p>
 <ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
+<li>Think about the recursion method*</li>
 </ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
+<blockquote>
+<p>Merge two sorted linked lists and return it as a new list.<br>The new list should be made by splicing together the nodes of the first two lists.</p>
+<p>Example:
+Input: 1-&gt;2-&gt;4, 1-&gt;3-&gt;4<br>Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
+</blockquote>
+<h2 id="method-1-interation">Method 1: Interation</h2>
+<h3 id="analysis">Analysis:</h3>
 <ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
+<li>From <a href="leetCode-002-Add-Two-Numbers.html">002</a>, we&apos;ve learned something:<ul>
+<li>&#x7528; p1 != null &#x6765;&#x5224;&#x65AD;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7528; p1.next != null &#x6765;&#x5224;&#x65AD;&#x3002;
+&#x5728;leetcode &#x7684;ListNode &#x5B9A;&#x4E49;&#x4E2D;&#xFF0C;&#x5982;&#x679C; p1.next &#x662F;&#x7A7A;&#xFF0C; p1 = p1.next &#x662F;&#x5408;&#x6CD5;&#x7684;&#xFF0C;&#x800C;p1.next &#x662F;&#x4E0D;&#x5408;&#x6CD5;&#x7684;&#x3002;</li>
+<li>&#x76F4;&#x63A5;&#x5EFA;&#x7ACB; dummyhead, &#x5E76;&#x4E3A;l1,l2,dummyhead&#x5EFA;&#x7ACB;&#x4E09;&#x4E2A;&#x6307;&#x9488;&#xFF0C; p1, p2, pd.</li>
+<li>&#x4ECE; 002 &#x4E2D;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x4E24;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x505C;&#x6B62;&#x5FAA;&#x73AF;&#x7684;&#x8282;&#x70B9;&#x5982;&#x679C;&#x4E0D;&#x540C;&#x6B65;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;
+while(p1!=null || p2!= null) &#x6765;&#x5224;&#x65AD;&#x3002;</li>
+<li>&#x4ECE; 002 &#x4E2D;&#x6211;&#x4EEC;&#x8FD8;&#x77E5;&#x9053;&#xFF0C;&#x53D6;&#x4E24;&#x4E2A;&#x6570;&#x7EC4;&#x7684;&#x503C;&#xFF0C;&#x4E3A;&#x4E86;&#x5B89;&#x5168;&#x8D77;&#x89C1;&#xFF0C;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x8C03;&#x7528; int x1 = p1.val. &#x5E94;&#x5F53;&#x5148;&#x5224;&#x65AD;&#x6307;&#x9488;&#x662F;&#x5426;&#x4E3A;&#x7A7A;&#x3002;</li>
 </ul>
+</li>
+<li>&#x5269;&#x4E0B;&#x7684;&#x90E8;&#x5206;&#x5C31;&#x662F;&#xFF0C;&#x5224;&#x65AD;&#x6307;&#x5411;&#x4E24;&#x4E2A;&#x6570;&#x7EC4;&#x7684;&#x6307;&#x9488;&#x5BF9;&#x5E94;&#x7684;val&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x5C06;&#x5C0F;&#x7684;&#x503C;&#xFF08;&#x76F8;&#x7B49;&#x7684;&#x8BDD;&#x968F;&#x610F;&#xFF09;&#x751F;&#x6210;&#x65B0;&#x7684;&#x4E00;&#x8282;&#x8FD4;&#x56DE;&#x7ED9;dummyhead&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x4F20;&#x9012;&#x4E86;&#x503C;&#x7684;&#x6570;&#x7EC4;&#x7684;&#x6307;&#x9488;&#x6307;&#x5411;&#x4E0B;&#x4E00;&#x4F4D;&#x3002;&#x6CE8;&#x610F;&#x6570;&#x7EC4;&#x662F;&#x5426;&#x662F;&#x975E;&#x7A7A;&#x3002;</li>
+</ul>
+<h3 id="java-solution">Java Solution:</h3>
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">mergeTwoLists</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>{
+        ListNode dummyhead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
+        ListNode p1 = l1;
+        ListNode p2 = l2;
+        ListNode pd = dummyhead;
+        <span class="hljs-keyword">while</span> (p1 != <span class="hljs-keyword">null</span> || p2 != <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">int</span> x1 = (p1 != <span class="hljs-keyword">null</span>) ? p1.val:Integer.MAX_VALUE;
+            <span class="hljs-keyword">int</span> x2 = (p2 != <span class="hljs-keyword">null</span>) ? p2.val:Integer.MAX_VALUE;
+
+            <span class="hljs-keyword">if</span> ( x1 &lt; x2 ) {
+                pd.next = <span class="hljs-keyword">new</span> ListNode(x1);
+                <span class="hljs-keyword">if</span>( p1 != <span class="hljs-keyword">null</span> ){
+                    p1 = p1.next;
+                }
+            }<span class="hljs-keyword">else</span> {
+                pd.next = <span class="hljs-keyword">new</span> ListNode(x2);
+                <span class="hljs-keyword">if</span>( p2 != <span class="hljs-keyword">null</span> ){
+                    p2 = p2.next;    
+                }
+            }
+            pd = pd.next;
+        }
+        <span class="hljs-keyword">return</span> dummyhead.next;
+    }
+}
+</code></pre>
+<p>&#x7B2C;&#x4E8C;&#x6B21;&#x505A;&#x7684;&#x89E3;&#x6CD5;.&#x8FD9;&#x4E2A;&#x89E3;&#x6CD5;&#x6CA1;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x5199;&#x7684;&#x66F4;&#x7B80;&#x5316;&#x3002;
+&#x6838;&#x5FC3;&#x601D;&#x60F3;&#x662F;&#xFF1A;&#x4E0D;&#x9700;&#x8981;&#x4EE4;&#x5FAA;&#x73AF;&#x5305;&#x542B;&#x6709;&#x4E00;&#x4E2A;&#x5230;null&#x7684;&#x60C5;&#x51B5;&#x3002;&#x53EF;&#x4EE5;&#x5F3A;&#x5236;&#x8981;&#x6C42;&#x4E24;&#x4E2A;&#x6709;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x662F;null&#x5C31;&#x505C;&#x6B62;&#x5FAA;&#x73AF;&#x3002;
+&#x7136;&#x540E;&#x5C06;&#x5269;&#x4F59;&#x7684;&#x52A0;&#x5230;&#x7ED3;&#x5C3E;&#x3002;</p>
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">mergeTwoLists</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>{
+        <span class="hljs-keyword">if</span>(l1 == <span class="hljs-keyword">null</span> || l2 ==<span class="hljs-keyword">null</span>){
+            <span class="hljs-keyword">return</span> l1 == <span class="hljs-keyword">null</span>? l2:l1;
+        }
+        ListNode dummyhead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
+        ListNode p = dummyhead;
+        <span class="hljs-keyword">while</span>(l1!=<span class="hljs-keyword">null</span>||l2!=<span class="hljs-keyword">null</span>){
+            <span class="hljs-keyword">if</span>(l1.val &gt; l2.val){
+                p.next = l2;
+                p = p.next;
+                l2 = l2.next;
+                <span class="hljs-keyword">if</span>(l2 == <span class="hljs-keyword">null</span>){
+                    p.next = l1;
+                    <span class="hljs-keyword">break</span>;
+                }
+            }<span class="hljs-keyword">else</span>{
+                p.next = l1;
+                p = p.next;
+                l1 = l1.next;
+                <span class="hljs-keyword">if</span>(l1 == <span class="hljs-keyword">null</span>){
+                    p.next = l2;
+                    <span class="hljs-keyword">break</span>;
+                }
+            }
+        }
+        <span class="hljs-keyword">return</span> dummyhead.next;
+    }
+}
+</code></pre>
+<h2 id="method-2--recursion">Method 2 : Recursion</h2>
+<h3 id="java-solution">Java Solution</h3>
+<p>This is copied from discussion.</p>
+<pre><code class="lang-Java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">mergeTwoLists</span><span class="hljs-params">(ListNode l1, ListNode l2)</span></span>{
+        <span class="hljs-keyword">if</span>(l1 == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> l2;
+        <span class="hljs-keyword">if</span>(l2 == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> l1;
+        <span class="hljs-keyword">if</span>(l1.val &lt; l2.val){
+            l1.next = mergeTwoLists(l1.next, l2);
+            <span class="hljs-keyword">return</span> l1;
+        } <span class="hljs-keyword">else</span>{
+            l2.next = mergeTwoLists(l1, l2.next);
+            <span class="hljs-keyword">return</span> l2;
+        }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1640,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-020-Valid-Parentheses.html" class="navigation navigation-prev " aria-label="Previous page: 020J. Valid Parentheses">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-024-Swap-Nodes-in-Pairs.html" class="navigation navigation-next " aria-label="Next page: 024J?. Swap Nodes in Pairs">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1656,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"021J(2/2). Merge Two Sorted Lists","level":"1.6.12","depth":2,"next":{"title":"024J?. Swap Nodes in Pairs","level":"1.6.13","depth":2,"path":"leetCode-024-Swap-Nodes-in-Pairs.md","ref":"leetCode-024-Swap-Nodes-in-Pairs.md","articles":[]},"previous":{"title":"020J. Valid Parentheses","level":"1.6.11","depth":2,"path":"leetCode-020-Valid-Parentheses.md","ref":"leetCode-020-Valid-Parentheses.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-021-Merge-Two-Sorted-Lists.md","mtime":"2019-11-03T20:56:00.403Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

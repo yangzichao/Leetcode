@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>011J. Container With Most Water · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-012-Interger-to-Roman.html" />
     
+    
+    <link rel="prev" href="leetCode-009-Palindrome-Number.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -326,7 +328,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.5" data-path="leetCode-011-Container-With-Most-Water.html">
+        <li class="chapter active" data-level="1.6.5" data-path="leetCode-011-Container-With-Most-Water.html">
             
                 <a href="leetCode-011-Container-With-Most-Water.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >011J. Container With Most Water</a>
     </h1>
 </div>
 
@@ -1511,19 +1513,39 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
+                                <h1 id="11-container-with-most-water">11. Container With Most Water</h1>
+<p>note:
+Math.min(a,b),Math.max(a,b),&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x66F4;&#x5927;&#x66F4;&#x5C0F;&#x7684;&#x503C;&#x3002;</p>
+<h2 id="method-1--&#x66B4;&#x529B;">Method 1 : &#x66B4;&#x529B;</h2>
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxArea</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] height)</span> </span>{
+        <span class="hljs-keyword">int</span> largest_volume = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; height.length; i++ ){
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = i + <span class="hljs-number">1</span>; j &lt; height.length; j++ ) {
+                <span class="hljs-keyword">int</span> volume = <span class="hljs-number">0</span>;
+                <span class="hljs-keyword">if</span> (height[i] &gt; height[j]){
+                    volume = height[j] * (j - i);
+                }<span class="hljs-keyword">else</span>{
+                    volume = height[i] * (j - i);
+                }
+
+                <span class="hljs-keyword">if</span> (largest_volume &lt; volume){
+                    largest_volume = volume;
+                }
+            }
+        }
+        <span class="hljs-keyword">return</span> largest_volume;
+    }
+}
+</code></pre>
+<h2 id="method-2-&#xFF08;&#x8D2A;&#x5FC3;&#x6CD5;&#xFF09;">Method 2: &#xFF08;&#x8D2A;&#x5FC3;&#x6CD5;&#xFF09;</h2>
+<p>&#x8FD9;&#x4E2A;&#x9898;&#x901A;&#x8FC7;&#x7406;&#x89E3;&#x9898;&#x76EE;&#xFF0C;&#x53EF;&#x4EE5;&#x7B80;&#x5316;&#x95EE;&#x9898;&#xFF0C;&#x964D;&#x4F4E;&#x7B97;&#x6CD5;&#x96BE;&#x5EA6;&#x3002;<br>
+&#x6C34;&#x6876;&#x7684;&#x6C34;&#x53D6;&#x51B3;&#x4E8E;&#x77ED;&#x677F;<br>
+&#x7528;&#x4E24;&#x4E2A;&#x6307;&#x9488;&#x6807;&#x8BB0;&#x6700;&#x5DE6;&#xFF0C;&#x6700;&#x53F3;&#xFF0C;&#x5176;&#x5DEE;&#x503C;&#x662F;&#x957F;&#x5EA6;&#x3002;</p>
 <ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
-</ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
+<li>&#x6211;&#x4EEC;&#x8BD5;&#x56FE;&#x904D;&#x5386;&#x6240;&#x6709;&#x7684;&#x957F;&#x5EA6;&#x3002;&#x4E14;&#x5FC5;&#x987B;&#x904D;&#x5386;&#x6240;&#x6709;&#x957F;&#x5EA6;&#x3002;&#xFF08;&#x5426;&#x5219;&#x53EF;&#x80FD;&#x6709;&#x9057;&#x6F0F;&#xFF09;</li>
+<li>&#x6BCF;&#x6B21;&#x4EE4;&#x957F;&#x5EA6;&#x51CF;&#x4E00;&#xFF0C;&#x4EE4;&#x4E24;&#x4E2A;&#x6307;&#x9488;&#x7684;&#x4E00;&#x4E2A;&#x5411;&#x4E2D;&#x95F4;&#x9760;&#x62E2;&#x3002;&#x6BCF;&#x6B21;&#x5E94;&#x8BE5;&#x79FB;&#x52A8;&#x7684;&#x662F;&#x9AD8;&#x5EA6;&#x66F4;&#x77ED;&#x7684;&#x4E00;&#x4FA7;&#xFF0C;&#xFF08;&#x5426;&#x5219;&#x79FB;&#x52A8;&#x6BEB;&#x65E0;&#x610F;&#x4E49;&#x3002;&#x82E5;&#x957F;&#x5EA6;&#x76F8;&#x7B49;&#xFF0C;&#x5219;&#x4EFB;&#x610F;&#x79FB;&#x52A8;&#x4E00;&#x4FA7;&#x5373;&#x53EF;&#x3002;</li>
+<li>&#x6BCF;&#x6B21;&#x79FB;&#x52A8;&#x5E94;&#x5F53;&#x6BD4;&#x8F83;&#x9762;&#x79EF;&#x3002;&#x7528;&#x53E6;&#x4E00;&#x4E2A;&#x6574;&#x578B;&#x6765;&#x8BB0;&#x5F55;&#x6700;&#x5927;&#x9762;&#x79EF;&#x3002;</li>
 </ul>
 
                                 
@@ -1552,8 +1574,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-009-Palindrome-Number.html" class="navigation navigation-prev " aria-label="Previous page: 009J. Palindrome Number">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-012-Interger-to-Roman.html" class="navigation navigation-next " aria-label="Next page: 012J. Integer to Roman">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1590,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"011J. Container With Most Water","level":"1.6.5","depth":2,"next":{"title":"012J. Integer to Roman","level":"1.6.6","depth":2,"path":"leetCode-012-Interger-to-Roman.md","ref":"leetCode-012-Interger-to-Roman.md","articles":[]},"previous":{"title":"009J. Palindrome Number","level":"1.6.4","depth":2,"path":"leetCode-009-Palindrome-Number.md","ref":"leetCode-009-Palindrome-Number.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-011-Container-With-Most-Water.md","mtime":"2019-09-11T05:06:52.627Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

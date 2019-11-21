@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>066J. Plus One · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-080-Remove-Duplicates-from-Sorted-Array-II.html" />
     
+    
+    <link rel="prev" href="leetCode-061-Rotate-List.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -560,7 +562,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.23" data-path="leetCode-066-Plus-One.html">
+        <li class="chapter active" data-level="1.6.23" data-path="leetCode-066-Plus-One.html">
             
                 <a href="leetCode-066-Plus-One.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >066J. Plus One</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,56 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
-<ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
-</ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
-</ul>
+                                <h1 id="066j-plus-one">066J. Plus One</h1>
+<p><a href="https://leetcode.com/problems/plus-one/" target="_blank">https://leetcode.com/problems/plus-one/</a></p>
+<h2 id="&#x65B9;&#x6CD5;1">&#x65B9;&#x6CD5;1</h2>
+<p>&#x4F18;&#x70B9;&#x662F;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x975E;&#x52A0;1&#x7684;&#x60C5;&#x51B5;&#x3002;&#x7F3A;&#x70B9;&#x662F;&#x4EE3;&#x7801;&#x6BD4;&#x8F83;&#x5570;&#x55E6;&#x3002;
+&#x539F;&#x7406;&#x662F;&#x4ECE;&#x540E;&#x5F80;&#x524D;&#x5904;&#x7406;&#xFF0C;&#x5373;&#x4ECE;&#x4E2A;&#x4F4D;&#x8D77;&#x5904;&#x7406;&#x3002;
+&#x539F;&#x5219;&#x5C31;&#x662F;&#x5728;&#x5224;&#x65AD;&#x662F;&#x5426;&#x9700;&#x8981;&#x8FDB;&#x4F4D;&#x3002;</p>
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] plusOne(<span class="hljs-keyword">int</span>[] digits) {
+        <span class="hljs-keyword">int</span> n = digits.length;
+        digits[n-<span class="hljs-number">1</span>]+=<span class="hljs-number">1</span>;
+        <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = n - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--){
+            <span class="hljs-keyword">if</span>( digits[i] + carry &gt; <span class="hljs-number">9</span>){
+                digits[i] = <span class="hljs-number">0</span>;
+                carry = <span class="hljs-number">1</span>;
+            }<span class="hljs-keyword">else</span>{
+                digits[i]+=carry;
+                carry = <span class="hljs-number">0</span>;
+                <span class="hljs-keyword">return</span> digits;
+            }
+        }
+
+        <span class="hljs-keyword">int</span>[] newN = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n+<span class="hljs-number">1</span>];
+        newN[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">return</span> newN;
+    }
+}
+</code></pre>
+<h2 id="method2">Method2</h2>
+<p>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4EE3;&#x7801;&#x4F18;&#x96C5;&#x4E00;&#x4E9B;&#x3002;</p>
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] plusOne(<span class="hljs-keyword">int</span>[] digits) {
+        <span class="hljs-keyword">int</span> n = digits.length;
+
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = n-<span class="hljs-number">1</span>; i&gt;=<span class="hljs-number">0</span>;i--){
+          <span class="hljs-comment">//&#x5148;&#x5224;&#x65AD;&#x662F;&#x5426;&#x5C0F;&#x4E8E;9&#xFF0C;&#x5982;&#x679C;&#x5C0F;&#x4E8E;9&#x3002;&#x5C31;&#x65E0;&#x8FDB;&#x4F4D;&#x7684;&#x8003;&#x8651;&#x3002;</span>
+            <span class="hljs-keyword">if</span>(digits[i] &lt; <span class="hljs-number">9</span>){
+                digits[i]++;
+                <span class="hljs-keyword">return</span> digits;
+            }
+          <span class="hljs-comment">// &#x5982;&#x679C;&#x9700;&#x8981;&#x8FDB;&#x4F4D;&#xFF0C;&#x5C31;&#x628A;&#x8FD9;&#x4E00;&#x4F4D;&#x8BBE;&#x4E3A;0&#xFF1B;&#x4E0B;&#x4E00;&#x4E2A;&#x5FAA;&#x73AF;&#x518D;&#x8003;&#x8651;&#x662F;&#x5426;&#x9700;&#x8981;&#x8FDB;&#x4F4D;</span>
+            digits[i] = <span class="hljs-number">0</span>;
+
+        }
+        <span class="hljs-keyword">int</span>[] newNumber = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n+<span class="hljs-number">1</span>];
+        newNumber[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">return</span> newNumber;
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1590,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-061-Rotate-List.html" class="navigation navigation-prev " aria-label="Previous page: 061J(2/2). Rotate List">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-080-Remove-Duplicates-from-Sorted-Array-II.html" class="navigation navigation-next " aria-label="Next page: 080J. Remove Duplicates from Sorted Array II">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1606,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"066J. Plus One","level":"1.6.23","depth":2,"next":{"title":"080J. Remove Duplicates from Sorted Array II","level":"1.6.24","depth":2,"path":"leetCode-080-Remove-Duplicates-from-Sorted-Array-II.md","ref":"leetCode-080-Remove-Duplicates-from-Sorted-Array-II.md","articles":[]},"previous":{"title":"061J(2/2). Rotate List","level":"1.6.22","depth":2,"path":"leetCode-061-Rotate-List.md","ref":"leetCode-061-Rotate-List.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-066-Plus-One.md","mtime":"2019-11-03T21:45:34.412Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

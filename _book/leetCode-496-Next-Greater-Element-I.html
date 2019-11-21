@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>496J. Next Greater Element I · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-496-Next-Greater-Element-II.html" />
     
+    
+    <link rel="prev" href="leetCode-p-others.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -1299,7 +1301,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.10.1" data-path="leetCode-496-Next-Greater-Element-I.html">
+        <li class="chapter active" data-level="1.10.1" data-path="leetCode-496-Next-Greater-Element-I.html">
             
                 <a href="leetCode-496-Next-Greater-Element-I.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >496J. Next Greater Element I</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,44 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
-<ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
-</ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
-</ul>
+                                <h1 id="496j-next-greater-element-i">496J. Next Greater Element I</h1>
+<p><a href="https://leetcode.com/problems/next-greater-element-i/" target="_blank">https://leetcode.com/problems/next-greater-element-i/</a></p>
+<p>&#x672C;&#x9898;&#x662F; monotonous stack &#x7684;&#x7ECF;&#x5178;
+&#x4EE5;&#x4E0B;&#x4E3A;&#x6458;&#x6284;&#xFF1A;</p>
+<p>&#x5355;&#x8C03;&#x9012;&#x589E;&#x6808;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x5DE6;&#x8D77;&#x7B2C;&#x4E00;&#x4E2A;&#x6BD4;&#x5F53;&#x524D;&#x6570;&#x5B57;&#x5C0F;&#x7684;&#x5143;&#x7D20;&#x3002;&#x6BD4;&#x5982;&#x6570;&#x7EC4; [2 1 4 6 5]&#xFF0C;&#x521A;&#x5F00;&#x59CB;2&#x5165;&#x6808;&#xFF0C;&#x6570;&#x5B57;1&#x5165;&#x6808;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53D1;&#x73B0;&#x6808;&#x9876;&#x5143;&#x7D20;2&#x6BD4;&#x8F83;&#x5927;&#xFF0C;&#x5C06;2&#x79FB;&#x51FA;&#x6808;&#xFF0C;&#x6B64;&#x65F6;1&#x5165;&#x6808;&#x3002;&#x90A3;&#x4E48;2&#x548C;1&#x90FD;&#x6CA1;&#x5DE6;&#x8D77;&#x6BD4;&#x81EA;&#x8EAB;&#x5C0F;&#x7684;&#x6570;&#x5B57;&#x3002;&#x7136;&#x540E;&#x6570;&#x5B57;4&#x5165;&#x6808;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6808;&#x9876;&#x5143;&#x7D20;1&#x5C0F;&#x4E8E;4&#xFF0C;&#x4E8E;&#x662F;1&#x5C31;&#x662F;4&#x5DE6;&#x8D77;&#x7B2C;&#x4E00;&#x4E2A;&#x5C0F;&#x7684;&#x6570;&#x5B57;&#x3002;&#x6B64;&#x65F6;&#x6808;&#x91CC;&#x6709;1&#x548C;4&#xFF0C;&#x7136;&#x540E;&#x6570;&#x5B57;6&#x5165;&#x6808;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6808;&#x9876;&#x5143;&#x7D20;4&#x5C0F;&#x4E8E;6&#xFF0C;&#x4E8E;&#x662F;4&#x5C31;&#x662F;6&#x5DE6;&#x8D77;&#x7B2C;&#x4E00;&#x4E2A;&#x5C0F;&#x7684;&#x6570;&#x5B57;&#x3002;&#x6B64;&#x65F6;&#x6808;&#x91CC;&#x6709;1&#xFF0C;4&#xFF0C;6&#xFF0C;&#x7136;&#x540E;&#x6570;&#x5B57;5&#x5165;&#x6808;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6808;&#x9876;&#x5143;&#x7D20;6&#x5927;&#x4E8E;5&#xFF0C;&#x5C06;6&#x79FB;&#x9664;&#xFF0C;&#x6B64;&#x65F6;&#x65B0;&#x7684;&#x6808;&#x9876;&#x5143;&#x7D20;4&#x5C0F;&#x4E8E;5&#xFF0C;&#x90A3;&#x4E48;4&#x5C31;&#x662F;5&#x5DE6;&#x8D77;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5C0F;&#x7684;&#x6570;&#x5B57;&#xFF0C;&#x6700;&#x7EC8;&#x6808;&#x5185;&#x6570;&#x5B57;&#x4E3A; 1&#xFF0C;4&#xFF0C;5&#x3002;</p>
+<p>&#x5355;&#x8C03;&#x9012;&#x51CF;&#x6808;&#x53EF;&#x4EE5;&#x627E;&#x5230;&#x5DE6;&#x8D77;&#x7B2C;&#x4E00;&#x4E2A;&#x6BD4;&#x5F53;&#x524D;&#x6570;&#x5B57;&#x5927;&#x7684;&#x5143;&#x7D20;&#x3002;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x4E3E;&#x4F8B;&#x8BF4;&#x660E;&#x4E86;&#xFF0C;&#x540C;&#x6837;&#x7684;&#x9053;&#x7406;&#xFF0C;&#x5927;&#x5BB6;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x9A8C;&#x8BC1;&#x4E00;&#x4E0B;&#x3002;</p>
+<h2 id="&#x65B9;&#x6CD5;-&#x6700;&#x4F73;-monotonous-stack-&#x5355;&#x8C03;&#x6808;">&#x65B9;&#x6CD5; &#x6700;&#x4F73; monotonous stack &#x5355;&#x8C03;&#x6808;</h2>
+<pre>
+&#x8FD9;&#x4E2A;&#x601D;&#x8DEF;&#x5F88;&#x673A;&#x667A;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x7BA1;nums1, &#x5148;&#x53EA;&#x7528;nums2,
+&#x628A;&#x6240;&#x6709;&#x7684;nums[i]&#x7684;&#x5DE6;&#x8D77;&#x7B2C;&#x4E00;&#x4E2A;&#x6BD4;&#x81EA;&#x5DF1;&#x5927;&#x7684;&#x90FD;&#x627E;&#x51FA;&#x6765;&#x5B58;&#x8FDB;map&#x4E2D;&#x3002;
+&#x51FA;&#x5165;&#x6808;&#x8FC7;&#x7A0B;&#x662F;&#xFF1A;
+nums2[i]&#x5982;&#x679C;&#x6BD4;&#x6808;&#x4E0A;&#x9762;&#x7684;&#x5C0F;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x5165;&#x6808;&#xFF1B;&#x53CD;&#x4E4B;&#xFF0C;&#x5C31;&#x628A;&#x6808;&#x5168;&#x90E8;&#x51FA;&#x7A7A;&#xFF0C;&#x5E76;&#x52A0;&#x5165;
+map&#x4E2D;&#xFF0C;value = nums2[i]&#x3002;
+iteration&#x7ED3;&#x675F;&#x6700;&#x540E;&#x5269;&#x5728;stack&#x91CC;&#x7684;&#xFF0C;&#x8BF4;&#x660E;&#x6CA1;&#x6709;&#x5DE6;&#x8D77;&#x6BD4;&#x81EA;&#x5DF1;&#x5927;&#x7684;&#xFF0C;
+&#x5168;&#x90E8;&#x52A0;&#x5230;map&#x91CC;value = -1.
+</pre>
+
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] nextGreaterElement(<span class="hljs-keyword">int</span>[] nums1, <span class="hljs-keyword">int</span>[] nums2) {
+        Stack&lt;Integer&gt; myStack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();
+        Map&lt;Integer,Integer&gt; myMap = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();
+        <span class="hljs-keyword">int</span>[] re = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[nums1.length];
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> n : nums2){
+            <span class="hljs-keyword">while</span>(!myStack.empty() &amp;&amp; n &gt; myStack.peek()){
+                myMap.put(myStack.pop(), n);
+            }
+            myStack.push(n);
+        }
+        <span class="hljs-keyword">while</span>(!myStack.empty()){
+             myMap.put(myStack.pop(),-<span class="hljs-number">1</span>);
+        }
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; nums1.length; i++){
+            re[i] = myMap.get(nums1[i]);
+        }
+        <span class="hljs-keyword">return</span> re;
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1578,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-p-others.html" class="navigation navigation-prev " aria-label="Previous page: other leetCode problems">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-496-Next-Greater-Element-II.html" class="navigation navigation-next " aria-label="Next page: 503J. Next Greater Element I">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1594,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"496J. Next Greater Element I","level":"1.10.1","depth":2,"next":{"title":"503J. Next Greater Element I","level":"1.10.2","depth":2,"path":"leetCode-496-Next-Greater-Element-II.md","ref":"leetCode-496-Next-Greater-Element-II.md","articles":[]},"previous":{"title":"other leetCode problems","level":"1.10","depth":1,"path":"leetCode-p-others.md","ref":"leetCode-p-others.md","articles":[{"title":"496J. Next Greater Element I","level":"1.10.1","depth":2,"path":"leetCode-496-Next-Greater-Element-I.md","ref":"leetCode-496-Next-Greater-Element-I.md","articles":[]},{"title":"503J. Next Greater Element I","level":"1.10.2","depth":2,"path":"leetCode-496-Next-Greater-Element-II.md","ref":"leetCode-496-Next-Greater-Element-II.md","articles":[]},{"title":"556J. Next Greater Element I","level":"1.10.3","depth":2,"path":"leetCode-496-Next-Greater-Element-III.md","ref":"leetCode-496-Next-Greater-Element-III.md","articles":[]},{"title":"658J. Find K Closest Elements","level":"1.10.4","depth":2,"path":"leetCode-658-Find-K-Closest-Elements.md","ref":"leetCode-658-Find-K-Closest-Elements.md","articles":[]},{"title":"700J. Search in a Binary Search Tree","level":"1.10.5","depth":2,"path":"leetCode-700-Search-in-a-Binary-Search-Tree.md","ref":"leetCode-700-Search-in-a-Binary-Search-Tree.md","articles":[]},{"title":"716J?. Max Stack","level":"1.10.6","depth":2,"path":"leetCode-716-Max-Stack.md","ref":"leetCode-716-Max-Stack.md","articles":[]},{"title":"733J. Flood Fill amazon","level":"1.10.7","depth":2,"path":"leetCode-733-Flood-Fill.md","ref":"leetCode-733-Flood-Fill.md","articles":[]},{"title":"844J. Backspace String Compare","level":"1.10.8","depth":2,"path":"leetCode-844-Backspace-String-Compare.md","ref":"leetCode-844-Backspace-String-Compare.md","articles":[]},{"title":"852J. Peak Index in a Mountain Array","level":"1.10.9","depth":2,"path":"leetCode-852-Peak-Index-in-a-Mountain-Array.md","ref":"leetCode-852-Peak-Index-in-a-Mountain-Array.md","articles":[]},{"title":"876J. Middle of the Linked List","level":"1.10.10","depth":2,"path":"leetCode-876-Middle-of-the-Linked-List.md","ref":"leetCode-876-Middle-of-the-Linked-List.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-496-Next-Greater-Element-I.md","mtime":"2019-11-14T02:44:46.855Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

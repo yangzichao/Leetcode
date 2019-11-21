@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>160J. Intersection of Two Linked Lists · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-169-Majority-Element.html" />
     
+    
+    <link rel="prev" href="leetCode-155-Min-Stack.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -852,7 +854,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.16" data-path="leetCode-160-Intersection-of-Two-Linked-Lists.html">
+        <li class="chapter active" data-level="1.7.16" data-path="leetCode-160-Intersection-of-Two-Linked-Lists.html">
             
                 <a href="leetCode-160-Intersection-of-Two-Linked-Lists.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >160J. Intersection of Two Linked Lists</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,57 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
-<ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
-</ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
-</ul>
+                                <h1 id="160j-intersection-of-two-linked-lists">160J. Intersection of Two Linked Lists</h1>
+<p><a href="https://leetcode.com/problems/intersection-of-two-linked-lists/" target="_blank">https://leetcode.com/problems/intersection-of-two-linked-lists/</a></p>
+<h2 id="method1-hashset">Method1 HashSet</h2>
+<p>&#x7528;Hash&#x8868;&#x5F88;&#x7B80;&#x5355;&#x3002;</p>
+<pre><code class="lang-Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">getIntersectionNode</span><span class="hljs-params">(ListNode headA, ListNode headB)</span> </span>{
+        HashSet&lt;ListNode&gt; mySet = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();
+        <span class="hljs-keyword">while</span>(headA!=<span class="hljs-keyword">null</span>){
+            mySet.add(headA);
+            headA = headA.next;
+        }
+        <span class="hljs-keyword">while</span>(headB!=<span class="hljs-keyword">null</span>){
+            <span class="hljs-keyword">if</span>(mySet.contains(headB)){
+                <span class="hljs-keyword">return</span> headB;
+            }<span class="hljs-keyword">else</span>{
+                headB = headB.next;
+            }
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    }
+}
+</code></pre>
+<h1 id="method2-even-better">Method2: Even better!</h1>
+<p>&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x4E5F;&#x5F88;&#x60CA;&#x8273;&#xFF01;
+<a href="https://leetcode.com/problems/intersection-of-two-linked-lists/discuss/49785/Java-solution-without-knowing-the-difference-in-len!" target="_blank">https://leetcode.com/problems/intersection-of-two-linked-lists/discuss/49785/Java-solution-without-knowing-the-difference-in-len!</a></p>
+<pre>
+&#x539F;&#x7406;&#x662F; &#x8BBE;&#x94FE;&#x8868;1 &#x957F;&#x5EA6;&#x4E3A; a+c &#x94FE;&#x8868;2 &#x957F;&#x5EA6;&#x4E3A; b+c
+c&#x662F;&#x4ED6;&#x4EEC;&#x5171;&#x6709;&#x7684;&#x90E8;&#x5206;&#x7684;&#x957F;&#x5EA6;&#x3002;&#x6307;&#x9488;p1 p2 &#x4E00;&#x8D77;&#x8D70;&#xFF0C;&#x6BCF;&#x6B21;&#x90FD;&#x540C;&#x65F6;&#x8D70;&#x4E00;&#x6B65;&#x3002;
+&#x5982;&#x679C;&#x6307;&#x9488; p1 &#x8D70;&#x5230;1&#x7684;&#x5C3D;&#x5934;&#xFF0C;&#x5C31;&#x8BA9;&#x5B83;&#x8D70;&#x5230;2&#x7684;&#x5934;&#x90E8;&#xFF0C;p2&#x8D70;&#x5230;2&#x7684;&#x5C3D;&#x5934;&#xFF0C;&#x4F60;&#x5C31;&#x8BA9;&#x5B83;&#x8D70;&#x5230;1&#x7684;&#x5934;&#x90E8;&#x3002;
+&#x8FD9;&#x6837;&#x6307;&#x9488;p1 &#x8D70;&#x8FC7; a+c+b, p2 &#x8D70;&#x8FC7; b + c + a&#x3002;
+&#x6BCF;&#x6B21;&#x90FD;&#x53EA;&#x8D70;&#x4E00;&#x6B65;&#x7684;&#x8BDD;&#x4ED6;&#x4EEC;&#x4E00;&#x5B9A;&#x4F1A;&#x5728;&#x4EA4;&#x6C47;&#x5904;&#x76F8;&#x9047;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x4EA4;&#x6C47;&#x5904;&#x5462;&#xFF1F;&#x8BF4;&#x660E; c = 0. &#x4ED6;&#x4EEC;&#x4F1A;
+&#x8D70; a+b &#x548C; b+a &#x5E76;&#x4E14;&#x7EC8;&#x6B62;&#x4E8E; null. &#x4ED6;&#x4EEC;&#x8FD8;&#x662F;&#x76F8;&#x7B49;&#x3002;
+</pre>
+
+<pre><code class="lang-Java"><span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">getIntersectionNode</span><span class="hljs-params">(ListNode headA, ListNode headB)</span> </span>{
+    <span class="hljs-comment">//boundary check</span>
+    <span class="hljs-keyword">if</span>(headA == <span class="hljs-keyword">null</span> || headB == <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+
+    ListNode a = headA;
+    ListNode b = headB;
+
+    <span class="hljs-comment">//if a &amp; b have different len, then we will stop the loop after second iteration</span>
+    <span class="hljs-keyword">while</span>( a != b){
+        <span class="hljs-comment">//for the end of first iteration, we just reset the pointer to the head of another linkedlist</span>
+        a = a == <span class="hljs-keyword">null</span>? headB : a.next;
+        b = b == <span class="hljs-keyword">null</span>? headA : b.next;    
+    }
+
+    <span class="hljs-keyword">return</span> a;
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1591,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-155-Min-Stack.html" class="navigation navigation-prev " aria-label="Previous page: 155J. Min Stack">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-169-Majority-Element.html" class="navigation navigation-next " aria-label="Next page: 169J?. Majority Element">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1607,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"160J. Intersection of Two Linked Lists","level":"1.7.16","depth":2,"next":{"title":"169J?. Majority Element","level":"1.7.17","depth":2,"path":"leetCode-169-Majority-Element.md","ref":"leetCode-169-Majority-Element.md","articles":[]},"previous":{"title":"155J. Min Stack","level":"1.7.15","depth":2,"path":"leetCode-155-Min-Stack.md","ref":"leetCode-155-Min-Stack.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-160-Intersection-of-Two-Linked-Lists.md","mtime":"2019-11-03T20:55:58.294Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

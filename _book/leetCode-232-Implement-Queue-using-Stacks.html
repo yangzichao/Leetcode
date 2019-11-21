@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>232J. Implement Queue using Stacks · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-234-Palindrome-Linked-List.html" />
     
+    
+    <link rel="prev" href="leetCode-229-Majority-Element-II.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -1040,7 +1042,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.10" data-path="leetCode-232-Implement-Queue-using-Stacks.html">
+        <li class="chapter active" data-level="1.8.10" data-path="leetCode-232-Implement-Queue-using-Stacks.html">
             
                 <a href="leetCode-232-Implement-Queue-using-Stacks.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >232J. Implement Queue using Stacks</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,64 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
-<ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
-</ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
-</ul>
+                                <h1 id="232j-implement-queue-using-stacks">232J. Implement Queue using Stacks</h1>
+<p><a href="https://leetcode.com/problems/implement-queue-using-stacks/" target="_blank">https://leetcode.com/problems/implement-queue-using-stacks/</a></p>
+<h2 id="method-best-two-stacks">Method Best: Two Stacks</h2>
+<pre>
+&#x539F;&#x7406;&#x662F;&#x7528;&#x4E24;&#x4E2A;stack, &#x4E00;&#x4E2A;&#x5165;&#x6808; &#x4E00;&#x4E2A;&#x51FA;&#x6808;&#xFF1B;
+&#x5BF9;&#x4E8E; push, &#x6240;&#x6709;&#x7684;push&#x90FD;push&#x5230;input&#x91CC;&#x9762;
+&#x5BF9;&#x4E8E; pop&#x548C;peek&#xFF0C;&#x539F;&#x7406;&#x76F8;&#x540C;&#xFF1A;
+&#x5982;&#x679C; output &#x6808;&#x662F;&#x7A7A;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x628A;input&#x5168;&#x90E8;&#x5012;&#x5165;output&#x91CC;&#xFF0C;
+&#x7136;&#x540E;&#x4ECE;output&#x91CC;peek &#x6216;&#x8005; pop. &#x5982;&#x679C;output&#x4E0D;&#x662F;&#x7A7A;&#x7684;&#xFF0C;&#x90A3;&#x4E48;
+&#x5C31;&#x76F4;&#x63A5;&#x4ECE; output &#x91CC;&#x9762; peek pop&#x3002;&#x6240;&#x4EE5;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x4E00;&#x5B9A;&#x8981;&#x7B49;
+output&#x662F;&#x7A7A;&#x7684;&#x65F6;&#x5019;&#x624D;&#x80FD;pop peek&#x3002;&#x60F3;&#x4E00;&#x60F3;&#x4E5F;&#x5F88;&#x6709;&#x9053;&#x7406;&#xFF0C;&#x4E0D;&#x96BE;&#x3002;
+</pre>
+
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyQueue</span> </span>{
+    Stack&lt;Integer&gt; input = <span class="hljs-keyword">new</span> Stack&lt;&gt;();
+    Stack&lt;Integer&gt; output = <span class="hljs-keyword">new</span> Stack&lt;&gt;();
+
+    <span class="hljs-comment">/** Initialize your data structure here. */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MyQueue</span><span class="hljs-params">()</span> </span>{
+
+    }
+
+    <span class="hljs-comment">/** Push element x to the back of queue. */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
+        input.push(x);
+    }
+
+    <span class="hljs-comment">/** Removes the element from in front of queue and returns that element. */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>{
+        peek();
+        <span class="hljs-keyword">return</span> output.pop();
+    }
+
+    <span class="hljs-comment">/** Get the front element. */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">peek</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">if</span>(output.empty()){
+           <span class="hljs-keyword">while</span>(!input.empty()){
+                output.push(input.pop());
+            }
+        }
+        <span class="hljs-keyword">return</span> output.peek();
+    }
+
+    <span class="hljs-comment">/** Returns whether the queue is empty. */</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> input.empty() &amp;&amp; output.empty();
+    }
+}
+
+<span class="hljs-comment">/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */</span>
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1598,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-229-Majority-Element-II.html" class="navigation navigation-prev " aria-label="Previous page: 229J. Majority Element II">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-234-Palindrome-Linked-List.html" class="navigation navigation-next " aria-label="Next page: 234J. Palindrome Linked List">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1614,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"232J. Implement Queue using Stacks","level":"1.8.10","depth":2,"next":{"title":"234J. Palindrome Linked List","level":"1.8.11","depth":2,"path":"leetCode-234-Palindrome-Linked-List.md","ref":"leetCode-234-Palindrome-Linked-List.md","articles":[]},"previous":{"title":"229J. Majority Element II","level":"1.8.9","depth":2,"path":"leetCode-229-Majority-Element-II.md","ref":"leetCode-229-Majority-Element-II.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-232-Implement-Queue-using-Stacks.md","mtime":"2019-11-14T21:58:36.850Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

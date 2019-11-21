@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>274J. H-Index · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-275-H-Index-II.html" />
     
+    
+    <link rel="prev" href="leetCode-260-Single-Number-III.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -1131,7 +1133,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.17" data-path="leetCode-274-H-Index.html">
+        <li class="chapter active" data-level="1.8.17" data-path="leetCode-274-H-Index.html">
             
                 <a href="leetCode-274-H-Index.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >274J. H-Index</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,69 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
-<ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
-</ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
-</ul>
+                                <h1 id="274j--h-index">274J  H-Index.</h1>
+<p><a href="https://leetcode.com/problems/h-index/" target="_blank">https://leetcode.com/problems/h-index/</a></p>
+<p>&#x5176;&#x5B9E;&#x662F;&#x4E00;&#x4E2A;&#x6392;&#x5E8F;&#x9898;</p>
+<h2 id="method1-&#x6392;&#x5E8F;&#x518D;&#x627E;h&#x56E0;&#x5B50;">Method1: &#x6392;&#x5E8F;&#x518D;&#x627E;H&#x56E0;&#x5B50;</h2>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hIndex</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] citations)</span> </span>{
+        <span class="hljs-keyword">int</span> h = <span class="hljs-number">0</span>;
+        Arrays.sort(citations);
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = citations.length - <span class="hljs-number">1</span>; i &gt; -<span class="hljs-number">1</span>; i--){
+            <span class="hljs-keyword">if</span>(citations[i] &gt;= citations.length - i ){
+                h++;
+            }
+        }
+        <span class="hljs-keyword">return</span> h;
+    }
+}
+</code></pre>
+<h2 id="method2-&#x65F6;&#x95F4;&#x65B9;&#x6CD5;&#x66F4;&#x4F73;-counting-sort--bucket-sort">Method2: &#x65F6;&#x95F4;&#x65B9;&#x6CD5;&#x66F4;&#x4F73; Counting Sort / Bucket Sort</h2>
+<pre>
+&#x6570;&#x7EC4;&#x7F16;&#x53F7;
+0 1 2 3 4
+&#x5F15;&#x7528;&#x6570;
+3 0 6 1 5
+counting sort, &#x65B0;&#x5EFA;&#x4E00;&#x4E2A;&#x6BD4;&#x539F;&#x6570;&#x7EC4;&#x5927;&#x4E00;&#x7684;&#x6570;&#x7EC4;&#xFF0C;&#x8BA1;&#x7B97;&#x503C;&#x4E3A; x &lt; n &#x7684;&#x4E2A;&#x6570;
+0 1 2 3 4 5
+&#x5927;&#x4E8E; n &#x7684;&#x90FD;&#x5B58;&#x5728; n + 1&#x7684;&#x683C;&#x5B50;&#x91CC;
+&#x7B2C;&#x4E00;&#x4E2A; 3
+0 1 2 3 4 5
+0 0 0 1 0 0
+&#x7B2C;&#x4E8C;&#x4E2A; 0
+0 1 2 3 4 5
+1 0 0 1 0 0
+&#x7B2C;&#x4E09;&#x4E2A; 6
+0 1 2 3 4 5
+1 0 0 1 0 1
+&#x7B2C;&#x56DB;&#x4E2A; 1
+0 1 2 3 4 5
+1 1 0 1 0 1
+&#x7B2C;&#x4E94;&#x4E2A; 5
+0 1 2 3 4 5
+1 1 0 1 0 2
+&#x6B64;&#x65F6;&#x8FD9;&#x4E2A;&#x65B0;&#x6570;&#x7EC4;&#x5DF2;&#x7ECF;&#x53D8;&#x76F8;&#x6392;&#x597D;&#x5E8F;&#x4E86;
+&#x4ECE;&#x540E;&#x5F80;&#x524D;&#x52A0;&#x603B;&#x6570;&#xFF0C;&#x5F53;sum &gt;= i &#x7684;&#x65F6;&#x5019;&#xFF0C;i &#x5C31;&#x662F;&#x4E86;h&#x56E0;&#x5B50;&#x4E86;
+</pre>
+
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">hIndex</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] citations)</span> </span>{
+        <span class="hljs-keyword">int</span> n = citations.length;
+        <span class="hljs-keyword">int</span>[] countSort = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n+<span class="hljs-number">1</span>];
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> c : citations){
+            countSort[Math.min(n,c)]++;
+        }
+        <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> h = n; h &gt; -<span class="hljs-number">1</span>;h--){
+            sum+=countSort[h];
+            <span class="hljs-keyword">if</span>(sum &gt;= h){
+                <span class="hljs-keyword">return</span> h;
+            }
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1603,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-260-Single-Number-III.html" class="navigation navigation-prev " aria-label="Previous page: x260J. Single Number III">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-275-H-Index-II.html" class="navigation navigation-next " aria-label="Next page: 275J. H-Index II">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1619,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"274J. H-Index","level":"1.8.17","depth":2,"next":{"title":"275J. H-Index II","level":"1.8.18","depth":2,"path":"leetCode-275-H-Index-II.md","ref":"leetCode-275-H-Index-II.md","articles":[]},"previous":{"title":"x260J. Single Number III","level":"1.8.16","depth":2,"path":"leetCode-260-Single-Number-III.md","ref":"leetCode-260-Single-Number-III.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-274-H-Index.md","mtime":"2019-11-11T02:49:05.785Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

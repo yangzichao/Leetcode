@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>277J. Find the Celebrity · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-283-Move-Zeroes.html" />
     
+    
+    <link rel="prev" href="leetCode-275-H-Index-II.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -1157,7 +1159,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.19" data-path="leetCode-277-Find-the-Celebrity.html">
+        <li class="chapter active" data-level="1.8.19" data-path="leetCode-277-Find-the-Celebrity.html">
             
                 <a href="leetCode-277-Find-the-Celebrity.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >277J. Find the Celebrity</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,36 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
-<ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
-</ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
-</ul>
+                                <h1 id="277j-find-the-celebrity">277J. Find the Celebrity</h1>
+<p><a href="https://leetcode.com/problems/find-the-celebrity/" target="_blank">https://leetcode.com/problems/find-the-celebrity/</a>
+Suppose you are at a party with n people (labeled from 0 to n - 1) and among them, there may exist one celebrity. The definition of a celebrity is that all the other n - 1 people know him/her but he/she does not know any of them.</p>
+<p>Now you want to find out who the celebrity is or verify that there is not one. The only thing you are allowed to do is to ask questions like: &quot;Hi, A. Do you know B?&quot; to get information of whether A knows B. You need to find out the celebrity (or verify there is not one) by asking as few questions as possible (in the asymptotic sense).</p>
+<p>You are given a helper function bool knows(a, b) which tells you whether A knows B. Implement a function int findCelebrity(n). There will be exactly one celebrity if he/she is in the party. Return the celebrity&apos;s label if there is a celebrity in the party. If there is no celebrity, return -1.</p>
+<p>&#x7B80;&#x800C;&#x8A00;&#x4E4B;&#xFF0C;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x540D;&#x4EBA;&#x3002;&#x540D;&#x4EBA;&#x4E0D;&#x77E5;&#x9053;&#x4EFB;&#x4F55;&#x4EBA;&#x3002;&#x4EFB;&#x4F55;&#x4EBA;&#x90FD;&#x77E5;&#x9053;&#x540D;&#x4EBA;&#x3002;</p>
+<h2 id="method-two-pass-on">Method: Two Pass O(N)</h2>
+<p>&#x539F;&#x7406;&#x662F;&#x5047;&#x8BBE;&#x7B2C;&#x4E00;&#x4F4D;&#x662F;&#x540D;&#x4EBA;&#x7684;&#x6807;&#x7B7E;&#x3002;&#x90A3;&#x4E48;&#x90A3;&#x540D;&#x4EBA;&#x548C;&#x4E0B;&#x4E00;&#x4E2A;&#x53BB;&#x6BD4;&#x8F83;&#x3002;
+&#x5982;&#x679C;&#x540D;&#x4EBA;&#x77E5;&#x9053;&#x4E0B;&#x4E00;&#x4E2A;&#x4EBA;&#xFF0C;&#x8BF4;&#x660E;&#x7B2C;0&#x4F4D;&#x80AF;&#x5B9A;&#x4E0D;&#x662F;&#x540D;&#x4EBA;&#xFF0C;&#x8BA9;&#x4E0B;&#x4E00;&#x4E2A;&#x4EBA;&#x505A;&#x6682;&#x65F6;&#x540D;&#x4EBA;&#x3002;
+&#x5982;&#x679C;&#x540D;&#x4EBA;&#x4E0D;&#x77E5;&#x9053;&#x4E0B;&#x4E00;&#x4E2A;&#x4EBA;&#xFF0C;&#x8BF4;&#x660E;&#x4E0B;&#x4E00;&#x4E2A;&#x4EBA;&#x80AF;&#x5B9A;&#x4E0D;&#x662F;&#x540D;&#x4EBA;&#xFF0C;&#x7EE7;&#x7EED;&#x6BD4;&#x8F83;&#x4E0B;&#x4E0B;&#x4E2A;&#x4EBA;&#x3002;
+&#x8FD9;&#x6837;&#x6BCF;&#x6B21;&#x6BD4;&#x8F83;&#x90FD;&#x4F1A;&#x51CF;&#x5C11;&#x4E00;&#x4E2A;&#x5019;&#x9009;&#x8005;&#x3002;
+&#x5230;&#x6700;&#x540E;&#x4F1A;&#x5269;&#x4E0B;&#x552F;&#x4E00;&#x7684;&#x4E00;&#x4E2A;&#x5019;&#x9009;&#x8005;&#xFF0C;&#x4E3A;&#x4E86;&#x786E;&#x8BA4;&#xFF0C;&#x6211;&#x4EEC;&#x4ECE;&#x5934;&#x5230;&#x5C3E;&#x8FC7;&#x4E00;&#x904D;&#x770B;&#x770B;&#x4ED6;&#x662F;&#x4E0D;&#x662F;
+&#x4E00;&#x4E2A;&#x4EBA;&#x4E5F;&#x4E0D;&#x8BA4;&#x8BC6;&#xFF0C;&#x662F;&#x4E0D;&#x662F;&#x6240;&#x6709;&#x4EBA;&#x90FD;&#x8BA4;&#x8BC6;&#x4ED6;&#x3002;&#x5F53;&#x7136;&#x8FD8;&#x8981;&#x6CE8;&#x610F;&#x6392;&#x9664;&#x4ED6;&#x81EA;&#x5DF1;&#x8BA4;&#x8BC6;&#x81EA;&#x5DF1;&#x7684;&#x60C5;&#x51B5;&#x3002;</p>
+<pre><code class="lang-Java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Relation</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findCelebrity</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{
+        <span class="hljs-keyword">int</span> cele = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; n; i++ ){
+            <span class="hljs-keyword">if</span>(knows(cele,i)){
+                cele = i;
+            }
+        }
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++){
+           <span class="hljs-keyword">if</span>((!knows(i,cele)||knows(cele,i))&amp;&amp;(i!=cele)){
+               <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;
+           }
+        }
+        <span class="hljs-keyword">return</span> cele;
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1570,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-275-H-Index-II.html" class="navigation navigation-prev " aria-label="Previous page: 275J. H-Index II">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-283-Move-Zeroes.html" class="navigation navigation-next " aria-label="Next page: 283J. Move Zeroes">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1586,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"277J. Find the Celebrity","level":"1.8.19","depth":2,"next":{"title":"283J. Move Zeroes","level":"1.8.20","depth":2,"path":"leetCode-283-Move-Zeroes.md","ref":"leetCode-283-Move-Zeroes.md","articles":[]},"previous":{"title":"275J. H-Index II","level":"1.8.18","depth":2,"path":"leetCode-275-H-Index-II.md","ref":"leetCode-275-H-Index-II.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-277-Find-the-Celebrity.md","mtime":"2019-11-01T03:09:27.334Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>143J. Reorder List · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-144-Binary-Tree-Preorder-Traversal.html" />
     
+    
+    <link rel="prev" href="leetCode-141-Linked-List-Cycle.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -787,7 +789,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.11" data-path="leetCode-143-Reorder-List.html">
+        <li class="chapter active" data-level="1.7.11" data-path="leetCode-143-Reorder-List.html">
             
                 <a href="leetCode-143-Reorder-List.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >143J. Reorder List</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
-<ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
-</ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
-</ul>
+                                <h1 id="143j-reorder-list">143J. Reorder List</h1>
+<p>&#x601D;&#x60F3;&#x662F;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">reorderList</span><span class="hljs-params">(ListNode head)</span> </span>{
+        ListNode slow = head, fast = head, temp = head;
+        <span class="hljs-comment">//&#x5148;&#x627E;&#x5230;&#x94FE;&#x8868;&#x7684;&#x4E2D;&#x95F4;</span>
+        <span class="hljs-keyword">while</span>(fast!=<span class="hljs-keyword">null</span>&amp;&amp;fast.next!=<span class="hljs-keyword">null</span>){
+            temp = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        <span class="hljs-comment">//&#x7136;&#x540E;&#x4FDD;&#x8BC1;&#x540E;&#x534A;&#x6BB5;&#x6BD4;&#x8F83;&#x77ED;&#x3002;</span>
+        <span class="hljs-keyword">if</span>(fast != <span class="hljs-keyword">null</span>){
+            temp = slow;
+            slow = slow.next;
+        }
+        <span class="hljs-comment">//&#x628A;&#x4E24;&#x4E2A;&#x5B50;&#x94FE;&#x8868;&#x65AD;&#x5F00;</span>
+        <span class="hljs-keyword">if</span>(temp!=<span class="hljs-keyword">null</span>){
+           temp.next = <span class="hljs-keyword">null</span>;
+        }
+       <span class="hljs-comment">//&#x7FFB;&#x8F6C;&#x540E;&#x94FE;&#x8868;</span>
+        slow = reverse(slow);
+        <span class="hljs-comment">// &#x5408;&#x5E76;&#x94FE;&#x8868;</span>
+        <span class="hljs-keyword">while</span>(slow != <span class="hljs-keyword">null</span>){
+            temp = head.next;
+            head.next = slow;
+            slow = slow.next;
+            head.next.next = temp;
+            head = head.next.next;
+        }
+    }
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> ListNode <span class="hljs-title">reverse</span><span class="hljs-params">(ListNode head)</span> </span>{
+        ListNode prev = <span class="hljs-keyword">null</span>;
+        ListNode curr = head;
+        <span class="hljs-keyword">while</span> (curr != <span class="hljs-keyword">null</span>) {
+            ListNode nextTemp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextTemp;
+        }
+        <span class="hljs-keyword">return</span> prev;
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1584,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-141-Linked-List-Cycle.html" class="navigation navigation-prev " aria-label="Previous page: 141J. Linked List Cycle">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-144-Binary-Tree-Preorder-Traversal.html" class="navigation navigation-next " aria-label="Next page: 144J. Binary Tree Preorder Traversal">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1600,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"143J. Reorder List","level":"1.7.11","depth":2,"next":{"title":"144J. Binary Tree Preorder Traversal","level":"1.7.12","depth":2,"path":"leetCode-144-Binary-Tree-Preorder-Traversal.md","ref":"leetCode-144-Binary-Tree-Preorder-Traversal.md","articles":[]},"previous":{"title":"141J. Linked List Cycle","level":"1.7.10","depth":2,"path":"leetCode-141-Linked-List-Cycle.md","ref":"leetCode-141-Linked-List-Cycle.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-143-Reorder-List.md","mtime":"2019-11-08T03:43:41.926Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

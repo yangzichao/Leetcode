@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>658J. Find K Closest Elements · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-700-Search-in-a-Binary-Search-Tree.html" />
     
+    
+    <link rel="prev" href="leetCode-496-Next-Greater-Element-III.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -1338,7 +1340,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.4" data-path="leetCode-658-Find-K-Closest-Elements.html">
+        <li class="chapter active" data-level="1.10.4" data-path="leetCode-658-Find-K-Closest-Elements.html">
             
                 <a href="leetCode-658-Find-K-Closest-Elements.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >658J. Find K Closest Elements</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,34 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
-<ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
-</ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
-</ul>
+                                <h1 id="658j-find-k-closest-elements">658J. Find K Closest Elements</h1>
+<p><a href="https://leetcode.com/problems/find-k-closest-elements/" target="_blank">https://leetcode.com/problems/find-k-closest-elements/</a>
+&#x8FD9;&#x4E2A;&#x9898;&#x975E;&#x5E38;&#x673A;&#x667A;
+Binary Search&#x91CC;&#x975E;&#x5E38;&#x673A;&#x667A;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<h2 id="method-best">Method Best:</h2>
+<p>&#x5176;&#x539F;&#x7406;&#x662F;<img src="imgs/LC658.JPG" alt="&#x4E0B;&#x56FE;">
+&#x56E0;&#x6B64;&#x5199;&#x51FA;&#x4E86;&#x5982;&#x4E0B;&#x7684;binary search &#x4EE3;&#x7801;&#xFF0C;&#x582A;&#x79F0;&#x673A;&#x667A;&#x3002;</p>
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">findClosestElements</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] arr, <span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> x)</span> </span>{
+        <span class="hljs-keyword">int</span> left = <span class="hljs-number">0</span>, right = arr.length - <span class="hljs-number">1</span> - k;
+
+        <span class="hljs-keyword">while</span>(left &lt;= right){
+            <span class="hljs-keyword">int</span> pivot = left + (right - left)/<span class="hljs-number">2</span>;
+            <span class="hljs-keyword">if</span>(Math.abs(arr[pivot] - x) &gt; Math.abs(arr[pivot + k] - x)){
+                left = pivot + <span class="hljs-number">1</span>;
+            }<span class="hljs-keyword">else</span>{
+                right = pivot - <span class="hljs-number">1</span>;
+            }
+        }
+        <span class="hljs-comment">// System.out.println(left);</span>
+        List&lt;Integer&gt; output = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = left; i &lt; left + k; i++){
+            output.add(arr[i]);
+        }
+        <span class="hljs-keyword">return</span> output;
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1568,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-496-Next-Greater-Element-III.html" class="navigation navigation-prev " aria-label="Previous page: 556J. Next Greater Element I">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-700-Search-in-a-Binary-Search-Tree.html" class="navigation navigation-next " aria-label="Next page: 700J. Search in a Binary Search Tree">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1584,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"658J. Find K Closest Elements","level":"1.10.4","depth":2,"next":{"title":"700J. Search in a Binary Search Tree","level":"1.10.5","depth":2,"path":"leetCode-700-Search-in-a-Binary-Search-Tree.md","ref":"leetCode-700-Search-in-a-Binary-Search-Tree.md","articles":[]},"previous":{"title":"556J. Next Greater Element I","level":"1.10.3","depth":2,"path":"leetCode-496-Next-Greater-Element-III.md","ref":"leetCode-496-Next-Greater-Element-III.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-658-Find-K-Closest-Elements.md","mtime":"2019-11-17T21:43:45.623Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

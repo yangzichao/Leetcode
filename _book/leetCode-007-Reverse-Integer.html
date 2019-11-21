@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>007J. Reverse Integer · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-009-Palindrome-Number.html" />
     
+    
+    <link rel="prev" href="leetCode-002-Add-Two-Numbers.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -300,7 +302,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.3" data-path="leetCode-007-Reverse-Integer.html">
+        <li class="chapter active" data-level="1.6.3" data-path="leetCode-007-Reverse-Integer.html">
             
                 <a href="leetCode-007-Reverse-Integer.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >007J. Reverse Integer</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,60 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
+                                <h1 id="007-reverse-integer">007. Reverse Integer</h1>
+<p>Given a 32-bit signed integer, reverse digits of an integer.</p>
+<p>Example 1:<br>Input: 123
+Output: 321</p>
+<p>Example 2:<br>Input: -123
+Output: -321</p>
+<p>Example 3:<br>Input: 120
+Output: 21</p>
+<p>Note:<br>Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [&#x2212;2^31,  2^31 &#x2212; 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.</p>
+<p>&#x601D;&#x8DEF;:</p>
+<p>&#x6574;&#x6570; x, &#x4EE4;&#x9664;&#x5341;&#x7684;&#x4F59;&#x6570; x%10 = remain, &#x8FD4;&#x56DE;&#x503C; rev = 0
+&#x7FFB;&#x8F6C;&#x5B83;&#x76F8;&#x5F53;&#x4E8E;:</p>
 <ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
+<li>&#x4E0D;&#x505C;&#x7684;&#x628A;&#x65E7;&#x7684;rev * 10,&#x5347;&#x4E00;&#x4F4D;&#xFF0C;&#x52A0;&#x4E0A;&#x65B0;&#x7684;remain &#x5F97;&#x5230;&#x65B0;&#x7684; rev</li>
+<li>&#x7136;&#x540E;&#x7528; x/10 &#x7ED9;x&#x964D;&#x4F4D;&#xFF0C;&#x5F97;&#x5230;&#x65B0;&#x7684; x</li>
 </ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
+<p>&#x4F46;&#x662F;&#x8981;&#x6C42;&#x4E0D;&#x8D85;&#x51FA;&#x6574;&#x578B;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x90A3;&#x4E48;&#x518D;&#x5F97;&#x5230;&#x6700;&#x7EC8;&#x7684;&#x5341;&#x4F4D; rev&#x4E4B;&#x524D;&#xFF0C;
+&#x8981;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#xFF0C;&#x662F;&#x5426; &#x51C6;&#x5907;&#x4E58;10&#x7684;rev&#x5927;&#x4E8E; 2^31/10&#xFF0C;&#x662F;&#x7684;&#x8BDD;&#x5C31;&#x8FD4;&#x56DE;0&#xFF1B;
+&#x5982;&#x679C;&#x7B49;&#x4E8E;&#xFF0C;&#x5C31;&#x770B;&#x51C6;&#x5907;&#x52A0;&#x4E0A;&#x7684;&#x4F59;&#x6570; &#x662F;&#x5426;&#x5927;&#x4E8E;7&#xFF08;&#x6B63;&#x6570;&#xFF09; &#x6216; 8&#xFF08;&#x8D1F;&#x6570;&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5C31;&#x8FD4;&#x56DE;0&#xFF1B;</p>
+<h2 id="method-one">Method One:</h2>
+<p>&#x57FA;&#x672C;&#x7684;&#x64CD;&#x4F5C;&#x975E;&#x5E38;&#x7B80;&#x5355;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">int</span> rev = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">int</span> remain = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">while</span>(x != <span class="hljs-number">0</span> ){
+  remain = x % <span class="hljs-number">10</span>;
+  rev = rev*<span class="hljs-number">10</span> + remain;
+  x /= <span class="hljs-number">10</span>;
+}
+</code></pre>
+<p>&#x96BE;&#x70B9;&#x662F;&#x5982;&#x4F55;&#x5224;&#x65AD;&#x662F;&#x5426;&#x8981;&#x5927;&#x4E8E;&#x6216;&#x8005;&#x5C0F;&#x4E8E;int&#x578B;&#x7684;&#x8FB9;&#x754C;&#x5462;&#xFF1F;<br>&#x65B9;&#x6CD5;&#x662F;&#x5728; rev * 10 + remain &#x4E4B;&#x524D;&#x5224;&#x65AD;&#x3002;<br>&#x4E00;&#x4E2A;&#x8BC0;&#x7A8D;&#x662F;&#x53EF;&#x4EE5;&#x7528; Integer.MAX_VALUE &#x548C; Integer.MIN_VALUE &#x5F97;&#x5230;&#x6700;&#x5927;&#x548C;&#x6700;&#x5C0F;&#x7684;&#x6574;&#x578B;&#x503C;&#x3002;</p>
+<p>java &#x4E2D; &#x6574;&#x578B;&#x7684;&#x6700;&#x5927;&#x6700;&#x5C0F;&#x503C;&#x5176;&#x8BED;&#x6CD5;&#x5982;&#x4E0B;</p>
 <ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
+<li>Integer.MIN_VALUE</li>
+<li>Integer.MAX_VALUE</li>
+<li>-2147483648 = -2^31</li>
+<li>2147483647 = 2^31 - 1</li>
 </ul>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">reverse</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{      
+        <span class="hljs-keyword">int</span> rev = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> remain = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span>(x != <span class="hljs-number">0</span>){
+            remain = x%<span class="hljs-number">10</span>;
+            <span class="hljs-keyword">if</span> (rev &gt; Integer.MAX_VALUE/<span class="hljs-number">10</span> ){<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+            <span class="hljs-keyword">if</span> (rev == Integer.MAX_VALUE &amp;&amp;  remain &gt; Integer.MAX_VALUE%<span class="hljs-number">10</span> ){<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+            <span class="hljs-keyword">if</span> (rev &lt; Integer.MIN_VALUE/<span class="hljs-number">10</span> ){<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+            <span class="hljs-keyword">if</span> (rev == Integer.MIN_VALUE &amp;&amp;  remain &gt; Integer.MIN_VALUE%<span class="hljs-number">10</span> ){<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;}
+            rev = rev*<span class="hljs-number">10</span> + remain;
+            x = x/<span class="hljs-number">10</span>;
+        }
+        <span class="hljs-keyword">return</span> rev;
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1594,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-002-Add-Two-Numbers.html" class="navigation navigation-prev " aria-label="Previous page: 002J(2/2). Add Two Numbers">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-009-Palindrome-Number.html" class="navigation navigation-next " aria-label="Next page: 009J. Palindrome Number">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1610,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"007J. Reverse Integer","level":"1.6.3","depth":2,"next":{"title":"009J. Palindrome Number","level":"1.6.4","depth":2,"path":"leetCode-009-Palindrome-Number.md","ref":"leetCode-009-Palindrome-Number.md","articles":[]},"previous":{"title":"002J(2/2). Add Two Numbers","level":"1.6.2","depth":2,"path":"leetCode-002-Add-Two-Numbers.md","ref":"leetCode-002-Add-Two-Numbers.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-007-Reverse-Integer.md","mtime":"2019-09-29T06:34:33.984Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

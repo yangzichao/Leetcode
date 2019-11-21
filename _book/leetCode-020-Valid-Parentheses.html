@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>020J. Valid Parentheses · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-021-Merge-Two-Sorted-Lists.html" />
     
+    
+    <link rel="prev" href="leetCode-019-Remove-Nth-Node-From-End-of-List.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -404,7 +406,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.11" data-path="leetCode-020-Valid-Parentheses.html">
+        <li class="chapter active" data-level="1.6.11" data-path="leetCode-020-Valid-Parentheses.html">
             
                 <a href="leetCode-020-Valid-Parentheses.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >020J. Valid Parentheses</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,53 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
-<ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
-</ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
-</ul>
+                                <h1 id="020j-valid-parentheses">020J. Valid Parentheses</h1>
+<p>Given a string containing just the characters &apos;(&apos;, &apos;)&apos;, &apos;{&apos;, &apos;}&apos;, &apos;[&apos; and &apos;]&apos;, determine if the input string is valid.</p>
+<p>An input string is valid if:</p>
+<p>Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Note that an empty string is also considered valid.</p>
+<p>Example 1:</p>
+<p>Input: &quot;()&quot;
+Output: true
+Example 2:</p>
+<p>Input: &quot;()[]{}&quot;
+Output: true
+Example 3:</p>
+<p>Input: &quot;(]&quot;
+Output: false
+Example 4:</p>
+<p>Input: &quot;([)]&quot;
+Output: false
+Example 5:</p>
+<p>Input: &quot;{[]}&quot;
+Output: true</p>
+<h2 id="best-method-stack">Best Method: Stack</h2>
+<p>&#x62EC;&#x53F7;&#x7CFB;&#x7EDF;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5B8C;&#x7F8E;&#x7684;&#x5148;&#x8FDB;&#x540E;&#x51FA; FILO.
+&#x4EE5;&#x4E0B;&#x7684;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;&#x7528;&#x4E00;&#x4E2A;dummytail&#x662F;&#x4E3A;&#x4E86;&#x9632;&#x6B62;peek&#x65B9;&#x6CD5;&#x770B;&#x5230;&#x7A7A;&#x62A5;&#x9519;&#x3002;</p>
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isValid</span><span class="hljs-params">(String s)</span> </span>{        
+        Stack&lt;Character&gt; stack = <span class="hljs-keyword">new</span> Stack&lt;&gt;();
+        stack.push(<span class="hljs-string">&apos;d&apos;</span>); <span class="hljs-comment">// dummytail;</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; s.length(); i += <span class="hljs-number">1</span>){
+           <span class="hljs-keyword">if</span>(s.charAt(i) == <span class="hljs-string">&apos;)&apos;</span>&amp;&amp; stack.peek() == <span class="hljs-string">&apos;(&apos;</span>){
+               stack.pop();
+           }
+           <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(s.charAt(i) == <span class="hljs-string">&apos;]&apos;</span>&amp;&amp; stack.peek() == <span class="hljs-string">&apos;[&apos;</span>){
+               stack.pop();
+           }
+           <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(s.charAt(i) == <span class="hljs-string">&apos;}&apos;</span>&amp;&amp; stack.peek() == <span class="hljs-string">&apos;{&apos;</span>){
+               stack.pop();
+           }
+           <span class="hljs-keyword">else</span>{
+               stack.push(s.charAt(i));
+           }
+        }
+        stack.pop();<span class="hljs-comment">// pop dummytail</span>
+        <span class="hljs-keyword">return</span> stack.empty();
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1587,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-019-Remove-Nth-Node-From-End-of-List.html" class="navigation navigation-prev " aria-label="Previous page: 019J. Remove Nth Node From End of List">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-021-Merge-Two-Sorted-Lists.html" class="navigation navigation-next " aria-label="Next page: 021J(2/2). Merge Two Sorted Lists">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1603,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"020J. Valid Parentheses","level":"1.6.11","depth":2,"next":{"title":"021J(2/2). Merge Two Sorted Lists","level":"1.6.12","depth":2,"path":"leetCode-021-Merge-Two-Sorted-Lists.md","ref":"leetCode-021-Merge-Two-Sorted-Lists.md","articles":[]},"previous":{"title":"019J. Remove Nth Node From End of List","level":"1.6.10","depth":2,"path":"leetCode-019-Remove-Nth-Node-From-End-of-List.md","ref":"leetCode-019-Remove-Nth-Node-From-End-of-List.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-020-Valid-Parentheses.md","mtime":"2019-10-22T15:08:34.724Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>048J. Rotate Image · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-050-Pow-x-n.html" />
     
+    
+    <link rel="prev" href="leetCode-041-First-Missing-Positive.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -495,7 +497,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.18" data-path="leetCode-048-Rotate-Image.html">
+        <li class="chapter active" data-level="1.6.18" data-path="leetCode-048-Rotate-Image.html">
             
                 <a href="leetCode-048-Rotate-Image.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >048J. Rotate Image</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,46 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
-<ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
-</ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
-</ul>
+                                <h1 id="048-rotate-image">048. Rotate Image</h1>
+<h2 id="method-best">Method Best</h2>
+<p>&#x5982;&#x4F55;&#x65CB;&#x8F6C;&#x4E00;&#x4E2A;&#x77E9;&#x9635;90&#x5EA6;&#xFF1F;
+&#x8BBE;&#x60F3;&#x4E00;&#x4E2A;&#x77E9;&#x9635; n <em> n, &#x65CB;&#x8F6C;90&#x5EA6;&#x76F8;&#x5F53;&#x4E8E;&#x628A;&#x4ED6;&#x7684;
+&#x5DE6;&#x4E0A;&#x89D2; -&gt; &#x53F3;&#x4E0A;&#x89D2; -&gt; &#x53F3;&#x4E0B;&#x89D2; -&gt; &#x5DE6;&#x4E0B;&#x89D2; -&gt; &#x5DE6;&#x4E0A;&#x89D2;
+n &#x4E3A;&#x5076;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5927;&#x77E9;&#x9635;&#x53EF;&#x4EE5;&#x5206;&#x6210;&#x56DB;&#x4E2A;&#x5C0F;&#x65B9;&#x9635;&#x3002;
+n &#x4E3A;&#x5947;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x77E9;&#x9635;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E2D;&#x5FC3;&#x7684;&#x70B9;&#x548C;&#x56DB;&#x4E2A;&#x957F;&#x6BD4;&#x5BBD;&#x591A;1&#x7684;&#x957F;&#x65B9;&#x5F62;&#x3002;
+&#x4ECE;&#x5DE6;&#x4E0A;&#x7684;&#x5C0F;&#x77E9;&#x9635;&#x5F00;&#x59CB;&#x5FAA;&#x73AF;&#xFF0C;&#x7531;&#x4E8E;&#x4ECE;0&#x5F00;&#x59CB;&#x6807;&#x8BB0;&#xFF0C;
+&#x5219;&#x4E00;&#x4E2A;&#x8FB9;&#x4E0D;&#x8D85;&#x8FC7; n/2.0, &#x6216;&#x8005;&#x8BF4;n/2&#x5411;&#x4E0A;&#x53D6;&#x6574;&#xFF1B;
+&#x4E00;&#x4E2A;&#x8FB9;&#x4E0D;&#x8D85;&#x8FC7; n/2, &#x6216;&#x8005;&#x8BF4;n/2&#x5411;&#x4E0B;&#x53D6;&#x6574;&#xFF1B;
+&#x4E3E;&#x4F8B;&#xFF0C;&#x4E00;&#x4E2A; 3</em>3&#x7684;&#x77E9;&#x9635;&#xFF0C;
+1 2 3
+4 5 6
+7 8 9
+&#x6211;&#x4EEC;&#x53D6; 1 2 &#x6216;&#x8005; 1 4 &#x90FD;&#x884C;&#x3002;
+&#x4EE4; i,j &#x4ECE;0&#x5F00;&#x59CB;&#x53D6;&#x503C;&#xFF0C;
+&#x5DE6;&#x4E0A;&#x7684;&#x5750;&#x6807;&#x4E3A; (    i    ,     j    )
+&#x53F3;&#x4E0A;&#x7684;&#x5750;&#x6807;&#x4E3A; (    j    , n - 1 - i)
+&#x5DE6;&#x4E0B;&#x7684;&#x5750;&#x6807;&#x4E3A; (n - 1 - j,     i    )
+&#x53F3;&#x4E0B;&#x7684;&#x5750;&#x6807;&#x4E3A; (n - 1 - i, n - 1 - j&#xFF09;
+&#x4F8B;&#xFF1A;
+3 3 1 4 4
+3 3 2 4 4
+1 2 0 2 1
+6 6 2 5 5
+6 6 1 5 5</p>
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">rotate</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] matrix)</span> </span>{
+        <span class="hljs-keyword">for</span>( <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; matrix.length/<span class="hljs-number">2.0</span>; i ++ ){
+            <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; matrix.length /<span class="hljs-number">2</span>; j++){
+                <span class="hljs-keyword">int</span> c = matrix[i][j];
+                matrix[i][j] = matrix[matrix.length-<span class="hljs-number">1</span>-j][i];
+                matrix[matrix.length-<span class="hljs-number">1</span>-j][i] = matrix[matrix.length-<span class="hljs-number">1</span>-i][matrix.length-<span class="hljs-number">1</span>-j];
+                matrix[matrix.length-<span class="hljs-number">1</span>-i][matrix.length-<span class="hljs-number">1</span>-j] = matrix[j][matrix.length-<span class="hljs-number">1</span>-i];
+                matrix[j][matrix.length-<span class="hljs-number">1</span>-i] = c;
+            }
+        }
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1580,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-041-First-Missing-Positive.html" class="navigation navigation-prev " aria-label="Previous page: 041J. First Missing Positive">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-050-Pow-x-n.html" class="navigation navigation-next " aria-label="Next page: 050J. Pow(x, n)">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1596,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"048J. Rotate Image","level":"1.6.18","depth":2,"next":{"title":"050J. Pow(x, n)","level":"1.6.19","depth":2,"path":"leetCode-050-Pow-x-n.md","ref":"leetCode-050-Pow-x-n.md","articles":[]},"previous":{"title":"041J. First Missing Positive","level":"1.6.17","depth":2,"path":"leetCode-041-First-Missing-Positive.md","ref":"leetCode-041-First-Missing-Positive.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-048-Rotate-Image.md","mtime":"2019-11-16T06:13:58.942Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

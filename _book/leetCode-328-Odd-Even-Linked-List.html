@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>328J. Odd Even Linked List · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-349-Intersection-of-Two-Arrays.html" />
     
+    
+    <link rel="prev" href="leetCode-p301-400.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -1215,7 +1217,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.1" data-path="leetCode-328-Odd-Even-Linked-List.html">
+        <li class="chapter active" data-level="1.9.1" data-path="leetCode-328-Odd-Even-Linked-List.html">
             
                 <a href="leetCode-328-Odd-Even-Linked-List.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >328J. Odd Even Linked List</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
-<ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
-</ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
-</ul>
+                                <h1 id="328j-odd-even-linked-list">328J. Odd Even Linked List</h1>
+<p><a href="https://leetcode.com/problems/odd-even-linked-list/" target="_blank">https://leetcode.com/problems/odd-even-linked-list/</a></p>
+<h2 id="method-best">Method Best:</h2>
+<pre>
+&#x5206;&#x6790;:
+&#x9700;&#x8981;&#x56DB;&#x4E2A;&#x6307;&#x9488;&#xFF0C;&#x4E24;&#x4E2A;&#x7528;&#x6765;&#x56FA;&#x5B9A;&#x4E24;&#x4E2A;&#x5B50;&#x94FE;&#x8868;&#x5934;&#x90E8;&#xFF0C;&#x4E24;&#x4E2A;&#x7528;&#x6765;&#x5F80;&#x540E;&#x6307;&#x3002;
+&#x9700;&#x8981;&#x8003;&#x8651;&#x7684;&#x4E3B;&#x8981;&#x662F;&#x5982;&#x4F55;&#x7ED3;&#x5C3E;&#xFF0C;&#x7EC8;&#x6B62;while&#x5FAA;&#x73AF;&#x3002;
+&#x8003;&#x8651;&#x4E24;&#x79CD;&#x4E34;&#x754C;&#x60C5;&#x51B5;&#xFF0C;    
+1: &#x5947; -&gt; &#x5076; -&gt; &#x7A7A;        
+  odd   even       
+2: &#x5076; -&gt; &#x5947; -&gt; &#x7A7A;       
+  even  odd           
+&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684;&#x662F;&#xFF0C;odd &#x6307;&#x9488;&#x6307;&#x5728;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5947;&#x6570;&#x4E0A;&#xFF0C;even&#x6307;&#x9488;&#x6307;&#x5728;null&#x6216;&#x8005;even.next&#x4E3A;&#x7A7A;&#x3002;
+&#x8FD9;&#x6837;odd.next = evenHead&#x5C31;&#x53EF;&#x4EE5;&#x6784;&#x9020;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x94FE;&#x8868;&#x3002;
+&#x6240;&#x4EE5;&#x4E0A;&#x8FF0;&#x7684;&#x60C5;&#x5F62; 1 &#x662F;&#x5DF2;&#x7ECF; &#x53EF;&#x4EE5;&#x7ED3;&#x675F;&#x5FAA;&#x73AF;&#x4E86;&#xFF0C;&#x4EE3;&#x8868;even.next== null
+&#x800C;&#x60C5;&#x5F62;2 &#x8FD8;&#x9700;&#x8981;&#x518D;&#x8FD0;&#x884C;&#x4E00;&#x6B21;&#xFF0C;&#x76F4;&#x5230;        
+&#x5076; -&gt; &#x5947; -&gt; &#x7A7A;                  
+     odd  even
+&#x6B64;&#x65F6;&#x610F;&#x5473;&#x7740; even == null.  
+&#x7EFC;&#x4E0A;while&#x91CC;&#x9762;&#x5E94;&#x5F53;&#x662F; even!=null &amp;&amp; even.next != null      
+</pre>
+
+
+
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">oddEvenList</span><span class="hljs-params">(ListNode head)</span> </span>{
+        <span class="hljs-keyword">if</span>(head == <span class="hljs-keyword">null</span> || head.next == <span class="hljs-keyword">null</span>){
+            <span class="hljs-keyword">return</span> head;
+        }
+        ListNode odd = head;
+        ListNode even = head.next;
+        ListNode evenHead = even;
+
+        <span class="hljs-keyword">while</span>( even!=<span class="hljs-keyword">null</span> &amp;&amp; even.next!=<span class="hljs-keyword">null</span>  ){
+            odd.next = odd.next.next; <span class="hljs-comment">// &#x4E5F;&#x53EF;&#x4EE5;   odd.next = even.next;</span>
+            odd = odd.next;
+            even.next = even.next.next; <span class="hljs-comment">// &#x4E5F;&#x53EF;&#x4EE5;   odd.next = odd.next;</span>
+            even = even.next;
+        }
+        odd.next = evenHead;
+        <span class="hljs-keyword">return</span> head;
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1584,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-p301-400.html" class="navigation navigation-prev " aria-label="Previous page: 301 - 400">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-349-Intersection-of-Two-Arrays.html" class="navigation navigation-next " aria-label="Next page: 349J. Intersection of Two Arrays">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1600,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"328J. Odd Even Linked List","level":"1.9.1","depth":2,"next":{"title":"349J. Intersection of Two Arrays","level":"1.9.2","depth":2,"path":"leetCode-349-Intersection-of-Two-Arrays.md","ref":"leetCode-349-Intersection-of-Two-Arrays.md","articles":[]},"previous":{"title":"301 - 400","level":"1.9","depth":1,"path":"leetCode-p301-400.md","ref":"leetCode-p301-400.md","articles":[{"title":"328J. Odd Even Linked List","level":"1.9.1","depth":2,"path":"leetCode-328-Odd-Even-Linked-List.md","ref":"leetCode-328-Odd-Even-Linked-List.md","articles":[]},{"title":"349J. Intersection of Two Arrays","level":"1.9.2","depth":2,"path":"leetCode-349-Intersection-of-Two-Arrays.md","ref":"leetCode-349-Intersection-of-Two-Arrays.md","articles":[]},{"title":"350J?. Intersection of Two Arrays II","level":"1.9.3","depth":2,"path":"leetCode-350-Intersection-of-Two-Arrays-II.md","ref":"leetCode-350-Intersection-of-Two-Arrays-II.md","articles":[]},{"title":"369J. Plus One Linked List","level":"1.9.4","depth":2,"path":"leetCode-369-Plus-One-Linked-List.md","ref":"leetCode-369-Plus-One-Linked-List.md","articles":[]},{"title":"387J. First Unique Character in a String","level":"1.9.5","depth":2,"path":"leetCode-387-First-Unique-Character-in-a-String.md","ref":"leetCode-387-First-Unique-Character-in-a-String.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-328-Odd-Even-Linked-List.md","mtime":"2019-11-03T01:02:41.254Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

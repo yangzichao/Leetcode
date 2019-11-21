@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>002J(2/2). Add Two Numbers · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="leetCode-.html" />
+    <link rel="next" href="leetCode-007-Reverse-Integer.html" />
     
+    
+    <link rel="prev" href="leetCode-001-Two-Sum.html" />
     
 
     </head>
@@ -87,7 +89,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -287,7 +289,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="leetCode-002-Add-Two-Numbers.html">
+        <li class="chapter active" data-level="1.6.2" data-path="leetCode-002-Add-Two-Numbers.html">
             
                 <a href="leetCode-002-Add-Two-Numbers.html">
             
@@ -1496,7 +1498,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >002J(2/2). Add Two Numbers</a>
     </h1>
 </div>
 
@@ -1511,20 +1513,125 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="links">Links</h2>
+                                <h1 id="002j-add-two-numbers">002J. Add Two Numbers</h1>
+<p>You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+<p>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</p>
+<p>Example:</p>
+<p>Input: (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
+Output: 7 -&gt; 0 -&gt; 8
+Explanation: 342 + 465 = 807.</p>
+<h2 id="syntax">Syntax:</h2>
+<h3 id="java&#x7684;--&#x7528;&#x6CD5;&#xFF1A;">Java&#x7684; &apos;?&apos; &#x7528;&#x6CD5;&#xFF1A;</h3>
+<pre><code class="lang-Java">max = (a &gt; b) ? a : b ;
+</code></pre>
+<p>&#x7B49;&#x4EF7;&#x4E8E;</p>
+<pre><code class="lang-Java"><span class="hljs-keyword">if</span> ( a &gt; b ) {
+  <span class="hljs-keyword">return</span> a;
+}<span class="hljs-keyword">else</span>{
+  <span class="hljs-keyword">return</span> b;
+}
+</code></pre>
+<h3 id="java-boolean-&#x8F6C;-int">Java boolean &#x8F6C; int</h3>
+<p>java &#x4E2D;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#x597D;&#x9EBB;&#x70E6;&#xFF0C;&#x8FD9;&#x91CC;&#x6709;&#x4E00;&#x4E2A;&#x5FEB;&#x901F;&#x7684;&#x529E;&#x6CD5;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">boolean</span> myBoolean = <span class="hljs-keyword">true</span>; <span class="hljs-comment">// or false</span>
+<span class="hljs-keyword">int</span> booleantToInt = myBoolean ? <span class="hljs-number">1</span>:<span class="hljs-number">0</span>;
+</code></pre>
+<h2 id="&#x601D;&#x8DEF;&#xFF1A;">&#x601D;&#x8DEF;&#xFF1A;</h2>
+<p>&#x5148;&#x770B;&#x770B;LeetCode&#x7684; singly-linked-list &#x7684;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ListNode</span> </span>{
+  <span class="hljs-keyword">int</span> val;
+  ListNode next;
+
+  ListNode(<span class="hljs-keyword">int</span> x) {
+    val = x;
+  }
+}
+</code></pre>
+<p>&#x7F3A;&#x5C11; sentinel&#xFF0C; &#x6211;&#x4EEC;&#x521D;&#x59CB;&#x5316;&#x7684;&#x65F6;&#x5019;&#x8981;&#x81EA;&#x5DF1;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6CA1;&#x7528;&#x7684;&#x5934;&#x3002;&#x4E00;&#x822C;&#x547D;&#x540D;&#x4E3A;dummyhead.
+&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x5904;&#x7406;&#x4E24;&#x4E2A;&#x6570;&#x7EC4;&#x7684;&#x7B2C;&#x4E00;&#x4F4D;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x7528;dummyhead.next()&#x5F53;&#x4F5C;&#x7B2C;&#x4E00;&#x4E2A;&#x88AB;&#x5904;&#x7406;&#x7684;&#xFF0C;
+&#x8FD9;&#x6837;&#x4FDD;&#x8BC1;&#x6570;&#x7EC4;&#x5904;&#x7406;&#x7684;&#x540C;&#x6B65;&#x3002;</p>
 <ul>
-<li><a href="https://zichao-yang.gitbook.io/leetcode-zichao/" target="_blank">Read this in Gitbook</a></li>
-<li><a href="https://www.zichaoyang.com/" target="_blank">Zichao Yang&apos;s Homepage</a></li>
+<li>&#x8FD9;&#x4E2A;&#x9898;&#x5176;&#x5B9E;&#x5F88;&#x76F4;&#x89C2;&#xFF0C;&#x4E4B;&#x6240;&#x4EE5;&#x82B1;&#x8D39;&#x4E86;&#x5F88;&#x591A;&#x529F;&#x592B;
+&#x662F;&#x56E0;&#x4E3A;ListNode&#x7684;Construtor, &#x5E76;&#x6CA1;&#x6709;&#x7ED9;&#x51FA; next = null;</li>
+<li>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x76F4;&#x63A5;&#x628A;&#x4E24;&#x4E2A;List&#x4ECE;&#x524D;&#x5F80;&#x540E;&#x4E00;&#x5BF9;&#x4E00;&#x7684;&#x52A0;&#x8D77;&#x6765;&#xFF0C;&#x5982;&#x679C;sum &gt; 10 &#x5C31;&#x9700;&#x8981;&#x5728;&#x4E0B;&#x4E00;&#x4F4D;&#x8FDB;&#x4E00;&#x3002;
+&#x6240;&#x4EE5;sum&#x662F;&#x8FDB;&#x4F4D;&#x503C;&#xFF08;0 or 1&#xFF09; &#x548C; &#x4E24;&#x4E2A;List&#x8BE5;&#x4F4D;&#x7684;&#x503C;&#x7684;&#x548C;&#x3002;<br>&#x5373; sum = carry + p1.val + p2.val</li>
+<li>&#x7528;iteration&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x9700;&#x8981;&#x7ED9;&#x4E24;&#x4E2A;&#x8F93;&#x5165;&#x7684;List&#x5404;&#x6307;&#x6D3E;&#x4E00;&#x4E2A;&#x6307;&#x9488;p1, p2&#x3002;<br>&#x8FD8;&#x8981;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;ListNode, reList &#x4F5C;&#x4E3A;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x5E76;&#x540C;&#x6837;&#x6307;&#x6D3E;&#x4E00;&#x4E2A;&#x6307;&#x9488;pr&#x3002;</li>
+<li>&#x8003;&#x8651;&#x5230;&#x8FDB;&#x4F4D;&#xFF0C;&#x662F;&#x8981;&#x518D;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x7528;&#x6765;&#x5224;&#x65AD;&#x8FDB;&#x4F4D;&#x7684;&#x53D8;&#x91CF; carry&#x3002;<br>carry &#x53EF;&#x4EE5;&#x662F; boolean, &#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x6574;&#x578B;&#x3002;&#x53EF;&#x4EE5;&#x7528; sum/10 &#x6765;&#x76F4;&#x63A5;&#x5F97;&#x5230; carry&#x7684;&#x503C;&#x3002;<br>&#x7531;&#x4E8E;carry&#x6700;&#x591A;&#x8FDB;&#x4E00;&#x4F4D;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC; carry = sum/10 &#x663E;&#x7136;&#x662F;&#x66F4;&#x65B9;&#x4FBF;&#x7684;&#x8868;&#x8FBE;&#x3002;</li>
+<li>&#x8003;&#x8651;&#x5230;&#x4E24;&#x4E2A;List &#x4E0D;&#x4E00;&#x6837;&#x957F;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5224;&#x65AD;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x8BA9;&#x5FAA;&#x73AF;&#x505C;&#x6B62;&#xFF1A;<br>&#x90A3;&#x5C31;&#x662F;&#x5F53;&#x4E24;&#x4E2A;List&#x90FD;&#x4E3A;null&#x7684;&#x65F6;&#x5019;&#x3002;</li>
+<li>&#x6CE8;&#x610F;Leetcode&#x7684; ListNode &#x6CA1;&#x6709; next = null. &#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x7528; p1.next != null &#x8FD9;&#x6837;&#x7684;&#x5224;&#x65AD;&#x3002;<br>&#x5E94;&#x4F7F;&#x7528; while ( p1 != null || p2 != null) { }.</li>
+<li>&#x6CE8;&#x610F;&#x8981;&#x6392;&#x9664;&#x7A7A;&#x6570;&#x7EC4;&#x7684;&#x5B58;&#x5728;&#x3002;&#x6240;&#x4EE5;&#x4E0A;&#x6765;&#x5C31;&#x8981;&#x68C0;&#x6D4B;&#x7A7A;&#x6570;&#x7EC4;&#x3002;<br>&#x5C31;&#x662F;&#x56E0;&#x4E3A;&#x6709;&#x7A7A;&#x6570;&#x7EC4;&#xFF0C;&#x5BFC;&#x81F4;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x8D38;&#x7136;&#x7528;p1.val, p2.val.<br>&#x6211;&#x4EEC;&#x5E94;&#x5F53;&#x8BBE;&#x7ACB;&#x4E24;&#x4E2A;&#x5C40;&#x57DF;&#x53D8;&#x91CF; x1, x2 &#x50A8;&#x5B58; p1.val &#x548C; p2.val &#x7684;&#x503C;&#x3002; &#x90A3;&#x4E48;&#x600E;&#x4E48;&#x505A;&#x5230;&#x4E00;&#x4E3E;&#x591A;&#x5F97;&#x5462;&#xFF1F;  <pre><code>int x1 = (p1!=null) ? p1.val : 0;
+</code></pre>&#x8FD9;&#x6837;&#x624D;&#x80FD;&#x9632;&#x6B62;&#x540E;&#x9762;&#x7528; sum = carry + p1.val + p2.val &#x65F6; p1 p2 &#x53D6;&#x4E0D;&#x5230;&#x503C;&#x3002;</li>
+<li>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x5C31;&#x6309;&#x90E8;&#x5C31;&#x73ED;&#x7684;&#x8BA9;&#x6307;&#x9488;&#x6307;&#x5411; List &#x7684;&#x4E0B;&#x4E00;&#x4F4D;&#x5373;&#x53EF;&#x3002;</li>
+<li>&#x6700;&#x540E;&#x5FAA;&#x73AF;&#x7ED3;&#x675F;&#x4E86;&#x4E0D;&#x8981;&#x5FD8;&#x8BB0;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x9700;&#x8981;&#x8FDB;&#x4F4D;&#x7684;&#x8BDD;&#xFF0C;&#x8FD8;&#x8981;&#x518D;&#x65B0;&#x5EFA;&#x4E00;&#x8282;&#x3002;</li>
+<li>&#x7531;&#x4E8E;&#x6709;dummyhead&#x7684;&#x5B58;&#x5728;&#xFF0C;&#x6240;&#x4EE5;&#x8FD4;&#x56DE;dummyhead.next. &#x8FD9;&#x662F;&#x5BB9;&#x6613;&#x5FD8;&#x8BB0;&#x7684;&#x3002;</li>
 </ul>
-<h3 id="meaning-of-table-of-contents">Meaning of Table of Contents</h3>
-<ul>
-<li>&apos;J&apos; means I&apos;ve done it in Java.</li>
-<li>&apos;P&apos; means I&apos;ve done it in Python3.</li>
-<li>&apos;?&apos; means there are some other good method worth trying.
-For example, 001J? means I only finished p001 with some trivial method in Java, while 001JP means I&apos;ve thoroughly done this problem in both Java and Python3.</li>
-<li>&apos;x&apos; means this problem is not worth wasting time on it.</li>
-<li>&apos;* &apos; means this problem has been considered thoroughly.</li>
-</ul>
+<h2 id="java-solution">Java solution:</h2>
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>{
+        ListNode p1 = l1;
+        ListNode p2 = l2;
+        ListNode reList = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
+        ListNode pr = reList;
+        <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;
+
+        <span class="hljs-keyword">while</span>(p1 != <span class="hljs-keyword">null</span> || p2 != <span class="hljs-keyword">null</span>) {
+
+            <span class="hljs-keyword">int</span> x1 = (p1 != <span class="hljs-keyword">null</span>) ? p1.val:<span class="hljs-number">0</span>;
+            <span class="hljs-keyword">int</span> x2 = (p2 != <span class="hljs-keyword">null</span>) ? p2.val:<span class="hljs-number">0</span>;
+            <span class="hljs-keyword">int</span> sum = carry + x1 + x2;
+
+            carry = sum/<span class="hljs-number">10</span>;
+            sum = sum%<span class="hljs-number">10</span>;
+
+            pr.next = <span class="hljs-keyword">new</span> ListNode(sum);
+            pr = pr.next;
+
+            <span class="hljs-keyword">if</span>(p1 != <span class="hljs-keyword">null</span>) {
+                p1 = p1.next;
+            }
+            <span class="hljs-keyword">if</span>(p2 != <span class="hljs-keyword">null</span>){
+                p2 = p2.next;
+            }
+        }
+        <span class="hljs-keyword">if</span>( carry == <span class="hljs-number">1</span> ){
+            pr.next = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">1</span>);
+        }
+        <span class="hljs-keyword">return</span> reList.next;
+    }
+}
+</code></pre>
+<p>&#x7B2C;&#x4E8C;&#x6B21;&#x5199;&#x7684;&#x4EE3;&#x7801;,&#x4E0A;&#x6B21;&#x662F;&#x6284;&#x7B54;&#x6848;&#x7684;&#x3002;</p>
+<pre><code class="lang-Java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title">addTwoNumbers</span><span class="hljs-params">(ListNode l1, ListNode l2)</span> </span>{
+        ListNode reHead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
+        ListNode p = reHead;
+        <span class="hljs-keyword">int</span> x1 = <span class="hljs-number">0</span>, x2 = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> carry = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span>(l1!=<span class="hljs-keyword">null</span>||l2!=<span class="hljs-keyword">null</span>){
+            x1 = l1 == <span class="hljs-keyword">null</span>? <span class="hljs-number">0</span>:l1.val;
+            x2 = l2 == <span class="hljs-keyword">null</span>? <span class="hljs-number">0</span>:l2.val;
+            <span class="hljs-keyword">if</span>(x1+x2+carry &gt;<span class="hljs-number">9</span>){
+                p.next = <span class="hljs-keyword">new</span> ListNode(x1+x2+carry - <span class="hljs-number">10</span>);
+                carry = <span class="hljs-number">1</span>;
+            }<span class="hljs-keyword">else</span>{
+                p.next = <span class="hljs-keyword">new</span> ListNode(x1+x2+carry);
+                carry = <span class="hljs-number">0</span>;
+            }
+            p = p.next;
+            <span class="hljs-keyword">if</span>(l1!=<span class="hljs-keyword">null</span>){
+                l1 = l1.next;
+            }
+            <span class="hljs-keyword">if</span>(l2!=<span class="hljs-keyword">null</span>){
+                l2 = l2.next;
+            }
+        }
+        <span class="hljs-keyword">if</span>(carry != <span class="hljs-number">0</span>){
+            p.next = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">1</span>);
+        }
+        <span class="hljs-keyword">return</span> reHead.next;
+    }
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1552,8 +1659,12 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
 
             
                 
+                <a href="leetCode-001-Two-Sum.html" class="navigation navigation-prev " aria-label="Previous page: 001J?. Two Sum">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="leetCode-.html" class="navigation navigation-next navigation-unique" aria-label="Next page: . ">
+                
+                <a href="leetCode-007-Reverse-Integer.html" class="navigation navigation-next " aria-label="Next page: 007J. Reverse Integer">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1564,7 +1675,7 @@ For example, 001J? means I only finished p001 with some trivial method in Java, 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":". ","level":"1.1.1","depth":2,"path":"leetCode-.md","ref":"leetCode-.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2019-11-15T00:40:34.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"002J(2/2). Add Two Numbers","level":"1.6.2","depth":2,"next":{"title":"007J. Reverse Integer","level":"1.6.3","depth":2,"path":"leetCode-007-Reverse-Integer.md","ref":"leetCode-007-Reverse-Integer.md","articles":[]},"previous":{"title":"001J?. Two Sum","level":"1.6.1","depth":2,"path":"leetCode-001-Two-Sum.md","ref":"leetCode-001-Two-Sum.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"leetCode-002-Add-Two-Numbers.md","mtime":"2019-11-04T04:50:54.850Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-11-21T02:56:17.826Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
