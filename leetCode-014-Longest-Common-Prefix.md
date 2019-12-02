@@ -67,3 +67,25 @@ class Solution {
     }
 }
 ```
+第二次竟然写出了几乎一样的代码；
+```Java
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+        if(strs.length < 1 || strs[0].length() < 1){
+            return "";
+        }
+        int count = 0;
+        for(int i = 0; i < strs[0].length();i++){
+            char c = strs[0].charAt(i);
+            for(String s : strs){
+                if( i > s.length() - 1|| s.charAt(i) != c){
+                    return strs[0].substring(0, count);
+                }
+            }
+            count++;
+        }
+
+        return strs[0];
+    }
+}
+```

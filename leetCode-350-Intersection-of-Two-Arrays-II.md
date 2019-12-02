@@ -27,3 +27,30 @@ class Solution {
     }
 }
 ```
+## Method2 Sort and Two pointers
+<pre>
+先排序，然后再挨个比较。
+</pre>
+```Java
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        int[] ans = new int[nums1.length];
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        int i = 0, j = 0, count = 0;
+        while(i < nums1.length && j < nums2.length){
+            if(nums1[i] < nums2[j]){
+                i++;
+            }else if(nums1[i] > nums2[j]){
+                j++;
+            }else{
+                ans[count] = nums1[i];
+                i++;
+                j++;
+                count++;
+            }
+        }
+        return Arrays.copyOf(ans,count);
+    }
+}
+```

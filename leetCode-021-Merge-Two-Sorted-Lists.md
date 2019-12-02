@@ -1,7 +1,7 @@
 # 021J. Merge Two Sorted Lists
 What to do?
 * Think about the recursion method*
-
+这题跟 [Merge two binary tree](https://leetcode.com/problems/merge-two-binary-trees/) 竟然有相似的地方，惊不惊喜意不意外。
 
 > Merge two sorted linked lists and return it as a new list.            
 The new list should be made by splicing together the nodes of the first two lists.

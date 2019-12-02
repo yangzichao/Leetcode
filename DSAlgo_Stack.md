@@ -2,6 +2,7 @@
 
 有个老哥推荐的题目
 1130. Minimum Cost Tree From Leaf Values
+946. Validate Stack Sequences
 907. Sum of Subarray Minimums
 901. Online Stock Span
 856. Score of Parentheses

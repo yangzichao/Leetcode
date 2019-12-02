@@ -7,3 +7,7 @@
 * 个例
   * [New Grads SDE I](https://leetcode.com/discuss/interview-experience/434007/amazon-aws-sde-1-offer)
   * [面经 Optimal Utilization](https://leetcode.com/discuss/interview-question/373202/amazon-oa-2019-optimal-utilization)
+
+## Google
+
+* [L3](https://leetcode.com/discuss/interview-experience/440123/google-l3-nov-2019-offer)

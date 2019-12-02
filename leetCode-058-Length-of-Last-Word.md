@@ -44,6 +44,8 @@ class Solution {
 ```
 T: O(N)
 S: O(1)
+
+
 ## Method 2:
 上面的问题是从头到尾扫描，但是我们只需要字符结尾，
 从尾扫描更快。而且逻辑更简单。忽略所有的空格符。
@@ -67,6 +69,34 @@ class Solution {
             }
         }
         return lengthLast;
+    }
+}
+```
+
+第二次写，似乎好一点。
+```Java
+class Solution {
+    public int lengthOfLastWord(String s) {
+
+        boolean begin = false;
+        int length = 0;
+        for(int i = s.length() - 1; i > -1; i--){
+            char c = s.charAt(i);
+            if(begin){
+                while(i >= 0 &&s.charAt(i) !=' '){
+                    // in case string index run out of the boundary
+                    i--;
+                    length++;
+                }
+                return length;
+            }else{
+                if(c != ' '){
+                    begin = true;
+                    length = 1;
+                }
+            }
+        }
+        return length;
     }
 }
 ```
