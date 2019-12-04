@@ -3,7 +3,10 @@ https://leetcode.com/problems/3sum/
 
 
 ## Method: O(N^2)
-
+<pre>
+Two Sum 因为可以达到比 O(NlogN)更好的O(N),所以不用Sort.
+Three Sum 应当先Sort 比较合算. 剩下的比较平庸。
+</pre>
 ```Java
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
