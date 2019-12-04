@@ -39,6 +39,7 @@
     * [028J?. Implement strStr()](leetCode-028-Implement-strStr.md)
     * [033J. Search in Rotated Sorted Array](leetCode-033-Search-in-Rotated-Sorted-Array.md)
     * [035J. Search Insert Position](leetCode-035-Search-Insert-Position.md)
+    * [037J. Sudoku Solver](leetCode-037-Sudoku-Solver.md)
     * [041J. First Missing Positive](leetCode-041-First-Missing-Positive.md)
     * [048J. Rotate Image](leetCode-048-Rotate-Image.md)
     * [050J. Pow(x, n)](leetCode-050-Pow-x-n.md)

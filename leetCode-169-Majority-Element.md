@@ -4,7 +4,7 @@ https://leetcode.com/problems/majority-element/
 ## Method 1 HashMap TS O(N) O(N)
 这个办法是 用值本身对应出现的次数
 并且可以一边加一边判断是否要return nums[i]。所以最后的return 0 已经不重要了。
-```Java
+```java
 class Solution {
     public int majorityElement(int[] nums) {
         Map<Integer,Integer> myMap = new HashMap<>();

@@ -7,7 +7,7 @@ Easy.
 但是需要想一想返回left的道理。
 一般来说Binary Search不返回 pivot.
 最好把等于的情况判给right.
-```Java
+```java
 class Solution {
     public int searchInsert(int[] nums, int target) {
         int left = 0;
