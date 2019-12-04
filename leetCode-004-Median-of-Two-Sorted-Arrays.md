@@ -13,7 +13,8 @@ l1 <= r2 and l2 <= r1。如果 l1 > r2, 意味着我们在短数组
 切的太偏右，r = p - 1, 反之如果 l2 > r1, 太偏左，应当
 l = p + 1.
 </pre>
-```Java
+
+```java
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         // Always make nums1 the shorter array.
@@ -46,6 +47,7 @@ class Solution {
     }
 }
 ```
+
 <pre>
 但是怎么处理 edge case 呢，比如我们超出了数组边界的情况？
 左侧l1,l2 只能是 -1的情形，我们将它的值设为 MIN，
