@@ -1,7 +1,7 @@
 # 350J. Intersection of Two Arrays II
 https://leetcode.com/problems/intersection-of-two-arrays-ii/
 
-此题的双指针方法还是需要看一看的
+
 ## Method HashMap
 <pre>
 思路是，先用hashmap存下随便一个数组里，元素出现的次数。
@@ -29,7 +29,7 @@ class Solution {
 ```
 ## Method2 Sort and Two pointers
 <pre>
-先排序，然后再挨个比较。
+先排序，然后再挨个比较。比较容易，也比较高效，不需要分析。
 </pre>
 ```Java
 class Solution {
