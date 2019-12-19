@@ -55,6 +55,90 @@ addNode, removeNode, moveToHead. 这三个都是对链表做一些修改的函�
 </pre>
 
 以下的代码基本上就是上面叙述的部分了。
+```java
+class LRUCache {
+    // Doublely Linked List
+    // Define Doubly Linked List
+    class DLListNode{
+        public int key; // for LRU
+        // Standard
+        public int val;
+        public DLListNode next;
+        public DLListNode prev;
+    }
+    public void addNode(DLListNode node){
+        node.prev = head;
+        node.next = head.next;
+        head.next.prev = node;
+        head.next = node;
+    }
+    public void remove(DLListNode node){
+        node.next.prev = node.prev;
+        node.prev.next = node.next;
+        // 为什么不必要以下两句呢？因为没必要让node被回收，
+        // remove只在moveToHead中使用，一会儿还要addnode呢。
+        // 当然加上以下两句也不会报错
+        // node.next = null;
+        // node.prev = null;
+    }
+    public void moveToHead(DLListNode node){
+        remove(node);
+        addNode(node);
+    }
+
+    //为何popTail要返回节点？因为还要从HashMap里删掉该节点的信息
+    public DLListNode popTail(){
+        DLListNode poped = tail.prev;
+        remove(poped);
+        return poped;
+    }
+
+    // For LRU Cache
+    private int size;
+    private int capacity;
+    private DLListNode head;
+    private DLListNode tail;
+    private Map<Integer, DLListNode> cache;
+
+    public LRUCache(int capacity) {
+        this.size = 0;
+        this.capacity = capacity;
+        head = new DLListNode();
+        tail = new DLListNode();
+        head.next = tail;
+        tail.prev = head;
+        cache = new HashMap<Integer, DLListNode>();
+    }
+
+    public int get(int key) {
+        DLListNode node = cache.get(key);
+        if(node == null) return -1;
+        moveToHead(node);
+        return node.val;
+    }
+
+    public void put(int key, int value) {
+        DLListNode node = cache.get(key);
+        if(node!=null){
+            node.val = value;
+            moveToHead(node);
+        } else{
+            node = new DLListNode();
+            node.key = key;
+            node.val = value;
+            addNode(node);
+            size++;
+            cache.put(key,node);
+            if(size > capacity){
+                DLListNode poped = popTail();
+                cache.remove(poped.key);
+                size--;
+            }
+        }
+    }
+}
+```
+以下是答案
 ```Java
 public class LRUCache {
 
