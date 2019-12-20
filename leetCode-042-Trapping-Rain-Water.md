@@ -1,11 +1,14 @@
 # 042J. Trapping Rain Water
+
 https://leetcode.com/problems/trapping-rain-water/solution/
+
 
 这个题如此重要，频率顺序第三，hard第一。非常值得一鸭三吃
 参考了这个同学的一些方法，Credit是要给他的。
 https://leetcode.wang/leetCode-42-Trapping-Rain-Water.html
 
 ## 暴力
+
 <pre>
 一般我们都自动忽略暴力法，对于这个题
 理解暴力法在这里反而非常重要。

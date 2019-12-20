@@ -1,36 +1,19 @@
-# 085J. Maximal Rectangle
+# 084J?. Largest Rectangle in Histogram
+https://leetcode.com/problems/largest-rectangle-in-histogram/
 
-## Method 1 : Use 84
+请写一下不是用栈的方法。谢谢
 
-这个方法直接利用了[84题](leetCode-084-Largest-Rectangle-in-Histogram.md)的函数
-除此之外就只是把每一行都看成直方图，建立m个直方图。
-第一个就是
+## Method Best: Stack
+<pre>
+这个是怎么想的呢？其实还真不太好说。
+
+具体的算法是建立一个栈储存id,也就是坐标pos.
+如果栈空就入栈下一个，如果下一个将要入栈的比栈顶高，就入栈，反之就准备出栈。
+出栈的时候就可以开始建立
+
+</pre>
 ```java
 class Solution {
-    public int maximalRectangle(char[][] matrix) {
-        if(matrix.length < 1) return 0;
-        int m = matrix.length;
-        int n = matrix[0].length;
-        int ans = 0;
-        for(int i = 0; i < m; i++){
-            int[] heights = new int[n];
-            for(int j = 0; j < n; j++){
-                heights[j] = 0;
-                int count = i;
-                while(count >= 0){
-                    if(matrix[count][j] == '1'){
-                        heights[j] += 1;
-                        count--;
-                    }else{
-                        break;
-                    }
-                }
-            }
-            ans = Math.max(ans,largestRectangleArea(heights));
-        }
-        return ans; 
-    }
-    
     public int largestRectangleArea(int[] heights) {
         Stack<Integer> stack = new Stack<>();
         int ans = 0;
@@ -55,6 +38,7 @@ class Solution {
                 }
             }
         }
+        // 这是为了解决结束之后栈还没有空的情形。
         while(!stack.isEmpty()){
             int posCurr = stack.pop();
             int posLeft = stack.isEmpty() ? -1 :stack.peek();
