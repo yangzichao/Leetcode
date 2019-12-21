@@ -41,8 +41,9 @@ class Solution {
 stack，一个存node，一个存对应的depths。
 
 recursion的边界条件在这里就不存在了，变为了结束条件while(!stack.isEmpty())。
-
 </pre>
+
+
 ```java
 class Solution {
     public int maxDepth(TreeNode root) {
