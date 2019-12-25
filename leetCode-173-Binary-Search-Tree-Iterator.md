@@ -1,6 +1,7 @@
 # 173J. Binary Search Tree Iterator
 https://leetcode.com/problems/binary-search-tree-iterator/
 
+这个题跟[94](leetCode-094-Binary-Tree-Inorder-Traversal.md) 有关。
 
 
 ## Method Not Best

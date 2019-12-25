@@ -53,6 +53,10 @@ class Solution {
         stack.push(root);
         depths.push(1);
         int ans = 1;
+        // 以下是preorder,并且是顺时针的。
+        // 变成逆时针只需要交换左右节点的if语句。
+        // 变成 inorder 以及 
+        // 变成 postorder 并不容易 不是简单的把 ans句换个位置
         while(!stack.isEmpty()){
             TreeNode node = stack.pop();
             int depth = depths.pop();
