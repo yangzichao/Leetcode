@@ -3,9 +3,12 @@ https://leetcode.com/problems/unique-binary-search-trees-ii/
 
 
 问题的分析可以参考上一题 [096](leetCode-096-Unique-Binary-Search-Trees.md)
-## Method 1:
+需要补上memorization的优化版本解法。
+https://www.cnblogs.com/grandyang/p/4301096.html
+## Method 1: 容易但是不是真的最优。
 问题的分析虽然和上一题一样，但是实现其实不太相同，但是也差不多。
 用recursion的方法其实不是最优的解法。
+思路就是把对应总数为 n 的所有的不同的BST的root 都存在一个List里。
 ```java
 class Solution {
 

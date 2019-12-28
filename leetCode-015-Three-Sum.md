@@ -7,6 +7,7 @@ https://leetcode.com/problems/3sum/
 Two Sum 因为可以达到比 O(NlogN)更好的O(N),所以不用Sort.
 Three Sum 应当先Sort 比较合算. 剩下的比较平庸。
 </pre>
+这里用到了[167题](leetCode-167-Two-Sum-II.md)的代码。
 ```Java
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
