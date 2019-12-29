@@ -119,7 +119,10 @@ class Solution {
 
 ```
 
+
+
 ## Method 神奇
+
 <pre>
 这个方法是将String 从左到右 再 从右到左扫描一遍。
 统计左括号的数量left，和右括号的数量right.
