@@ -12,7 +12,11 @@ https://leetcode.com/problems/longest-valid-parentheses/
 
 那么无论用什么方法，都需要处理这个情况。
 </pre>
+
+
 ## Method 1: Stack
+
+
 ```java
 class Solution {
     public int longestValidParentheses(String s) {
@@ -42,6 +46,8 @@ class Solution {
 ```
 
 ## Method 2: 动态规划
+
+
 <pre>
 dp数组是用来储存当前的连续的最长子数组的。
 一个正确的子数组，应当以')'结尾。因此碰到左括号'('直接标记0.
@@ -68,6 +74,9 @@ dp数组是用来储存当前的连续的最长子数组的。
     dp[i] = dp[i-1] + 2 + (lastPos > 1 ? dp[lastPos - 1] : 0); 
     ans = Math.max(ans, dp[i]);  
 </pre>
+
+
+
 ```java
 class Solution {
     public int longestValidParentheses(String s) {
@@ -97,7 +106,9 @@ class Solution {
     }
 }
 ```
+
 以上代码可以被简化成如下
+
 ```java
 class Solution {
     public int longestValidParentheses(String s) {
@@ -141,7 +152,11 @@ class Solution {
 从右往左的时候，红线一旦大于0 (left > right) 就一直等于0。
 可以看出，这样以来就把所有隐藏的位置都找到了。
 </pre>
+
+
 <img src = "imgs/LC032A.png" width = "500" />
+
+
 ```java
 public class Solution {
     public int longestValidParentheses(String s) {
