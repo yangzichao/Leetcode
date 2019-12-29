@@ -34,4 +34,4 @@ class Solution {
 }
 ```
 
-## Method 2:
+## Method 2: Iteration
