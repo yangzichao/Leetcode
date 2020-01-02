@@ -17,8 +17,7 @@ class Solution {
         Set<Character> set = new HashSet<>();
         int ans = 0;
         int i = 0, j = 0;
-        while(i < n && j < n){
-
+        while(j < n){
             if( !set.contains(s.charAt(j)) ){
                 set.add(s.charAt(j++));
                 ans = Math.max(ans, j - i);

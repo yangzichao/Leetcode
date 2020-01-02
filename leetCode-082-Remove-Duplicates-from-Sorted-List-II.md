@@ -48,6 +48,33 @@ class Solution {
 ```
 Time: O(N), Theta(N)
 Space: O(1)
+
+这是我又一次写的
+```java
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head == null) return null;
+        ListNode dummyhead = new ListNode(-1);
+        dummyhead.next = head;
+        ListNode slow = dummyhead;
+        ListNode fast = head;
+        while(fast!=null){
+            while(fast.next!=null&&fast.val == fast.next.val){
+                fast = fast.next;
+            }
+            if(slow.next == fast){
+                slow = slow.next;
+                fast = fast.next;
+            }else{
+                slow.next = fast.next;
+                fast = slow.next;
+            }
+        }
+        return dummyhead.next;
+    }
+}
+```
+
 ## method2: recursive
 可以想像一定有一个合适的recursive方法
 从讨论中抄的

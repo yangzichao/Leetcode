@@ -35,3 +35,27 @@ class Solution {
 ```
 
 ## Method 2: Iteration
+in order simulation
+
+```java
+class Solution {
+    public boolean isValidBST(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode cur = root;
+        int curval = 0;
+        double lastval = -Double.MAX_VALUE;
+        while( cur!=null || !stack.isEmpty()){            
+            while(cur!=null){
+                stack.push(cur);
+                cur = cur.left;
+            }
+            cur = stack.pop();
+            curval = cur.val;
+            if(curval <= lastval) return false;
+            lastval = curval;
+            cur = cur.right;
+        }
+        return true;
+    }
+}
+```

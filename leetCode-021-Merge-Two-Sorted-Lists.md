@@ -24,6 +24,7 @@ while(p1!=null || p2!= null) 来判断。
 * 剩下的部分就是，判断指向两个数组的指针对应的val的大小，将小的值（相等的话随意）生成新的一节返回给dummyhead，然后将传递了值的数组的指针指向下一位。注意数组是否是非空。
 
 ### Java Solution:
+
 ```Java
 class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
@@ -56,6 +57,7 @@ class Solution {
 第二次做的解法.这个解法没问题，但是可以写的更简化。
 核心思想是：不需要令循环包含有一个到null的情况。可以强制要求两个有任何一个是null就停止循环。
 然后将剩余的加到结尾。
+
 ```Java
 class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
@@ -87,6 +89,38 @@ class Solution {
     }
 }
 ```
+
+第三次的代码
+
+```java
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(-1);
+        ListNode p = dummy;
+        while(l1!=null || l2 != null){
+            if(l1 == null){
+                p.next = l2;
+                break;
+            }
+            if(l2 == null){
+                p.next = l1;
+                break;
+            }
+            if(l1.val < l2.val){
+               p.next = l1;
+               l1 = l1.next;
+            }else{
+               p.next = l2;
+                l2 = l2.next;
+            }
+            p = p.next;
+            p.next = null;
+        }
+        return dummy.next;
+    }
+}
+```
+
 ## Method 2 : Recursion
 
 ### Java Solution

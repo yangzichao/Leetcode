@@ -45,7 +45,28 @@ class Solution {
 ```
 ## Method: Quick Select
 
-最后写了一个two way quick sort
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+第一次直接写了一个two way quick sort
 ```java
 class Solution {
     public int findKthLargest(int[] nums, int k) {
@@ -53,10 +74,10 @@ class Solution {
         return nums[k - 1];
     }
     
- public void swap(int[] a, int i, int j){
-    int t = a[i];
-    a[i] = a[j];
-    a[j] = t;
+    public void swap(int[] a, int i, int j){
+        int t = a[i];
+        a[i] = a[j];
+        a[j] = t;
     return;
   }
     public void sort(int[] nums, int lo, int hi){
