@@ -13,3 +13,4 @@
 * [LeetCode 分类顺序表 1-400](https://cspiration.com/leetcodeClassification) 
 * [Blind 75 LC problems](https://leetcode.com/discuss/general-discussion/460599/blind-75-leetcode-questions)
 * [Li Yin Algorithms and Coding Interviews](https://github.com/liyin2015/Algorithms-and-Coding-Interviews)
+* [LeetCode Sorted by Upvote Ratio](https://drive.google.com/file/d/10JrCq8oQMeNKTpqr73cf402o2QItfQv2/view)

@@ -9,6 +9,9 @@
 优先队列的应用非常多。
 直接的应用有:
 找一个数组第k大的元素: [LC215](leetCode-215-Kth-Largest-Element-in-an-Array.md)
+安排任务 [LC621](leetCode-621-Task-Scheduler.md)
+[LC253]
+[LC347]
 ### 2. 代码
 ```java
 PriorityQueue<Integer> heap = new PriorityQueue<Integer>((n1, n2) -> n1 - n2); // min heap

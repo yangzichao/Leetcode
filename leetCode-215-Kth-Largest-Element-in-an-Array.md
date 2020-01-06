@@ -3,7 +3,7 @@
 https://leetcode.com/problems/kth-largest-element-in-an-array/
 
 是佛佛作业题
-
+215和973一模一样
 这个题当下最主要的是实现了对 priority queue的学习
 这是最直接的应用
 除此之外，方法2，是对2way quicksort的一个应用。
