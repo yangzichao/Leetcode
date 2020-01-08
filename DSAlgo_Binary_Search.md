@@ -1,6 +1,8 @@
 # Binary Search
 
 
+最经典的题 LC034 万剑归宗
+
 ### case 11:
 <pre>
 left <= right 找 1

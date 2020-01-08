@@ -38,8 +38,24 @@
     );
     ```
 
-
-
+数组Comparator
+```java
+PriorityQueue<int[]> heap = new PriorityQueue<int[]>(new pseudoComparator());
+    private class pseudoComparator implements Comparator<int[]> {
+        public int compare(int[] a, int[] b){
+            return a[0] - b[0];
+        }
+    }
+```
+用Override的方法
+```java
+    PriorityQueue<int[]> q = new PriorityQueue<int[]>(k + 1, new Comparator<int[]>(){
+        @Override
+        public int compare(int[] k, int[] l){
+            return l[0] * l[0] + l[1] * l[1] - k[0] * k[0] - k[1] * k[1];
+        }
+    });
+```
 ### LC 实战
 1. 最常见的使用就是在heap中。
 参见[Queue](DSAlgo_Queue.md)的PriorityQueue章节。

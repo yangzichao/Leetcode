@@ -27,6 +27,31 @@ class Solution {
     }
 }
 ```
+
+还有一种写法，也比较直观。
+```java
+class Solution {
+    public void flatten(TreeNode root) {
+        if(root == null) return;
+        TreeNode L = root.left;
+        TreeNode R = root.right;
+        root.left = null;
+        root.right = null;
+        if(L != null) {
+            root.right = L;
+            flatten(L);
+        }
+        if(R != null) {
+            while(root.right != null) {
+                root = root.right;
+            }
+            root.right = R;
+            flatten(R);
+        }  
+    }
+}
+```
+
 <pre>
 这是从讨论中学到的，全局变量+顺时针的postorder。给跪了。
 post order 对于一个 subtree 
@@ -39,6 +64,11 @@ prev = c, 所以 b.right = prev; b.left = null;
 然后令 prev = b; 下一轮处理 a 的时候就有 a.right = prev;
 a.left = null; prev = root.
 
+补充：
+这个题要的顺序是逆时针的preorder，正序处理的话不好处理，
+如果逆序，从最后一位开始处理的话，那就好处理了。
+这时我们就注意到，顺时针的postorder遍历的顺序恰恰就是
+逆序的逆时针的preorder。所以我们就想出了如下的顺时针postorder解法。
 </pre>
 
 

@@ -7,17 +7,36 @@
 
 ## 2 Priority Queue
 优先队列的应用非常多。
-直接的应用有:
-找一个数组第k大的元素: [LC215](leetCode-215-Kth-Largest-Element-in-an-Array.md)
-安排任务 [LC621](leetCode-621-Task-Scheduler.md)
-[LC253]
-[LC347]
+比较经典的题有:
+* 找一个数组第k大的元素: [LC215](leetCode-215-Kth-Largest-Element-in-an-Array.md)
+* 安排任务 [LC621](leetCode-621-Task-Scheduler.md)
+* 安排会议室 [LC253](leetCode-253-Meeting-Rooms-II.md)
+* [295]
+  
+ 和215相似 但非最佳办法[LC347]
 ### 2. 代码
 ```java
 PriorityQueue<Integer> heap = new PriorityQueue<Integer>((n1, n2) -> n1 - n2); // min heap
 PriorityQueue<Integer> heap = new PriorityQueue<Integer>((n1, n2) -> n2 - n1); // max heap
-// 
-heap.add()
+```
+
+数组 heap();
+```java
+PriorityQueue<int[]> heap = new PriorityQueue<int[]>(new pseudoComparator());
+    private class pseudoComparator implements Comparator<int[]> {
+        public int compare(int[] a, int[] b){
+            return a[0] - b[0];
+        }
+    }
+```
+
+```java
+    PriorityQueue<int[]> q = new PriorityQueue<int[]>(k + 1, new Comparator<int[]>(){
+        @Override
+        public int compare(int[] k, int[] l){
+            return l[0] * l[0] + l[1] * l[1] - k[0] * k[0] - k[1] * k[1];
+        }
+    });
 ```
 
 ## 3 Monotonic Queue
@@ -38,11 +57,11 @@ heap.add()
 * [LC084]
 * [LC085]
 * [LC122]
-* [LC239]
+* [LC239](leetCode-239-Sliding-Window-Maximum.md)
 * [LC496]
 * [LC503]
 * [LC581]
 * [LC739]
-* [LC862]
+* [LC862](leetCode-862-Shortest-Subarray-with-Sum-at-Least-K.md)
 * [LC901]
 * [LC907]
