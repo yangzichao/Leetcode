@@ -2,21 +2,23 @@
 https://leetcode.com/problems/sliding-window-maximum/
 
 ## Method Trivial
-
 分析：
-1. 暴力法就是Nk。
+1. 暴力法就是O(Nk)。
 2. 除此之外最朴素的思想是用heap. 堆的上方始终是最大的值。堆的大小始终保持k个。
-    当滑动窗户的时候。找到前面的元素删除。但是由于入堆一个 log(k),查找并删除又是一个k.
-    这里 log(k) 的k 是因为总元素是k。因此用heap其实没啥优势，是Nk.
+    当滑动窗户的时候。找到前面的元素删除。但是由于入堆一个 log(k),而随机查找并删除是O(k).
+    因此用heap其实没啥优势，是O(Nk).
 
-3. 类似的我们可以用一个TreeMap. 其key是值，value是count。值自动排序了很好理解。
-
-
-```java
-
-```
-
+改进：    
+   达到类似的效果，我们可以用一个TreeMap. 其key是值，value是count。值自动排序了很好理解。
+   TreeMap插入是 log(k),删除是 log(k), 因此是 O(Nlogk).提升了一些。
+   
 ## Method Best: Monotonic Queue.
+
+<pre>
+   从上面朴素的思想里想到，注意到其实我们需要的就是一个数据结构，其结构顶是最大值。
+   而删除的原则和sliding window相同。从sliding window的经验中我们可以想到，
+   单调递减队列, monotonic decreasing queue 就是这样的数据结构。
+</pre>
 
 ```java
 class Solution {
