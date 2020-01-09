@@ -2,23 +2,31 @@
 https://leetcode.com/problems/trapping-rain-water-ii/
 
 
-## Method Best:
-
+## Method BFS/DFS:
+Worst Case:
+全部入PQ.再出。
+O(MN). 系数4.
 ```java
 class Solution {
     public int trapRainWater(int[][] heightMap) {
         /**
         * 
+        思路如下：
+
         木桶原理?：
             存多少水取决于最短的板。
-            说人话：水取决于 contour 最低的的位置
-        1D2D的Contour?:
-            1D contour 是两个点，2D 是一个环线。
+            说人话：水取决于 contour 的最低的的位置
+        1D、2D的Contour?:
+            1D contour 是两个点，2D 是一个闭合环线。
         如何找contour?：
-            BFS以更新contour.  
-        如何保证一直从当下最低开始搜索？
-            把contour 加入PQ 即可。
-            这是一个 优先队列+BFS 而非传统的队列+BFS
+            先找全局最大contour.
+            BFS/DFS 以更新contour.  
+        如何保证一直从当下最短板开始搜索？：
+            把contour 加入一个按高度排序的 PQ 即可。
+            这是一个 优先队列+BFS 而非传统的队列+BFS。
+        为什么是BFS而不是DFS？：
+            DFS可以行，但是PQ天然的Q属性，让我们不必要去
+            建立一个额外的 stack 来 PQ + Stack 强行DFS.
         如何判断水容量？:
             BFS如果遇到比自己低的位置就可以直接判断加水。
             为什么？因为我们就是从最短的木桶边开始搜索的，
@@ -136,3 +144,9 @@ class Solution {
     }
 }
 ```
+
+
+## 思路2 Dijkstra
+https://leetcode.com/problems/trapping-rain-water-ii/discuss/89460/Alternative-approach-using-Dijkstra-in-O(rc-max(log-r-log-c))-time
+
+这个复杂度是 O( MNlog( max(M,N) ) ). 因此若最大变长小于2^4 = 16，这个方法应当更快。
