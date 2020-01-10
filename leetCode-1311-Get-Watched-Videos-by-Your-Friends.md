@@ -67,7 +67,7 @@ class Solution {
         return ans;
     }
     
-    // 这个代码是用来
+    // 这个代码是用来手动比较器的
     private class pseudoComparator implements Comparator<String>{
         public int compare(String s1, String s2){
             if(map.get(s1) != map.get(s2)){

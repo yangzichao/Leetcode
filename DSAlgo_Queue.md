@@ -6,6 +6,10 @@
 
 
 ## 2 Priority Queue
+### Heapify
+https://www.geeksforgeeks.org/time-complexity-of-building-a-heap/
+
+### 题目
 优先队列的应用非常多。
 比较经典的题有:
 * 找一个数组第k大的元素: [LC215](leetCode-215-Kth-Largest-Element-in-an-Array.md)

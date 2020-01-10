@@ -24,4 +24,5 @@
 164 https://www.cxyxiaowu.com/587.html
 692
 
+一个不典型的题目，041，为桶排序提供了一种可能。
 ## Radix Sort
