@@ -24,6 +24,8 @@ https://www.geeksforgeeks.org/time-complexity-of-building-a-heap/
 相关的
 和215相似 但非最佳办法[LC347]
 
+630也是一个
+
 ### 2. 代码
 ```java
 PriorityQueue<Integer> heap = new PriorityQueue<Integer>((n1, n2) -> n1 - n2); // min heap

@@ -8,6 +8,7 @@
   * [某人总结的TimeLine](https://leetcode.com/discuss/general-discussion/435775/amazon-sde-new-grad-timeline)
 * 个例
   * [New Grads SDE I](https://leetcode.com/discuss/interview-experience/434007/amazon-aws-sde-1-offer)
+  * [SDE I](https://leetcode.com/discuss/interview-experience/485130/amazon-sde1-seattle-jan-2020-offer)
   * [面经 Optimal Utilization](https://leetcode.com/discuss/interview-question/373202/amazon-oa-2019-optimal-utilization)
 
 ## Google

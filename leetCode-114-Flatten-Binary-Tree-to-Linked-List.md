@@ -1,10 +1,13 @@
 # 114J. Flatten Binary Tree to Linked List
+
 https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
 
 ## Method Recursion
+
 要求 in place
 
 这是我自己写的，还算比较直观
+
 ```java
 class Solution {
     public void flatten(TreeNode root) {
@@ -29,6 +32,7 @@ class Solution {
 ```
 
 还有一种写法，也比较直观。
+
 ```java
 class Solution {
     public void flatten(TreeNode root) {
@@ -47,7 +51,7 @@ class Solution {
             }
             root.right = R;
             flatten(R);
-        }  
+        }
     }
 }
 ```
@@ -71,7 +75,6 @@ a.left = null; prev = root.
 逆序的逆时针的preorder。所以我们就想出了如下的顺时针postorder解法。
 </pre>
 
-
 ```java
 private TreeNode prev = null;
 
@@ -87,6 +90,7 @@ public void flatten(TreeNode root) {
 ```
 
 上面的解法不能解决全局变量能否重用的问题，做一个小的改变。
+
 ```java
 class Solution {
     public void flatten(TreeNode root) {

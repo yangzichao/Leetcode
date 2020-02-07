@@ -8,6 +8,7 @@
 * [SoulMachine cpp题解](/References/leetcode-cpp.pdf)     
 
 ## 题目表
+* [来offer高频题讲解](https://www.youtube.com/watch?v=ZKAILBWl08g&list=PLTNkreZiUTIL-S_VJBLRxlmGktAQtla-m)
 * [LeetCode List 基础总结](https://zhuanlan.zhihu.com/p/36701403)         
 * [LeetCode 经典题目](https://github.com/azl397985856/leetcode)       
 * [LeetCode 分类顺序表 1-400](https://cspiration.com/leetcodeClassification) 

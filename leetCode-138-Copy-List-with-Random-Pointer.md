@@ -2,6 +2,7 @@
 https://leetcode.com/problems/copy-list-with-random-pointer/
 这个题是链表里面很难的了
 
+这个题其实也没那么难，与133有关。
 ## Method 最佳
 
 <pre>
