@@ -177,6 +177,7 @@
     * [226J. Invert Binary Tree](leetCode-226-Invert-Binary-Tree.md)
     * [227J. Basic Calculator II](leetCode-227-Basic-Calculator-II.md)
     * [229J. Majority Element II](leetCode-229-Majority-Element-II.md)
+    * [230J Kth Smallest Element in a BST](leetCode-230-Kth-Smallest-Element-in-a-BST.md)
     * [232J. Implement Queue using Stacks](leetCode-232-Implement-Queue-using-Stacks.md)
     * [235J. Lowest Common Ancestor of a Binary Search Tree](leetCode-235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree.md)
     * [234J. Palindrome Linked List](leetCode-234-Palindrome-Linked-List.md)
