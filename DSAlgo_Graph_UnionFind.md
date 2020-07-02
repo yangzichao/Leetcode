@@ -1,35 +1,34 @@
 # UnionFind
 
-什么时候必须要用UnionFind?
+什么时候必须要用 UnionFind?
 当图的数据是一点一点传递进来的时候。
-什么时候可以选用UnionFind?
-当图的数据整个提供给我们的时候，我们用DFS
-或者BFS查找相连的部分会更快。
+什么时候可以选用 UnionFind?
+当图的数据整个提供给我们的时候，我们用 DFS
+或者 BFS 查找相连的部分会更快。
 
-## LC 
-
+## LC
 
 ### LC 强相关
-* [323]()是用UnionFind比较好的题
-* [128]() 虽然有一个ad hoc的解，但是这个题比较适合UnionFind
 
+- [323]()是用 UnionFind 比较好的题
+- [128]() 虽然有一个 ad hoc 的解，但是这个题比较适合 UnionFind
 
-[305]() 二维 UnionFind 就是让你用UnionFind 
+[305]() 二维 UnionFind 就是让你用 UnionFind
 
+### LC 弱相关
 
-### LC弱相关
-可以用UnionFind 解 但是不必要的
+可以用 UnionFind 解 但是不必要的
 写了的：
-* [261]()
 
-
-
+- [261]()
 
 ## Java 实现
 
 ### 2-D Union Find 为例
+
 以 [200](leetCode-200-Number-of-Islands.md) 为例
 2-D Union Find
+
 ```java
 class Solution {
 
@@ -37,9 +36,9 @@ class Solution {
         int count;
         int[] parent;
         int[] size;
-        
+
         public UnionFind(char[][] grid){ // for 2D char grid
-            
+
             int M = grid.length;
             int N = grid[0].length;
             count = 0;
@@ -62,14 +61,14 @@ class Solution {
             }
             return id;
         }
-        
+
         public void union(int x, int y){
             int rootx = findroot(x);
             int rooty = findroot(y);
             if(rootx == rooty){
                 return;
             }
-            
+
             if(size[rootx] > size[rooty]){
                 parent[rooty] = rootx;
                 size[rootx] += size[rooty];
@@ -88,7 +87,7 @@ class Solution {
         if(grid == null || grid.length == 0){
             return 0;
         }
-        
+
         int M = grid.length;
         int N = grid[0].length;
         int numOfIslands = 0;
@@ -109,7 +108,7 @@ class Solution {
                 }
                 if(j < N -1 && grid[i][j + 1] == '1'){
                     uf.union(curId, curId + 1);
-                } 
+                }
             }
         }
         return uf.getCount();

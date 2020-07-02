@@ -1,4 +1,5 @@
 # 172J. Factorial Trailing Zeroes
+
 https://leetcode.com/problems/factorial-trailing-zeroes/
 
 ## Method Best
@@ -16,8 +17,8 @@ class Solution {
         而到了125,则能贡献3个0了。
         以此类推
         */
-        
-        
+
+
         return n < 5 ? 0 : n/5 + trailingZeroes(n/5);
     }
 }

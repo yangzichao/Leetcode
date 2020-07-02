@@ -3,13 +3,15 @@
 https://leetcode.com/problems/kth-largest-element-in-an-array/
 
 是佛佛作业题
-215和973一模一样
-这个题当下最主要的是实现了对 priority queue的学习
+215 和 973 一模一样
+这个题当下最主要的是实现了对 priority queue 的学习
 这是最直接的应用
-除此之外，方法2，是对2way quicksort的一个应用。
-## Method PQ 
+除此之外，方法 2，是对 2way quicksort 的一个应用。
+
+## Method PQ
 
 可以用 max heap
+
 ```java
 class Solution {
     public int findKthLargest(int[] nums, int k) {
@@ -27,7 +29,9 @@ class Solution {
     }
 }
 ```
+
 不如用 min heap
+
 ```java
 class Solution {
     public int findKthLargest(int[] nums, int k) {
@@ -43,37 +47,18 @@ class Solution {
     }
 }
 ```
+
 ## Method: Quick Select
 
+第一次直接写了一个 two way quick sort
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-第一次直接写了一个two way quick sort
 ```java
 class Solution {
     public int findKthLargest(int[] nums, int k) {
         sort(nums,0, nums.length - 1);
         return nums[k - 1];
     }
-    
+
     public void swap(int[] a, int i, int j){
         int t = a[i];
         a[i] = a[j];

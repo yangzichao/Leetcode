@@ -1,27 +1,31 @@
 # 133J. Clone Graph
+
 https://leetcode.com/problems/clone-graph/
 
-这个题和138有关
+这个题和 138 有关
+
 ## Method DFS
-关键的思想就在于，用HashMap
+
+关键的思想就在于，用 HashMap
 在原位就复制一个节点，并且将它固定住。
 
 以下是一个分解步骤
+
 ```java
 class Node {
     public int val;
     public List<Node> neighbors;
-    
+
     public Node(int _val) {
         val = _val;
         neighbors = new ArrayList<Node>();
-    }  
+    }
 }
 */
 class Solution {
     // HashMap 既可以建立新老节点的映射，也可以帮助判断图的遍历。
     private HashMap<Node,Node> oldToNew;
-    
+
     public Node cloneGraph(Node node) {
         if(node == null) return null;
         oldToNew = new HashMap<Node,Node>();
@@ -60,17 +64,17 @@ class Solution {
 class Node {
     public int val;
     public List<Node> neighbors;
-    
+
     public Node(int _val) {
         val = _val;
         neighbors = new ArrayList<Node>();
-    }  
+    }
 }
 */
 class Solution {
     // HashMap 既可以建立新老节点的映射，也可以帮助判断图的遍历。
     private HashMap<Node,Node> oldToNew;
-    
+
     public Node cloneGraph(Node node) {
         if(node == null) return null;
         oldToNew = new HashMap<Node,Node>();
@@ -86,7 +90,7 @@ class Solution {
         Node nNode = new Node(node.val);
         //标记原node
         oldToNew.put(node,nNode);
-        
+
         // 由于已经有了边界条件，所以直接把邻居都加一遍。
         for(Node n : node.neighbors){
             nNode.neighbors.add(dfs(n)) ;

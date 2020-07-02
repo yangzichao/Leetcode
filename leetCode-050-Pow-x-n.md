@@ -1,9 +1,10 @@
 # 050J. Pow(x, n)
+
 https://leetcode.com/problems/powx-n/
 
 暴力法失败了
 
-## 暴力1
+## 暴力 1
 
 ```java
 class Solution {

@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/Users/yangzichao/.conda/envs/py/bin/python"
+    "python.pythonPath": "/Users/yangzichao/.conda/envs/py/bin/python",
+    "markdown-pdf.format": "Letter"
 }
