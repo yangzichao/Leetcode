@@ -3,11 +3,12 @@
 ## Tree Traversal
 
 ### Iterative
+
 #### preorder
 
-
 #### inorder
-核心用stack,先直接下到底。
+
+核心用 stack,先直接下到底。
 逆时针
 注意判断条件 (cur!=null || !stack.isEmpty())
 
@@ -26,7 +27,9 @@ public void inorderTraversal(TreeNode root) {
     }
 }
 ```
+
 反向顺时针
+
 ```java
 public void inorderTraversal(TreeNode root) {
     Stack<TreeNode> stack = new Stack<>();

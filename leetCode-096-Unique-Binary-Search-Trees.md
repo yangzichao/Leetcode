@@ -1,8 +1,9 @@
 # 096J. Unique Binary Search Trees
+
 https://leetcode.com/problems/unique-binary-search-trees/
 
+## Method
 
-## Method 
 <pre>
 应当好好分析一下这个问题。
 考虑
@@ -14,7 +15,7 @@ https://leetcode.com/problems/unique-binary-search-trees/
 从右侧的BST集合中任取一个作为右侧子树，
 不重复的组合显然是 ans[i - 1]*ans[n - i] 个；
 假设之前有 n - 1 个节点，那么增加一个节点之后，一共有n个。
-其不重复BST总数是令 i 从 1 取到 n 得到的所有 ans[i-1]*ans[n - 1] 之和。
+其不重复BST总数是令 i 从 1 取到 n 得到的所有 ans[i-1]*ans[n - i] 之和。
 
 即，设 ans[n-1] 已知，我们增加到 n 的话，总数就需要这么求：
 i = 1, ans[n] += ans[0] * ans[n - 1];
@@ -32,8 +33,17 @@ ans[1] = 1;
 ans[n - 1], 我们还是得从 ans[2] 一个一个求上去。
 因此为了求 ans[n],我们需要求并且保存下ans[2] 到 ans[n-1]
 之间的所有的值。
+
+所以考虑任意 i:    
+1, ..., j, ... i;    
+j取值范围是 [1,i];   
+j左侧 j - 1 个，右侧 i - j 个。
+ans[j] = ans[j - 1] * ans[i - j];
+ans[i] += ans[j];   
+ 
 代码如下
 </pre>
+
 ```java
 class Solution {
     public int numTrees(int n) {
