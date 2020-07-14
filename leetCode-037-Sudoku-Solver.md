@@ -1,7 +1,9 @@
 # 037J. Sudoku Solver
+
 https://leetcode.com/problems/sudoku-solver/
 
 ## Method Best
+
 <pre>
 某种程度上来说，这个题比上一题还简单点。真是会者不难，难者不会。
 目前还是菜鸡，Backtracking好写但是难想，而且想到用BackTracking
@@ -69,6 +71,58 @@ class Solution {
         //检查完了 没啥问题 返回true吧
         return true;
 
+    }
+}
+```
+
+还可以为每行每列每个 box 都建立一个 Set. 注意这个 Set 一定要先扫一遍放进去，不然会犯错。
+
+```java
+class Solution {
+    boolean[][] rowSets;
+    boolean[][] colSets;
+    boolean[][] boxSets;
+
+    public void solveSudoku(char[][] board) {
+        rowSets = new boolean[9][10];
+        colSets = new boolean[9][10];
+        boxSets = new boolean[9][10];
+        for(int i = 0; i < 9; i++) {
+            for(int j = 0; j < 9; j++) {
+                if( board[i][j] == '.') continue;
+                int number = board[i][j] - '0';
+                int box = i/3*3 + j/3;
+                rowSets[i][number] = true;
+                colSets[j][number] = true;
+                boxSets[box][number] = true;
+            }
+        }
+        scanner(board, 0, 0);
+    }
+    public boolean scanner(char[][] board, int row, int col){
+        if(row == 9) return true;
+        if(col == 9 ) return scanner(board, row + 1, 0);
+        if(board[row][col] != '.') return scanner(board, row, col + 1);
+
+        int box = row/3 * 3 + col/3;
+
+        for(char c = '1'; c <= '9'; c++){
+            int number = c - '0';
+            if(rowSets[row][number] || colSets[col][number] || boxSets[box][number]) continue;
+
+            board[row][col] = c;
+            rowSets[row][number] = true;
+            colSets[col][number] = true;
+            boxSets[box][number] = true;
+
+            if(scanner(board,row,col+1)) return true;
+
+            board[row][col] = '.';
+            rowSets[row][number] = false;
+            colSets[col][number] = false;
+            boxSets[box][number] = false;
+        }
+        return false;
     }
 }
 ```

@@ -3,20 +3,21 @@
 https://leetcode.com/problems/linked-list-cycle/
 
 最好的办法是用哈希表。其实都需要懂。
+
 ## Method 1:龟兔赛跑
 
-首先上来判断是否是空ListNode和没有next.
+首先上来判断是否是空 ListNode 和没有 next.
 然后建立 dummyhead/ Sentinel
 核心是 双指针，一个一次挪一步，一个一次挪两步。
-如果有循环的话，那么.next 和 .next.next永远不会为空。
-所以如果任意一个为null,就应当终止循环。
+如果有循环的话，那么.next 和 .next.next 永远不会为空。
+所以如果任意一个为 null,就应当终止循环。
 如果两个指针指到同一个位置，那么就判断循环了。
 
 !!!!!! 注意 ！！！！！！！
-while 那里判断的时候 一定要先判断 p2!= null  再判断 p2.next != NULL
-否则的话，如果 p2 是null的话，p2.next 就会报错！
+while 那里判断的时候 一定要先判断 p2!= null 再判断 p2.next != NULL
+否则的话，如果 p2 是 null 的话，p2.next 就会报错！
 ！！！！！！！！！！！！！！
-另外dummyhead 这里是冗余的。
+另外 dummyhead 这里是冗余的。
 
 ```java
 public class Solution {
@@ -39,10 +40,32 @@ public class Solution {
     }
 }
 ```
+
+```java
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        if(head == null) return false;
+        ListNode dummyHead = new ListNode(-1);
+        dummyHead.next = head;
+        ListNode slow = dummyHead;
+        ListNode fast = dummyHead;
+
+        while( fast!=null && fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+            if(slow == fast) return true;
+        }
+        return false;
+    }
+}
+```
+
 ## Method 2: Set
-就是把所有的节点都无脑加到一个HashSet里面，然后出现重复就报错。
-缺点是运行时间似乎不如上面的方法。但是复杂度也是O(N).看来直接
+
+就是把所有的节点都无脑加到一个 HashSet 里面，然后出现重复就报错。
+缺点是运行时间似乎不如上面的方法。但是复杂度也是 O(N).看来直接
 移动指针还是很快的。
+
 ```java
 public class Solution {
     public boolean hasCycle(ListNode head) {

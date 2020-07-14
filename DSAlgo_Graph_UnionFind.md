@@ -5,6 +5,8 @@
 什么时候可以选用 UnionFind?
 当图的数据整个提供给我们的时候，我们用 DFS
 或者 BFS 查找相连的部分会更快。
+什么时候用 UnionFind with path compression ？
+当图建好之后，查找一个东西，历经好几层，可以 path compression 然后让他下次更快。
 
 ## LC
 
@@ -13,7 +15,10 @@
 - [323]()是用 UnionFind 比较好的题
 - [128]() 虽然有一个 ad hoc 的解，但是这个题比较适合 UnionFind
 
-[305]() 二维 UnionFind 就是让你用 UnionFind
+* [399: Evaluate-Division](https://leetcode.com/problems/evaluate-division/) 399 其实是很好的用 UnionFind 的题，而且可以 with path compression
+  [399. Evaluate-Division](leetCode-399-Evaluate-Division.md)
+
+  [305]() 二维 UnionFind 就是让你用 UnionFind
 
 ### LC 弱相关
 
