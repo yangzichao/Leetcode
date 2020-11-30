@@ -1,5 +1,10 @@
 # References
 
+## 课件
+
+https://www.cs.umd.edu/users/meesh/cmsc351/mount/lectures/
+真的特别好，值得好好学学。
+
 ## 题解
 
 ### in Java

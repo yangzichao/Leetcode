@@ -1,6 +1,58 @@
 # 227J. Basic Calculator II
 https://leetcode.com/problems/basic-calculator-ii/
 
+## 一个代码搞定 I II III 
+```java
+class Solution {
+    public int calculate(String s) {
+        Queue<Character> tokens = new ArrayDeque<>();
+        for( char c : s.toCharArray() ) {
+            if( c == ' ') {
+                continue;
+            }
+            tokens.offer(c);
+        }
+        tokens.offer('t');
+        return evaluate(tokens);
+    }
+
+    public int evaluate( Queue<Character> tokens ) {
+        int sum = 0;
+        int preNum = 0;
+        char preOp = '+';
+        int num = 0;
+        
+        while(  !tokens.isEmpty() ) {
+            char c = tokens.poll();
+            if( '0' <= c && c <= '9' ) {
+                num = num*10 + (c - '0');
+            }else{
+                switch(preOp) {
+                    case '+':
+                        sum += preNum;
+                        preNum = num;
+                        break;
+                    case '-':
+                        sum += preNum;
+                        preNum = -num;
+                        break;
+                    case '*':
+                        preNum *= num;
+                        break;
+                    case '/':
+                        preNum /= num;
+                        break;
+                }
+                
+                preOp = c;
+                num = 0;
+            }
+        }
+        return sum + preNum;
+    }
+}
+```
+
 
 ## Method 几乎最佳了
 解释基本都在代码中

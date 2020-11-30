@@ -1,6 +1,40 @@
 # 621J. Task Scheduler
 
 
+## Method 1 Best O(N) O(1);
+对问题的观察: 为什么CPU会闲置，就是因为相同的任务的出现。如果就是 ABCDE，那么时间就是tasks长度。       
+假如一个任务 AAA...A，k个A, 冷却时间 n = 2， 那么就得至少 （k - 1）* (n + 1)  + 1。   
+因为前 k - 1 个占用 （k - 1）* (n + 1)  时长，然后得 + 1.          
+如果有一大串任务 AAABBBCCCDDDEEEFFF.... , 首先我们知道，时间至少是 tasks 长度的。      
+其次时间取决于  （k - 1）* (n + 1) 这个大框架能容下多少。     
+如果这个大框架有空闲的，说明剩下的不足以填满，那么答案就是 （k - 1）* (n + 1) + p.     
+p 是 k 次的任务数量。比如 k 个 A 和 k 个 B， p = 2.        
+反之，如果它填满了。那么一定是 tasks 的长度是答案，这个确实很有意思，不知道怎么证明。
+
+```java
+class Solution {
+    public int leastInterval(char[] tasks, int n) {
+        int[] counts = new int[26];
+        int maxCount = 0;
+        int numberOfMax = 1;
+
+        for(char c : tasks) {
+            counts[c - 'A'] ++;
+            if( counts[ c - 'A'] > maxCount ) {
+                maxCount = counts[ c - 'A'];
+                numberOfMax = 1;
+            }else if ( counts[ c - 'A'] == maxCount ){
+                numberOfMax++;
+            }
+        }
+        
+        return Math.max( tasks.length, (maxCount - 1)*(n + 1) + numberOfMax);
+    }
+}
+```
+
+
+## Mathod 2  Not best
 
 ```java
 class Solution {

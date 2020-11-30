@@ -39,3 +39,5 @@ Be like you are going to meet your old friends. Be excited, 奥利给。
 mention things you want to get asked. Skills should be relevant to job.
 
 key: your heros journey. how you from zero to hero.
+
+I got

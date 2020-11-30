@@ -2,9 +2,8 @@
 
 https://leetcode.com/problems/trapping-rain-water/solution/
 
-
-这个题如此重要，频率顺序第三，hard第一。非常值得一鸭三吃
-参考了这个同学的一些方法，Credit是要给他的。
+这个题如此重要，频率顺序第三，hard 第一。非常值得一鸭三吃
+参考了这个同学的一些方法，Credit 是要给他的。
 https://leetcode.wang/leetCode-42-Trapping-Rain-Water.html
 
 ## 暴力
@@ -52,6 +51,7 @@ class Solution {
 ```
 
 ## Method 2 : Dynamic Programming || 使用数组
+
 <pre>
 对于上面的暴力算法
 我们只需要做一点点改进，就可以使我们的效率大大提高。
@@ -82,7 +82,8 @@ class Solution {
             maxR[i] = Math.max(height[i + 1], maxR[i + 1]);
         }
         for(int i  = 1; i < n - 1; i++){
-            ans += Math.min(maxL[i], maxR[i]) > height[i] ? Math.min(maxL[i], maxR[i]) - height[i] : 0;
+            int shortBoard = Math.min(maxL[i], maxR[i]);
+            ans +=  shortBoard > height[i] ? shortBoard- height[i] : 0;
         }
         return ans;
     }
@@ -90,6 +91,7 @@ class Solution {
 ```
 
 ## Method 3:
+
 <pre>
 上面这个方法我们发现，每一对maxL 和 maxR 我们用了就扔了。对空间比较浪费。
 我们先想一个可以的优化，首先上面的三个for循环中，前两个可以减少至少一个。
@@ -123,6 +125,7 @@ class Solution {
     }
 }
 ```
+
 <pre>
 有了上面的灵感，我们就得到了最好的方法。
 上面的方法既可以从左到右递增指标i,也可以写成从右到左递减指标i。
@@ -169,6 +172,7 @@ class Solution {
 ```
 
 ## Method 4 : Stack
+
 <pre>
 用栈，我们存什么？存的是数组位置i。
 我们要找什么？我们要找数组先降后升的特征，才能储存水。
@@ -191,7 +195,7 @@ class Solution {
           // 下面的while中 <= 也不影响结果，为什么？因为我们计算水的面积是一横条一横条计算的。
           // 所以不会影响结果 <= 对应的是 如果数组下降 我们就入栈，不下降就出栈。比如
           // 2，1，1，1，1，1，在栈中只会有 2，1，而忽略掉重复的对应的位置，这里的1是最后一个1。
-    
+
             while(!stack.isEmpty() && height[stack.peek()] < height[pos] ){
                 int maxR = height[pos];
                 int h = height[stack.pop()];
@@ -207,6 +211,37 @@ class Solution {
             pos++;
         }
         return ans;
+    }
+}
+```
+
+=====
+
+随便记录一个之前写的答案
+
+```java
+class Solution {
+    public int trap(int[] height) {
+        if(height.length < 3) {
+            return 0;
+        }
+        int maxL = height[0];
+        int maxR = height[height.length - 1];
+        int left = 1;
+        int right = height.length - 2;
+        int volume = 0;
+        while( left <= right ) {
+            if(maxL < maxR ) {
+                volume += Math.max(0, maxL - height[left]);
+                maxL = Math.max(maxL, height[left]);
+                left++;
+            }else{
+                volume += Math.max(0, maxR - height[right]);
+                maxR = Math.max(maxR, height[right]);
+                right--;
+            }
+        }
+        return volume;
     }
 }
 ```

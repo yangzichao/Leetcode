@@ -18,7 +18,8 @@ class Solution {
         int ans = 0;
 
         for(int i = 0; i < nums.length; i++){
-            //   这本是一个 O(N^2)的解法，但是由于加上了这句判断，变成了O(N)
+            // 这本是一个 O(N^2)的解法，但是由于加上了这句判断，变成了O(N)
+            // 这句保证了我们从一个 sequence 的最小的一位开始查找。
             if(set.contains(nums[i]- 1)){
                 continue;
             }

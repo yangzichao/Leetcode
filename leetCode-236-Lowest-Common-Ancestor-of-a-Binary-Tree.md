@@ -87,3 +87,27 @@ class Solution {
 }
 ​
 ```
+
+
+```java
+class Solution {
+    // 这个解法特别好。
+    // 我们在左边找，找不到的话说明在右边。
+    // 我么在右边找，找不到的话说明在左边。
+    // 实际上我们做的是什么？我们做的是 postOrder 搜索，找的 target 是 p 或者 q.
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root == null || root == p || root == q ) {
+            return root;
+        }
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if( left == null ) {
+            return right;
+        }
+        if( right == null ) {
+            return left;
+        }
+        return root;
+    }
+}
+```

@@ -4,6 +4,7 @@ https://leetcode.com/problems/spiral-matrix/
 ## 朴素法
 就是纯模拟
 遇到边界则依次改变方向。
+这是 空间 O(MN)的方法
 ```java
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {

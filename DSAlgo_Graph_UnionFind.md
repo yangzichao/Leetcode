@@ -12,13 +12,16 @@
 
 ### LC 强相关
 
+305 是二维 UnionFind 的典型啊 就是让你用 UnionFind
+[305: Number-of-Islands-II](https://leetcode.com/problems/number-of-islands-ii/)
+
 - [323]()是用 UnionFind 比较好的题
 - [128]() 虽然有一个 ad hoc 的解，但是这个题比较适合 UnionFind
 
 * [399: Evaluate-Division](https://leetcode.com/problems/evaluate-division/) 399 其实是很好的用 UnionFind 的题，而且可以 with path compression
   [399. Evaluate-Division](leetCode-399-Evaluate-Division.md)
 
-  [305]() 二维 UnionFind 就是让你用 UnionFind
+  [305]()
 
 ### LC 弱相关
 

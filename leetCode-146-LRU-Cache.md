@@ -1,4 +1,5 @@
 # 146J. LRU Cache
+
 https://leetcode.com/problems/lru-cache/
 
 <pre>
@@ -17,7 +18,9 @@ https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU
 https://juejin.im/post/5a4b433b6fb9a0451705916f
 https://blog.csdn.net/justloveyou_/article/details/71713781
 </pre>
+
 ## Method 1 Double LinkedList + HashMap
+
 <pre>
 如果不考虑时间复杂度O(1)的要求，仅仅实现LRU，
 思路是这样的，先创建一个DoubleLinkedList，因此我们需要
@@ -55,6 +58,7 @@ addNode, removeNode, moveToHead. 这三个都是对链表做一些修改的函�
 </pre>
 
 以下的代码基本上就是上面叙述的部分了。
+
 ```java
 class LRUCache {
     // Doublely Linked List
@@ -138,7 +142,9 @@ class LRUCache {
     }
 }
 ```
+
 以下是答案
+
 ```Java
 public class LRUCache {
 
@@ -243,4 +249,103 @@ public class LRUCache {
     }
   }
 }
+```
+
+这是我最新写的，感觉不错的。比上面的标准答案好多了。
+对于 DLList 我们只实际上实现 addToHead 和 remove 两个方法就可以。
+
+```java
+class LRUCache {
+    class Node {
+        int key;
+        int val;
+        Node prev;
+        Node next;
+        public Node() {};
+        public Node(int key, int val) {
+            this.key = key;
+            this.val = val;
+        }
+    }
+
+    class DLList{
+        Node head;
+        Node tail;
+        int size;
+        public DLList(){
+            this.head = new Node(-1, -1);
+            this.tail = new Node(-1, -1);
+            this.head.next = this.tail;
+            this.tail.prev = this.head;
+            this.size = 0;
+        };
+
+        public Node remove(Node node) {
+            Node prev = node.prev;
+            Node next = node.next;
+            prev.next = next;
+            next.prev = prev;
+            this.size -= 1;
+            return node;
+        }
+
+        public void add(Node node) {
+            Node next = head.next;
+            node.prev = head;
+            node.next = next;
+            head.next = node;
+            next.prev = node;
+            this.size += 1;
+        }
+
+        public Node getLast() {
+            return this.tail.prev;
+        }
+    }
+
+    private int capacity;
+    private Map<Integer, Node> map;
+    private DLList list;
+
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        this.map = new HashMap<>();
+        this.list = new DLList();
+    }
+
+    public int get(int key) {
+        if( !map.containsKey(key) ) {
+            return -1;
+        }
+        Node node = map.get(key);
+        update(node);
+        return node.val;
+    }
+
+    public void put(int key, int value) {
+        if( map.containsKey(key) ) {
+            map.get(key).val = value;
+            update(map.get(key));
+            return;
+        }
+        Node node = new Node(key, value);
+        map.put(key, node);
+        list.add(node);
+        while(map.size() > capacity) {
+            Node last = list.remove( list.getLast() );
+            map.remove( last.key );
+        }
+    }
+
+    public void update(Node node) {
+        list.add( list.remove(node) );
+    }
+}
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache obj = new LRUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
 ```

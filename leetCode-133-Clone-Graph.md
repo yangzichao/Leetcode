@@ -99,3 +99,32 @@ class Solution {
     }
 }
 ```
+## BFS
+
+```java
+class Solution {
+    public Node cloneGraph(Node node) {
+        if( node == null){
+            return null;
+        }
+        Map<Node, Node> marked = new HashMap<>();
+        Queue<Node> bfs = new LinkedList<>();
+        bfs.offer(node);
+        marked.put(node, new Node(node.val) );
+        while(!bfs.isEmpty()){
+            Node cur = bfs.poll();
+            Node copy = marked.get(cur);
+            for(Node next : cur.neighbors){
+                // 这里，如果没访问过，我们新创建一个 copy
+                // 不论访问过或者没有，我们都要创建一个连接
+                if( !marked.containsKey(next) ){
+                    marked.put(next, new Node(next.val) );
+                    bfs.offer(next);
+                }
+                copy.neighbors.add(marked.get(next));
+            }
+        }
+        return marked.get(node);
+    }
+}
+```

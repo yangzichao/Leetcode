@@ -4,6 +4,33 @@ https://leetcode.com/problems/search-a-2d-matrix-ii/
 
 ## Method Best: 都在备注中
 
+站在右上角看。这个矩阵其实就像是一个Binary Search Tree.
+
+```java
+class Solution {
+    public boolean findNumberIn2DArray(int[][] matrix, int target) {
+        int m = matrix.length;
+        if(m < 1){
+            return false;
+        }
+        int n = matrix[0].length;
+        int right = n - 1;
+        int up = 0;
+        while(up < m && right >= 0){
+            if(matrix[up][right] == target){
+                return true;
+            }else if ( matrix[up][right] < target ){
+                up++;
+            }else{
+                right--;
+            }
+        }
+        return false;
+    }
+}
+```
+当然站在左下角往上看也是的。
+
 ```Java
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {

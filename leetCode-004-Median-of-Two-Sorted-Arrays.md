@@ -3,8 +3,9 @@
 https://leetcode.com/problems/median-of-two-sorted-arrays/
 
 ## Method Best
+
 <pre>
-基本的原理是，我们对短数组随便切一刀，对长数组也切一刀分成左右。
+基本的原理是，我们对短数组随便切一刀，对长数组也切一刀分成左右。目前我们就对短数组做BinarySearch. l r p 都是在对短数组。
 由于作出合格的切分时，短数组和长数组总共的左侧元素数量已知，
 因此，当短数组的切割位置确定的时候，会导致
 长数组分割的位置也确定了。我们先标记该分割位置左侧和右侧的
@@ -28,7 +29,7 @@ class Solution {
         // pointers
         int l1 = 0, r1 = 0, l2 = 0, r2 = 0;
         // Binary Search Pointers
-        int l = 0, r = nums1.length - 1, p= 0;      
+        int l = 0, r = nums1.length - 1, p= 0;
         // Begin Binary Search
         while( l <= r){
             // Pivot
@@ -47,7 +48,7 @@ class Solution {
             }
         }
 
-        return something.  
+        return something.
     }
 }
 ```
@@ -62,11 +63,12 @@ class Solution {
 如果是奇数长度，那么Min(r1,r2)就是了。
 </pre>
 
-* 其实一开始我还遇到了一个问题，就是 pivot 到底是指向 l1 还是 r1
-* 最终证明只能指向 r1. Why? 因为 l 从 0 开始增加，值永远大于等于0，最大为n。而
-r 从 n - 1开始减少，值永远小于等于 n - 1， 最小为 -1.以上运用了极限情况，r比l小一。
-考虑 p = l +(r - l)/2, 当 l 为 0时，r 最多为 -1, 因此 p 最小为0，最大为n.
-而l1需要是 -1到n-1，r1是0到n.因此pivot只能代表r1.
+- 其实一开始我还遇到了一个问题，就是 pivot 到底是指向 l1 还是 r1
+- 最终证明只能指向 r1. Why? 因为 l 从 0 开始增加，值永远大于等于 0，最大为 n。而
+  r 从 n - 1 开始减少，值永远小于等于 n - 1， 最小为 -1.以上运用了极限情况，r 比 l 小一。
+  考虑 p = l +(r - l)/2, 当 l 为 0 时，r 最多为 -1, 因此 p 最小为 0，最大为 n.
+  而 l1 需要是 -1 到 n-1，r1 是 0 到 n.因此 pivot 只能代表 r1.
+
 ```Java
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
@@ -89,7 +91,7 @@ class Solution {
             double L1 = l1 < 0 ? Integer.MIN_VALUE : nums1[l1];
             double L2 = l2 < 0 ? Integer.MIN_VALUE : nums2[l2];
             double R1 = r1 > nums1.length - 1 ? Integer.MAX_VALUE : nums1[r1];
-            double R2 = r2 > nums2.length - 1 ? Integer.MAX_VALUE : nums2[r2];     
+            double R2 = r2 > nums2.length - 1 ? Integer.MAX_VALUE : nums2[r2];
 
             if( L1 > R2){
                 r = p - 1;

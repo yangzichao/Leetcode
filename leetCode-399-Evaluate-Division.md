@@ -92,6 +92,117 @@ class Solution {
 
 }
 
-```
+````
 
-```
+## follow up
+
+* You know that variables can only be represented by lower letters of English alphabet (up to 26 letters). How would you optimize to make it faster then HashSet/Map?
+Use 26x26 matrix and fill diagonal with 1.0 (a --1-->a)
+* People in Mathlandia like to have long variable names, where variable name can be up to 10,000 letters. Your program consumes to much memory and long names slow down implementation. How would you optimize it?
+Convert variable names to indices. Graph will be represented by indices instead of variables.
+Keep nameToIdx which maps name of variable to index, names which 'maps' index to names
+
+
+## Union Find is the Best Method:
+
+```java
+class Solution {
+    /*
+        Union Find 这个题的想法就是:
+        以只做过除数而没有被除的数当作root 节点，即参考点，令他的值为1.
+        即直接反应一个倍数关系，a/b = 2, b 是 1倍， a 是 2 倍。
+        如
+        x1/x2 = 2, x2/x3 = 3, x3/x4= 4
+        x1 -> x2 -> x3 -> x4
+        24     12    4    1
+        储存的方式是
+        x4:1 -> x1:24
+             -> x2:12
+             -> x3:4
+        如果我们找 x2/x3, 那就是 x2: 4 / x3:12 = 3；
+
+        y1/y2 = 3, y2/y3 = 5
+        y1 -> y2 -> y3
+        15     5     1
+
+        y3:1 -> y1:15
+             -> y2:5
+
+        如果此时我们求 x1/y2, 由于 root 不一样，我们回复一个  -1.
+        如果另加一个
+        x1/y1 = 2,
+
+        union x1, y1, 那么我们直接 union 他们的 root, x4 和 y3 就好了, 我们令 y3 是 x4 的 root。
+        那么怎么放缩数字的倍数呢？我们令 x4/y3 = 15/24 * 2 就是这两个树的倍数之比了！
+        所以我们把 x4 的倍数由 1 调整至 15/24 * 2 即可
+        证明：  \frac{x4}{y3} = \frac{x4 x1 y1 }{y3 x1 y1} = \frac{x1}{y1} \frac{y1}{y3} \frac{x4}{x1} = 2 * 15 * 1/24
+        下次 path compression 的时候，这个倍数就会被乘给它的子节点。
+        y3:1 -> y1:15
+             -> y2:5
+             -> x4:15/24 * 2 -> x1:24
+                             -> x2:12
+                             -> x3:4
+    */
+    Map<String, String>roots = new HashMap<>();
+    Map<String, Double>numbers = new HashMap<>();
+
+    public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
+        double[] answers = new double[queries.size()];
+
+        for (int i = 0; i < values.length ; i++ ) {
+            List<String> equation = equations.get(i);
+            String numerator = equation.get(0);
+            String denominator = equation.get(1);
+            double quotient = values[i];
+            union(numerator, denominator, quotient);
+        }
+        for (int i = 0; i < queries.size(); ++i) {
+            List<String> query = queries.get(i);
+            String numerator = query.get(0);
+            String denominator = query.get(1);
+            answers[i] = (roots.containsKey(numerator) && roots.containsKey(denominator) && findRoot(numerator) == findRoot(denominator) )
+                ? numbers.get(numerator) / numbers.get(denominator) : -1.0;
+        }
+        return answers;
+    }
+
+    public void addNode(String curNode) {
+        if (roots.containsKey( curNode )) {
+            return;
+        }
+        roots.put( curNode,  curNode);
+        numbers.put( curNode, 1.0);
+    }
+    public String findRoot(String curNode) {
+        String parentNode = roots.getOrDefault(curNode, curNode);
+        if (curNode == parentNode) {
+            return parentNode;
+        }
+        /* 这里的 PostOrder 是找到根节点之后开始向上撤回递归，因为根节点的值是1，
+         这里我们一层一层把树直接捋直了。
+         我们有两个指针，一个指根节点，一个指父节点。
+         过程如下
+         Step 0 : 1 -> 3 -> 2 -> 3
+         Step 1 : 1 -> 3
+                    -> 6 -> 3
+         Step 2 : 1 -> 3
+                    -> 6
+                    -> 18
+        */
+        String rootNode = findRoot(parentNode);
+        numbers.put(curNode, numbers.get(curNode) * numbers.get(parentNode));
+        roots.put(curNode, rootNode);
+
+        return roots.getOrDefault(curNode, curNode);
+    }
+
+    public void union(String numerator, String denominator, double quotient) {
+        addNode(numerator);
+        addNode( denominator);
+        String numeratorRoot = findRoot(numerator);
+        String denomitorRoot = findRoot( denominator);
+        roots.put(numeratorRoot, denomitorRoot);
+        numbers.put(numeratorRoot, quotient * numbers.get( denominator) / numbers.get(numerator));
+    }
+}
+````
